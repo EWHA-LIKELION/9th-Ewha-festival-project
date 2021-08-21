@@ -1,0 +1,92 @@
+.background-image {
+  background-image: url(../../../templates/frontScreens/background.svg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 425px) {
+  .background-image {
+    background-size: contain;
+  }
+}
+.college-list-container {
+  display: flex;
+  padding: 20px 7px 0px 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.humanities-wrapper {
+  background-color: #ffffff;
+}
+.humanities-name {
+  background-color: #e5e7e6;
+}
+.social-wrapper {
+  background-color: #80e0ff;
+}
+.social-name {
+  background-color: #3cbef6;
+}
+
+.natural-wrapper {
+  background-color: #fffb92;
+}
+.natural-name {
+  background-color: #ffe05b;
+}
+.engineering-wrapper {
+  background-color: #ffad8e;
+}
+.engineering-name {
+  background-color: #ff7a48;
+}
+.music-wrapper {
+  background-color: #ffd3d9;
+}
+.music-name {
+  background-color: #ffb1b7;
+}
+.art-wrapper {
+  background-color: #c58d58;
+}
+.art-name {
+  background-color: #c58d58;
+}
+.edu-wrapper {
+  background-color: #85edfb;
+}
+.edu-name {
+  background-color: #3acbe7;
+}
+.business-wrapper {
+  background-color: #cea086;
+}
+.business-name {
+  background-color: #b57c5d;
+}
+.convergence-wrapper {
+  background-color: #89afff;
+}
+.convergence-name {
+  background-color: #5b8df6;
+}
+.nursing-wrapper {
+  background-color: #ffd4b7;
+}
+.nursing-name {
+  background-color: #ffb788;
+}
+.scranton-wrapper {
+  background-color: #91ebda;
+}
+.scranton-name {
+  background-color: #4fd7c5;
+}
+.hokma-wrapper {
+  background-color: #e38dda;
+}
+.hokma-name {
+  background-color: #cd69bd;
+}
