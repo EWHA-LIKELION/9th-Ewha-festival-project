@@ -1,0 +1,430 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'reset.css';
+
+* {
+  box-sizing: border-box;
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', sans-serif !important;
+}
+body {
+  max-width: 425px;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+/* 버튼 컴포넌트  button */
+.button-filled-gray {
+  box-sizing: border-box;
+  width: 336px;
+  height: 50px;
+  display: flex;
+  background: #e2e2e2;
+  border: solid #d9d9d9 2px;
+  border-radius: 25px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+}
+.button-filled-green {
+  box-sizing: border-box;
+  width: 336px;
+  height: 50px;
+  display: flex;
+  background: rgba(124, 228, 149, 0.6);
+  border: solid rgba(124, 228, 149, 0.6) 2px;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.07);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.button-filled-transparent {
+  background-color: #ffffff;
+  width: 336px;
+  height: 50px;
+  display: flex;
+  border: solid #d9d9d9 2px;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+/* 입력창, input */
+.user-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 336px;
+  height: 77px;
+}
+.user-input-label {
+  font-size: 15px;
+  font-weight: bold;
+  opacity: 60%;
+  color: #000000;
+}
+.user-input {
+  width: 336px;
+  height: 47px;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+  margin-top: 8px;
+  border: none;
+}
+/* hashtag */
+.major-hashtag-container {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+}
+.major-hashtag-colored {
+  background-color: #80e0ff;
+  border-radius: 12px;
+  border-style: none;
+  margin-right: 8px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  color: rgb(0 0 0/0.6);
+  box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
+}
+.major-hashtag-white {
+  background-color: white;
+  border-radius: 12px;
+  border-style: solid;
+  border-color: #80e0ff;
+  border-width: 1px;
+  margin-right: 8px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  color: rgb(0 0 0/0.6);
+}
+/* text */
+.festival-headline {
+  width: 226px;
+  height: 34px;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 34px;
+  color: #1a4426;
+}
+.wrap-major-board-components {
+  display: flex;
+  flex-direction: column;
+}
+.major-board-title {
+  height: 29px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+  color: #1a4426;
+}
+.major-board-detail-text {
+  margin-top: 5px;
+  width: 108px;
+  height: 22px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: rgba(26, 68, 38, 0.5);
+}
+.wrap-article-components {
+  display: flex;
+  flex-direction: column;
+}
+.article-title {
+  height: 36px;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 36px;
+  color: rgba(0, 0, 0, 0.9);
+}
+.article-date {
+  margin-top: 5px;
+  width: 113px;
+  height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.article-text {
+  text-align: justify;
+  margin-top: 3%;
+  font-size: 15px;
+  line-height: 23px;
+  letter-spacing: -0.03em;
+  color: rgba(0, 0, 0, 0.9);
+}
+.booth-name {
+  width: 177px;
+  height: 45px;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 52px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.booth-introduction {
+  width: 167px;
+  height: 26px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.6);
+}
+/* mainheader */
+.header-wrapper {
+  display: flex;
+  width: 100%;
+  height: 57px;
+  background-color: #62d0a1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 11px;
+}
+
+.header-button {
+  width: 35px;
+  height: 35px;
+}
+
+.header-label {
+  font-size: 19px;
+  font-weight: 700;
+  color: #1a4426;
+}
+/* subheader */
+.subheader-container {
+  display: flex;
+  width: 375px;
+  height: 57px;
+  background: #ffffff;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 0px 0px 17px 17px;
+  align-items: center;
+  justify-content: center;
+}
+
+.subheader-text {
+  position: fixed;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.subheader-icon {
+  margin-left: auto;
+  margin-right: 10%;
+  width: 21px;
+  height: 21px;
+  background-image: url('./Icon.svg');
+  background-size: cover;
+}
+
+/* 학과(혹은 단대) 게시글 리스트 요소 */
+.board-wrapper {
+  border-radius: 12px;
+  left: 53.2%;
+  width: 335px;
+  height: 153px;
+  max-height: 100%;
+  max-width: 100%;
+  background: #ffffff;
+}
+.contents-wrapper {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  grid-template-columns: 1fr 2fr 2fr;
+  column-gap: 4%;
+  margin-left: 10px;
+  margin-right: 1%;
+  margin-top: 2%;
+  border-radius: 12px;
+}
+.wrap-title-arrow {
+  margin-left: 10px;
+  border-bottom: 1px solid rgba(26, 68, 38, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+.post-title {
+  width: 168.98px;
+  height: 24.86px;
+  font-family: Noto Sans KR;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  color: rgba(0, 0, 0, 0.9);
+}
+.post-picture {
+  grid-row: 1 / 3;
+  width: 95px;
+  height: 95px;
+  border-radius: 9px;
+}
+.post-article {
+  grid-column: 2 / 4;
+  font-family: Noto Sans KR;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+  color: rgba(0, 0, 0, 0.9);
+}
+.post-date {
+  font-family: Manrope;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  letter-spacing: -0.03em;
+  color: rgba(0, 0, 0, 0.4);
+  align-self: end;
+}
+.post-comment-number {
+  width: 37.2px;
+  height: 19.12px;
+  align-self: end;
+  justify-self: end;
+}
+
+/* 부스 글 리스트 요소 */
+.booth-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 160px;
+  height: 204px;
+  border-radius: 0px 0px 17px 17px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.booth-list-image {
+  width: 160px;
+  height: 130px;
+  border-radius: 17px 17px 0px 0px;
+  background-color: #e0e0e0;
+}
+
+.booth-list-label-header {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  opacity: 90%;
+  margin-top: 7px;
+  margin-left: 14px;
+}
+
+.booth-list-label-content {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 500px;
+  color: #000000;
+  opacity: 50%;
+  margin: 3px 13px 16px 14px;
+}
+/* 단대 아이콘 */
+.college-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #80e0ff;
+  border-radius: 12px;
+  width: 74px;
+  height: 95px;
+  box-shadow: 0px 5px 5px rgb(0 0 0/0.1);
+}
+.college-icon {
+  margin: auto;
+}
+.college-name {
+  background-color: #3cbef6;
+  border-radius: 12px;
+  margin: 0px 6px 5px 6px;
+  width: 62px;
+  height: 21px;
+  line-height: 21px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(0 0 0/0.6);
+  text-align: center;
+}
+/* 댓글 */
+.written-comment-box {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  height: 96px;
+  background: #f6f6f6;
+  border-radius: 12px;
+}
+.written-comment-user {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.03em;
+  color: rgba(0, 0, 0, 0.9);
+}
+.written-comment-text {
+  margin-left: 3%;
+  font-size: 15px;
+  line-height: 23px;
+  letter-spacing: -0.03em;
+  color: rgba(0, 0, 0, 0.9);
+}
+img .summary-icon {
+  width: 23px;
+  height: 23px;
+}
+.wrap-user-and-icon {
+  display: grid;
+  grid-template-columns: 9fr 1fr;
+  margin-top: 2%;
+  margin-right: 1%;
+  margin-left: 3%;
+}
+
+/* 댓글 입력창 */
+.comment-box-wrapper {
+  background-color: white;
+  width: 100%;
+  height: 70px;
+  box-shadow: 0px -6px 19px rgb(0 0 0/0.1);
+  display: flex;
+  align-items: center;
+}
+.comment-inputbox {
+  background-color: #ebebeb;
+  border-style: none;
+  border-radius: 25.5px;
+  box-sizing: border-box;
+  padding-left: 15px;
+  margin: 0 11px;
+  height: 51px;
+  font-size: 15px;
+  font-weight: 400;
+  flex-grow: 1;
+}
+.comment-submit-button {
+  position: absolute;
+  right: 28px;
+}
