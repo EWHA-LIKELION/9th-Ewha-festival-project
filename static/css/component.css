@@ -279,6 +279,8 @@ body {
   width: 95px;
   height: 95px;
   border-radius: 9px;
+  background: #C4C4C4;
+
 }
 .post-article {
   grid-column: 2 / 4;
