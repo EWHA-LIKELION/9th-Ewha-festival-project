@@ -44,10 +44,6 @@
     margin-top: 10px;
 }
 
-.user-input-label {
-    justify-self: flex-start;
-}
-
 .user-input {
     padding-left: 16px;
     color: #000000;
@@ -60,10 +56,11 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 40px;
+    padding: 0px 5%;
 }
 
 .button-filled-green-login {
-    width: 89.6%;
+    width: 100%;
     height: 50px;
     display: flex;
     background: rgba(124, 228, 149, 0.6);

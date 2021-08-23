@@ -21,6 +21,7 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
+    padding: 0px 5%;
 }
 
 .user-input-wrapper {
@@ -49,7 +50,7 @@
 
 .user-input-warn-wrapper {
     display: block;
-    width: 89.6%;
+    width: 100%;
     height: auto;
 }
 
@@ -70,10 +71,11 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 40px;
+    padding: 0px 5%;
 }
 
 .button-filled-green-signup {
-    width: 89.6%;
+    width: 100%;
     height: 50px;
     display: flex;
     background: rgba(124, 228, 149, 0.6);
