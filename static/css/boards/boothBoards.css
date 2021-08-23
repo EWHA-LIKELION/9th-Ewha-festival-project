@@ -1,0 +1,7 @@
+.boothBoards-wrapper{
+    display: flex;
+    flex-direction: column;
+    background-color: #E5E5E5;
+    align-items: center;
+    height: 100vh;
+}
