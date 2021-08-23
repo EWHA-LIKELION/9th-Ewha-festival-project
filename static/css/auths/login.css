@@ -1,0 +1,91 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
+.header-label {
+    font-family: 'Manrope', sans-serif;
+}
+
+.login-label-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 5%;
+    margin-top: 70px;
+}
+
+.login-label-title {
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 41px;
+    color: #1A4426;
+}
+
+.login-label-content {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    color: #1A4426;
+    opacity: 70%;
+    margin-top: 5px;
+}
+
+.user-input-all-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    padding: 0px 5%;
+}
+
+.user-input-wrapper {
+    margin-top: 10px;
+}
+
+.user-input-label {
+    justify-self: flex-start;
+}
+
+.user-input {
+    padding-left: 16px;
+    color: #000000;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+.login-btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.button-filled-green-login {
+    width: 89.6%;
+    height: 50px;
+    display: flex;
+    background: rgba(124, 228, 149, 0.6);
+    border: solid rgba(124, 228, 149, 0.6) 2px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.07);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.login-to-sign-up {
+    color: #00000099;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 19px;
+    text-align: center;
+    text-decoration-line: underline;
+    margin-top: 13px;
+    margin-bottom: 277px;
+}
