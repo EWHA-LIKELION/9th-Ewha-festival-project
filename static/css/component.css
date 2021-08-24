@@ -64,7 +64,7 @@ body {
 .user-input-wrapper {
   display: flex;
   flex-wrap: wrap;
-  width: 336px;
+  width: 100%;
   height: 77px;
 }
 .user-input-label {
@@ -74,7 +74,7 @@ body {
   color: #000000;
 }
 .user-input {
-  width: 336px;
+  width: 100%;
   height: 47px;
   border-radius: 10px;
   background-color: #e7e7e7;
@@ -204,6 +204,8 @@ body {
 .header-button {
   width: 35px;
   height: 35px;
+  display: inline-block;
+  content: none;
 }
 
 .header-label {
@@ -227,7 +229,7 @@ body {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -284,6 +286,8 @@ body {
   width: 95px;
   height: 95px;
   border-radius: 9px;
+  background: #C4C4C4;
+
 }
 .post-article {
   grid-column: 2 / 4;
@@ -356,6 +360,8 @@ body {
   width: 74px;
   height: 95px;
   box-shadow: 0px 5px 5px rgb(0 0 0/0.1);
+  margin-bottom: 19px;
+  margin-right: 13px;
 }
 .college-icon {
   margin: auto;
