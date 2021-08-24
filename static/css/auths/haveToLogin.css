@@ -37,6 +37,7 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 26px;
+    cursor: pointer;
 }
 
 .button-filled-green-htlogin {
@@ -54,6 +55,7 @@
     line-height: 26px;
     color: rgba(0, 0, 0, 0.6);
     margin-top: 15px;
+    cursor: pointer;
 }
 
 .htl-to-sign-up {
