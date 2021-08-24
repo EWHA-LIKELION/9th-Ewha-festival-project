@@ -1,11 +1,11 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-@import "reset.css";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'reset.css';
 
 * {
   box-sizing: border-box;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", sans-serif !important;
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', sans-serif !important;
 }
 body {
   max-width: 425px;
@@ -83,12 +83,13 @@ body {
 }
 /* hashtag */
 .major-hashtag-container {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   height: 35px;
   justify-content: center;
 }
-.major-hashtag-colored {
+/*.major-hashtag-colored {
   background-color: #80e0ff;
   border-radius: 12px;
   border-style: none;
@@ -100,6 +101,12 @@ body {
   font-weight: 500;
   text-align: center;
   color: rgb(0 0 0/0.6);
+  box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
+}*/
+.major-hashtag-white:hover {
+  cursor: pointer;
+  border-style: none;
+  background-color: #80e0ff;
   box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
 }
 .major-hashtag-white {
@@ -242,19 +249,21 @@ body {
   margin-right: 10%;
   width: 21px;
   height: 21px;
-  background-image: url("../../static/icons/search-icon.svg");
+  background-image: url('../../static/icons/search-icon.svg');
   background-size: cover;
 }
 
 /* 학과(혹은 단대) 게시글 리스트 요소 */
 .board-wrapper {
+  margin-top: 20px;
   border-radius: 12px;
   left: 53.2%;
-  width: 335px;
+  width: 93%;
   height: 153px;
   max-height: 100%;
   max-width: 100%;
   background: #ffffff;
+  margin-bottom: 8px;
 }
 .contents-wrapper {
   display: grid;
@@ -262,17 +271,22 @@ body {
   grid-template-columns: 1fr 2fr 2fr;
   column-gap: 4%;
   margin-left: 10px;
-  margin-right: 1%;
+  margin-right: 4%;
   margin-top: 2%;
   border-radius: 12px;
 }
 .wrap-title-arrow {
-  margin-left: 10px;
   border-bottom: 1px solid rgba(26, 68, 38, 0.1);
   display: flex;
+  margin-top: 2%;
+  padding-bottom: 2%;
   justify-content: space-between;
 }
+img.arrow-image {
+  margin-right: 4%;
+}
 .post-title {
+  margin-left: 10px;
   width: 168.98px;
   height: 24.86px;
   font-family: Noto Sans KR;
@@ -286,8 +300,7 @@ body {
   width: 95px;
   height: 95px;
   border-radius: 9px;
-  background: #C4C4C4;
-
+  background: #c4c4c4;
 }
 .post-article {
   grid-column: 2 / 4;
@@ -296,6 +309,7 @@ body {
   line-height: 22px;
   letter-spacing: -0.03em;
   color: rgba(0, 0, 0, 0.9);
+  margin-right: 2%;
 }
 .post-date {
   font-family: Manrope;
@@ -332,7 +346,7 @@ body {
 }
 
 .booth-list-label-header {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #000000;
@@ -343,7 +357,7 @@ body {
 }
 
 .booth-list-label-content {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 12px;
   line-height: 15px;
   font-weight: 500px;
