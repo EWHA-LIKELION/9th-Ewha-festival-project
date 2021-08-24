@@ -13,6 +13,19 @@ body {
   min-height: 100vh;
   margin: 0 auto;
 }
+.background-image {
+  background-image: url(../icons/common/background.svg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 425px) {
+  .background-image {
+    background-size: contain;
+  }
+}
 /* 버튼 컴포넌트  button */
 .button-filled-gray {
   box-sizing: border-box;
@@ -89,7 +102,7 @@ body {
   height: 35px;
   justify-content: center;
 }
-/*.major-hashtag-colored {
+.major-hashtag-colored {
   background-color: #80e0ff;
   border-radius: 12px;
   border-style: none;
@@ -102,7 +115,7 @@ body {
   text-align: center;
   color: rgb(0 0 0/0.6);
   box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
-}*/
+}
 .major-hashtag-white:hover {
   cursor: pointer;
   border-style: none;
