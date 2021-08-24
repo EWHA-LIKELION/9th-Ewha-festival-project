@@ -83,11 +83,15 @@ body {
 }
 /* hashtag */
 .major-hashtag-container {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   height: 35px;
+  /*width, justify-content 추가*/
+  width: 95%;
+  justify-content: space-between;
 }
-.major-hashtag-colored {
+/*.major-hashtag-colored {
   background-color: #80e0ff;
   border-radius: 12px;
   border-style: none;
@@ -99,9 +103,19 @@ body {
   text-align: center;
   color: rgb(0 0 0/0.6);
   box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
+}*/
+.major-hashtag-white:hover{
+  cursor: pointer;
+  border-style: none;
+  background-color: #80e0ff;
+  box-shadow: 0px 4px 4px rgb(100 205 239/0.6); 
 }
 .major-hashtag-white {
-  background-color: white;
+  width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+  /*background-color: white;*/
+  background: rgba(255, 255, 255, 0);
   border-radius: 12px;
   border-style: solid;
   border-color: #80e0ff;
@@ -241,13 +255,16 @@ body {
 
 /* 학과(혹은 단대) 게시글 리스트 요소 */
 .board-wrapper {
+  margin-top: 20px;
   border-radius: 12px;
   left: 53.2%;
-  width: 335px;
+  width: 93%;
   height: 153px;
   max-height: 100%;
   max-width: 100%;
   background: #ffffff;
+  margin-bottom: 8px;
+  
 }
 .contents-wrapper {
   display: grid;
@@ -255,17 +272,22 @@ body {
   grid-template-columns: 1fr 2fr 2fr;
   column-gap: 4%;
   margin-left: 10px;
-  margin-right: 1%;
+  margin-right: 4%;
   margin-top: 2%;
   border-radius: 12px;
 }
 .wrap-title-arrow {
-  margin-left: 10px;
   border-bottom: 1px solid rgba(26, 68, 38, 0.1);
   display: flex;
+  margin-top: 2%;
+  padding-bottom: 2%;
   justify-content: space-between;
 }
+img.arrow-image{
+  margin-right: 4%;
+}
 .post-title {
+  margin-left: 10px;
   width: 168.98px;
   height: 24.86px;
   font-family: Noto Sans KR;
@@ -287,6 +309,7 @@ body {
   line-height: 22px;
   letter-spacing: -0.03em;
   color: rgba(0, 0, 0, 0.9);
+  margin-right: 2%;
 }
 .post-date {
   font-family: Manrope;
