@@ -1,16 +1,3 @@
-.background-image {
-  background-image: url(../../../templates/frontScreens/background.svg);
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-@media screen and (min-width: 425px) {
-  .background-image {
-    background-size: contain;
-  }
-}
 .college-list-container {
   display: flex;
   padding: 20px 7px 0px 20px;

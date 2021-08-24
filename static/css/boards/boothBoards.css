@@ -1,8 +1,3 @@
-.background-image {
-  background-image: url(../../../templates/boards/background.svg);
-  background-position: center;
-  background-size: cover;
-}
 .background {
   background-color: #f6f6f6;
 }
