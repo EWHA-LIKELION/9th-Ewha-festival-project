@@ -64,7 +64,7 @@ body {
 .user-input-wrapper {
   display: flex;
   flex-wrap: wrap;
-  width: 336px;
+  width: 100%;
   height: 77px;
 }
 .user-input-label {
@@ -74,7 +74,7 @@ body {
   color: #000000;
 }
 .user-input {
-  width: 336px;
+  width: 100%;
   height: 47px;
   border-radius: 10px;
   background-color: #e7e7e7;
@@ -87,9 +87,7 @@ body {
   display: flex;
   flex-direction: row;
   height: 35px;
-  /*width, justify-content 추가*/
-  width: 95%;
-  justify-content: space-between;
+  justify-content: center;
 }
 /*.major-hashtag-colored {
   background-color: #80e0ff;
@@ -98,24 +96,20 @@ body {
   margin-right: 8px;
   height: 35px;
   line-height: 35px;
+  padding: 0 12px;
   font-size: 13px;
   font-weight: 500;
   text-align: center;
   color: rgb(0 0 0/0.6);
   box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
 }*/
-.major-hashtag-white:hover{
+.major-hashtag-white:hover {
   cursor: pointer;
   border-style: none;
   background-color: #80e0ff;
-  box-shadow: 0px 4px 4px rgb(100 205 239/0.6); 
+  box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
 }
 .major-hashtag-white {
-  width: 100%;
-  padding-right: 8px;
-  padding-left: 8px;
-  /*background-color: white;*/
-  background: rgba(255, 255, 255, 0);
   border-radius: 12px;
   border-style: solid;
   border-color: #80e0ff;
@@ -123,6 +117,7 @@ body {
   margin-right: 8px;
   height: 35px;
   line-height: 35px;
+  padding: 0 12px;
   font-size: 13px;
   font-weight: 500;
   text-align: center;
@@ -238,6 +233,9 @@ body {
 }
 
 .subheader-text {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -251,6 +249,8 @@ body {
   margin-right: 10%;
   width: 21px;
   height: 21px;
+  background-image: url('../../static/icons/search-icon.svg');
+  background-size: cover;
 }
 
 /* 학과(혹은 단대) 게시글 리스트 요소 */
@@ -264,7 +264,6 @@ body {
   max-width: 100%;
   background: #ffffff;
   margin-bottom: 8px;
-  
 }
 .contents-wrapper {
   display: grid;
@@ -283,7 +282,7 @@ body {
   padding-bottom: 2%;
   justify-content: space-between;
 }
-img.arrow-image{
+img.arrow-image {
   margin-right: 4%;
 }
 .post-title {
@@ -301,6 +300,7 @@ img.arrow-image{
   width: 95px;
   height: 95px;
   border-radius: 9px;
+  background: #c4c4c4;
 }
 .post-article {
   grid-column: 2 / 4;
@@ -333,8 +333,9 @@ img.arrow-image{
   flex-wrap: wrap;
   width: 160px;
   height: 204px;
-  border-radius: 0px 0px 17px 17px;
+  border-radius: 17px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+  background-color: white;
 }
 
 .booth-list-image {
@@ -351,6 +352,7 @@ img.arrow-image{
   color: #000000;
   opacity: 90%;
   margin-top: 7px;
+  margin-bottom: 5px;
   margin-left: 14px;
 }
 

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap');
+
+.header-label {
+    font-family: 'Manrope', sans-serif;
+}
+
+.htl-label {
+    margin-top: 60px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 36px;
+    text-align: center;
+    color: #000000;
+    opacity: 80%;
+}
+
+.htl-btn-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.button-filled-gray-htlogin {
+    width: 89.6%;
+    height: 50px;
+    display: flex;
+    background: #e2e2e2;
+    border: solid #d9d9d9 2px;
+    border-radius: 25px;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.07);
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.button-filled-green-htlogin {
+    width: 89.6%;
+    height: 50px;
+    display: flex;
+    background: rgba(124, 228, 149, 0.6);
+    border: solid rgba(124, 228, 149, 0.6) 2px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.07);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 15px;
+}
+
+.htl-to-sign-up {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 19px;
+    text-align: center;
+    color: #000000;
+    opacity: 60%;
+    margin-top: 13px;
+    margin-bottom: 452px;
+}
