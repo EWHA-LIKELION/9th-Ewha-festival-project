@@ -27,19 +27,14 @@ html {
   color: rgba(26, 68, 38, 0.7);
   margin-bottom: 15px;
 }
-.search-box {
+.search-box{
   padding-left: 11px;
-  display: flex;
   margin-bottom: 15px;
-  border-radius: 5px;
   background: rgba(38, 176, 135, 0.6);
 }
 .search-box input {
   width: 334px;
   height: 47px;
-  font-size: 1.2rem;
-  border-style: none;
-  background: transparent;
   margin-left: 8px;
 }
 .w-100 {

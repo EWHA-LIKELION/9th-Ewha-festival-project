@@ -473,3 +473,14 @@ img .summary-icon {
   position: absolute;
   right: 28px;
 }
+
+/* 검색input */
+.search-box {  
+  display: flex;
+  border-radius: 5px;
+}
+.search-box input {
+  font-size: 1.2rem;
+  border-style: none;
+  background: transparent;
+}
