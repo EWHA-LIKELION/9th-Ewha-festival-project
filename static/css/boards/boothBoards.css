@@ -25,12 +25,14 @@ a {
 }
 .major-hashtag-colored {
   background-color: #7ce495;
+  box-shadow: 0px 4px 4px rgb(124 228 149/0.6);
 }
 .major-hashtag-white {
   border-color: #7ce495;
 }
 .major-hashtag-white:hover {
   background-color: #7ce495;
+  box-shadow: 0px 4px 4px rgb(124 228 149/0.6);
 }
 .booth-sort-wrapper {
   display: flex;
