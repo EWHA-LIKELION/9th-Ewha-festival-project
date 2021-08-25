@@ -23,14 +23,14 @@ a {
 .heart-icon {
   margin: 11px 9px;
 }
-.major-hashtag-container {
-  margin: 20px 0;
-}
 .major-hashtag-colored {
   background-color: #7ce495;
 }
 .major-hashtag-white {
   border-color: #7ce495;
+}
+.major-hashtag-white:hover {
+  background-color: #7ce495;
 }
 .booth-sort-wrapper {
   display: flex;
