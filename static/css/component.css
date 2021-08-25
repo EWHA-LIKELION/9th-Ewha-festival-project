@@ -26,6 +26,9 @@ body {
     background-size: contain;
   }
 }
+.background-color-white {
+  background: #f6f6f6;
+}
 /* 버튼 컴포넌트  button */
 .button-filled-gray {
   box-sizing: border-box;
@@ -271,7 +274,7 @@ body {
   margin-top: 20px;
   border-radius: 12px;
   left: 53.2%;
-  width: 93%;
+  width: 100%;
   height: 153px;
   max-height: 100%;
   max-width: 100%;
@@ -335,9 +338,14 @@ img.arrow-image {
 }
 .post-comment-number {
   width: 37.2px;
-  height: 19.12px;
   align-self: end;
   justify-self: end;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #3cc3cc;
 }
 
 /* 부스 글 리스트 요소 */
