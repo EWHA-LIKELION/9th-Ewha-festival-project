@@ -1,0 +1,35 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+}
+.commented-posts-info-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.commented-post-count-label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.commented-post-count {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.9);
+}
+.commented-post-sort-wrapper {
+  display: flex;
+  align-items: center;
+}
+.post-sort-icon {
+  margin-right: 8px;
+}
+.post-sort-select {
+  width: 120px;
+  height: 30px;
+}
