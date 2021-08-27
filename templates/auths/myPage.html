@@ -21,6 +21,7 @@
       <img
         src="../../static/icons/common/go_back_icon.svg"
         class="header-button"
+        id="back-button"
       />
       <div class="header-label">My Page</div>
       <div class="header-button"></div>
@@ -30,17 +31,17 @@
       <div class="user-nickname">닉네임</div>
       <div class="user-email">sample1886@ewhain.net</div>
       <div class="user-list-wrapper">
-        <div class="user-list-item">
+        <div class="user-list-item" id="commented-post-list-button">
           <img src="../../static/icons/common/commented_post_icon.svg" />
           <div class="user-list-label">댓글 단 글</div>
           <img src="../../static/icons/common/right_arrow_icon.svg" />
         </div>
-        <div class="user-list-item">
+        <div class="user-list-item" id="commented-booth-list-button">
           <img src="../../static/icons/common/commented_booth_icon.svg" />
           <div class="user-list-label">댓글 단 부스</div>
           <img src="../../static/icons/common/right_arrow_icon.svg" />
         </div>
-        <div class="user-list-item">
+        <div class="user-list-item" id="liked-booth-list-button">
           <img src="../../static/icons/common/liked_booth_icon.svg" />
           <div class="user-list-label">좋아요 한 부스</div>
           <img src="../../static/icons/common/right_arrow_icon.svg" />
@@ -48,4 +49,5 @@
       </div>
     </div>
   </body>
+  <script src="../../static/js/auths/myPage.js"></script>
 </html>
