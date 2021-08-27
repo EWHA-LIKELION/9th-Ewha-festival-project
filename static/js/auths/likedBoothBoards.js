@@ -1,8 +1,8 @@
-const backButton=document.querySelector("#back-button");
-function handleBackClick(){
+const backButton=document.getElementById('back-button')
+function handleBackButtonClick(){
     console.log("go-back clicked");
 }
-backButton.addEventListener("click", handleBackClick);
+backButton.addEventListener("click", handleBackButtonClick);
 
 const likeBoothButton=document.querySelectorAll("#like-button");
 for (let i = 0; i < likeBoothButton.length; i++) {

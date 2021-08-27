@@ -1,14 +1,14 @@
-const backButton=document.querySelector("#back-button");
-function handleBackClick(){
+const backButton=document.getElementById('back-button')
+function handleBackButtonClick(){
     console.log("go-back clicked");
 }
-backButton.addEventListener("click", handleBackClick);
+backButton.addEventListener("click", handleBackButtonClick);
 
-const searchButton=document.querySelector("#search-button");
-function handleSearchClick(){
+const searchButton=document.getElementById('search-button')
+function handleSearchButtonClick(){
     console.log("search clicked");    
 }
-searchButton.addEventListener("click", handleSearchClick);
+searchButton.addEventListener("click", handleSearchButtonClick);
 
 const themeHashtagButton=document.querySelectorAll("#theme-hashtag-button");
 for (let i = 0; i < themeHashtagButton.length; i++) {
