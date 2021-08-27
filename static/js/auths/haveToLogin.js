@@ -1,4 +1,4 @@
-const backButton = document.querySelector("#back-button");
+const backButton = document.getElementById("back-button");
 
 function onClickBackButton(){
     console.log("Back button clicked");
@@ -7,7 +7,7 @@ function onClickBackButton(){
 backButton.addEventListener("click", onClickBackButton);
 
 
-const loginButton = document.querySelector("#login-button");
+const loginButton = document.getElementById("login-button");
 
 function onClickLoginButton(){
     console.log("Login button clicked");
@@ -16,7 +16,7 @@ function onClickLoginButton(){
 loginButton.addEventListener("click", onClickLoginButton);
 
 
-const signupButton = document.querySelector("#signup-button");
+const signupButton = document.getElementById("signup-button");
 
 function onClickSignupButton(){
     console.log("Signup button clicked");

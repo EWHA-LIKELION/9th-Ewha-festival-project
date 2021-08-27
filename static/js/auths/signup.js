@@ -1,4 +1,4 @@
-const backButton = document.querySelector("#back-button");
+const backButton = document.getElementById("back-button");
 
 function onClickBackButton(){
     console.log("Back button clicked");
@@ -7,7 +7,7 @@ function onClickBackButton(){
 backButton.addEventListener("click", onClickBackButton);
 
 
-const homeButton = document.querySelector("#home-button");
+const homeButton = document.getElementById("home-button");
 
 function onClickHomeButton(){
     console.log("Home button clicked");
@@ -16,13 +16,13 @@ function onClickHomeButton(){
 homeButton.addEventListener("click", onClickHomeButton);
 
 
-const signupForm = document.querySelector("#signup-form");
-const signupInputName = document.querySelector("#signup-name");
-const signupInputNickname = document.querySelector("#signup-nickname");
-const signupInputID = document.querySelector("#signup-id");
-const signupInputPW = document.querySelector("#signup-pw");
-const signupInputMail = document.querySelector("#signup-mail");
-const signupInputPhone = document.querySelector("#signup-phone");
+const signupForm = document.getElementById("signup-form");
+const signupInputName = document.getElementById("signup-name");
+const signupInputNickname = document.getElementById("signup-nickname");
+const signupInputID = document.getElementById("signup-id");
+const signupInputPW = document.getElementById("signup-pw");
+const signupInputMail = document.getElementById("signup-mail");
+const signupInputPhone = document.getElementById("signup-phone");
 
 function onSignupSubmit(event){
     event.preventDefault();
