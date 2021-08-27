@@ -1,19 +1,22 @@
 // 헤더의 뒤로가기 버튼
-const goBackIcon = document.getElementById("go_back_icon");
+const goBackButton = document.getElementById("go-back-button");
 
-function clickGoBackIcon(){
+function clickGoBackButton(){
     console.log("뒤로가기 버튼 클릭");
 }
 
-goBackIcon.onclick = clickGoBackIcon;
+goBackButton.onclick = clickGoBackButton;
 
 // 사진 클릭
-const picture = document.getElementById("gallery")
+const pictures = document.querySelectorAll("#post-picture");
 
-function clickGallery(){
-    console.log("갤러리 클릭");
+function handlePictureClicked(){
+    console.log("사진 클릭");
 }
-picture.onclick = clickGallery;
+
+for(const picture of pictures){
+picture.onclick = handlePictureClicked;
+}
 
 // 댓글의 서머리 아이콘
 const summaryIcons = document.querySelectorAll("#summary-icon");
