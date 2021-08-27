@@ -18,26 +18,26 @@
   </head>
   <body>
     <div class="header-wrapper">
-      <a href="#"
-        ><img
+      <img id="go-back-button"
           class="header-button"
           src="../../static/icons/common/go_back_icon.svg"
-      /></a>
+      />
       <span class="header-label">중앙운영위원회</span>
       <div class="header-button"></div>
     </div>
 
     <div class="detail-container">
+
       <div class="major-board-title">글의 제목입니다.</div>
       <div class="article-info">
         <div class="article-date">2021/08/23 13:30</div>
-        <a class="icon-number-box" href="#">
+        <div class="icon-number-box">
           <img
             class="comment-icon"
             src="../../static/icons/common/comment_icon.svg"
           />
           <div class="comment-number">28</div>
-        </a>
+        </div>
       </div>
 
       <hr />
@@ -52,12 +52,12 @@
       </div>
 
       <div class="booth-introduction">사진</div>
-      <div class="gallery">
-        <div class="post-picture"></div>
-        <div class="post-picture"></div>
-        <div class="post-picture"></div>
-        <div class="post-picture"></div>
-        <div class="post-picture"></div>
+      <div class="gallery" id="gallery">
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
       </div>
     </div>
 
@@ -66,15 +66,17 @@
 
     <!--댓글-->
     <div class="comment-container">
+
       <div class="comment-info">
         <div class="booth-introduction">댓글</div>
         <div class="under-comment-number">28</div>
       </div>
-
+      <!--댓글 세부-->
       <div class="written-comment-box">
+
         <div class="wrap-user-and-icon">
           <div class="written-comment-user">사용자이름</div>
-          <img
+          <img id="summary-icon"
               src="../../static/icons/common/comment_more_icon.svg"
               class="summary-icon"
           />
@@ -85,29 +87,42 @@
           플랑크톤까지 먹까지 먹이가 다양한데, 포식성 상어들의 경우 빠져도
           얼마든지 다시
         </div>
+
       </div>
+
       <div class="written-comment-box">
+
         <div class="wrap-user-and-icon">
           <div class="written-comment-user">사용자이름</div>
-          <img
+          <img id="summary-icon"
               src="../../static/icons/common/comment_more_icon.svg"
               class="summary-icon"
           />
         </div>
         <div class="written-comment-text">
-          커다란 고래부터 작은 플랑크톤까지 먹이가 다양한데, 포식성 상어들의
-          경우 빠져도 얼마든지 다시
+          커다란 고래부터 작은 플랑크톤커다란 고래부터 작은 플랑크톤까지
+          먹커다란 고래부터 작은 플랑크톤까지 먹커다란 고래부터 작은
+          플랑크톤까지 먹까지 먹이가 다양한데, 포식성 상어들의 경우 빠져도
+          얼마든지 다시
         </div>
+
       </div>
-    </div>
+
 
     <!-- 댓글달기 -->
-    <div class="comment-box-wrapper">
-      <input class="comment-inputbox" placeholder="댓글을 입력하세요" />
-      <img
+    <form class="comment-box-wrapper">
+      
+      <input id ="comment-input" class="comment-inputbox" placeholder="댓글을 입력하세요" />
+     
+      <img  id="comment-submit-button"
         src="../../static/icons/common/comment_submit.svg"
         class="comment-submit-button"
       />
-    </div>
+
+    </form>
+
+
+    <script src ="../../static/js/details/detail.js"></script>
+
   </body>
 </html>
