@@ -23,21 +23,24 @@ a {
 .heart-icon {
   margin: 11px 9px;
 }
-.major-hashtag-container {
-  margin: 20px 0;
-}
 .major-hashtag-colored {
   background-color: #7ce495;
+  box-shadow: 0px 4px 4px rgb(124 228 149/0.6);
 }
 .major-hashtag-white {
   border-color: #7ce495;
 }
+.major-hashtag-white:hover {
+  background-color: #7ce495;
+  box-shadow: 0px 4px 4px rgb(124 228 149/0.6);
+}
 .booth-sort-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 20px;
   margin-top: 20px;
+  width: 335px;
 }
 .booth-sort-dropdown-wrapper {
   display: flex;
@@ -46,10 +49,7 @@ a {
   margin-right: 5px;
 }
 .booth-sort-dropdown {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 7px;
+  padding-left: 7px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   border: solid rgba(14, 14, 14, 0.2) 1px;

@@ -1,11 +1,11 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import 'reset.css';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import "reset.css";
 
 * {
   box-sizing: border-box;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
-    'Malgun Gothic', sans-serif !important;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif !important;
 }
 body {
   max-width: 425px;
@@ -25,6 +25,9 @@ body {
   .background-image {
     background-size: contain;
   }
+}
+.background-color-white {
+  background: #f6f6f6;
 }
 /* 버튼 컴포넌트  button */
 .button-filled-gray {
@@ -249,7 +252,7 @@ body {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -262,7 +265,7 @@ body {
   margin-right: 10%;
   width: 21px;
   height: 21px;
-  background-image: url('../../static/icons/search-icon.svg');
+  background-image: url("../../static/icons/common/search_icon.svg");
   background-size: cover;
 }
 
@@ -271,7 +274,7 @@ body {
   margin-top: 20px;
   border-radius: 12px;
   left: 53.2%;
-  width: 93%;
+  width: 100%;
   height: 153px;
   max-height: 100%;
   max-width: 100%;
@@ -335,9 +338,14 @@ img.arrow-image {
 }
 .post-comment-number {
   width: 37.2px;
-  height: 19.12px;
   align-self: end;
   justify-self: end;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #3cc3cc;
 }
 
 /* 부스 글 리스트 요소 */
@@ -359,7 +367,7 @@ img.arrow-image {
 }
 
 .booth-list-label-header {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #000000;
@@ -370,7 +378,7 @@ img.arrow-image {
 }
 
 .booth-list-label-content {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   line-height: 15px;
   font-weight: 500px;
@@ -464,4 +472,15 @@ img .summary-icon {
 .comment-submit-button {
   position: absolute;
   right: 28px;
+}
+
+/* 검색input */
+.search-box {  
+  display: flex;
+  border-radius: 5px;
+}
+.search-box input {
+  font-size: 1.2rem;
+  border-style: none;
+  background: transparent;
 }

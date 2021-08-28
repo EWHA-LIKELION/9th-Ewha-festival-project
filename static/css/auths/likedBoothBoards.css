@@ -1,5 +1,8 @@
 .background {
   background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 a {
   text-decoration: none;
@@ -35,9 +38,10 @@ a {
 .booth-sort-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 20px;
   margin-top: 20px;
+  width: 335px;
 }
 .booth-sort-dropdown-wrapper {
   display: flex;
@@ -46,10 +50,7 @@ a {
   margin-right: 5px;
 }
 .booth-sort-dropdown {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 7px;
+  padding-left: 7px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   border: solid rgba(14, 14, 14, 0.2) 1px;
