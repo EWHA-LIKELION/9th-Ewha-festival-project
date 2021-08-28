@@ -29,11 +29,12 @@
       <img
         src="../../static/icons/common/mypage_icon.svg"
         class="mypage-icon"
+        id="mypage-button"
       />
       <div class="welcome-text">이화의 축제를 즐기세요.</div>
       <div class="search-box">
         <img src="../../static/icons/common/search_icon.svg" />
-        <input type="text" placeholder="검색어를 입력해주세요." />
+        <input id="search-word" type="text" placeholder="검색어를 입력해주세요." />
       </div>
 
       <!-- 이벤트 안내 케라셀 -->
@@ -98,7 +99,7 @@
       <img src="../../static/icons/common/main_middle_banner.svg" class="main-middle-banner" />
       <!-- 게시판 바로가기 container -->
       <div class="boards-wrapper">
-        <div class="board-btn-wrapper">
+        <div class="board-btn-wrapper" id="department-board">
           <div class="board-btn-name">단과대·과별 게시판</div>
           <img
             src="../../static/icons/common/right_arrow_icon.svg"
@@ -106,7 +107,7 @@
           />
           <div class="board-detail-explanation">상세설명 텍스트</div>
         </div>
-        <div class="board-btn-wrapper">
+        <div class="board-btn-wrapper" id="central-committee-board">
           <div class="board-btn-name">중운위</div>
           <img
             src="../../static/icons/common/right_arrow_icon.svg"
@@ -114,7 +115,7 @@
           />
           <div class="board-detail-explanation">상세 설명 텍스트</div>
         </div>
-        <div class="board-btn-wrapper">
+        <div class="board-btn-wrapper" id="booth-board">
           <div class="board-btn-name">부스</div>
           <img
             src="../../static/icons/common/right_arrow_icon.svg"
@@ -129,5 +130,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="../../static/js/frontScreens/main.js"></script>
   </body>
 </html>
