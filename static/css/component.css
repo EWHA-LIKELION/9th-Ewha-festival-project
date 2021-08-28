@@ -1,11 +1,11 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import 'reset.css';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import "reset.css";
 
 * {
   box-sizing: border-box;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
-    'Malgun Gothic', sans-serif !important;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif !important;
 }
 body {
   max-width: 425px;
@@ -252,7 +252,7 @@ body {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -265,7 +265,7 @@ body {
   margin-right: 10%;
   width: 21px;
   height: 21px;
-  background-image: url('../../static/icons/search-icon.svg');
+  background-image: url("../../static/icons/common/search_icon.svg");
   background-size: cover;
 }
 
@@ -367,7 +367,7 @@ img.arrow-image {
 }
 
 .booth-list-label-header {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #000000;
@@ -378,7 +378,7 @@ img.arrow-image {
 }
 
 .booth-list-label-content {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   line-height: 15px;
   font-weight: 500px;

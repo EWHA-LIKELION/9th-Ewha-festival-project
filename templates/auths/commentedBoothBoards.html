@@ -18,11 +18,11 @@
   </head>
   <body class="background">
     <div class="header-wrapper">
-      <a href="#"
-        ><img
-          class="header-button"
-          src="../../static/icons/common/go_back_icon.svg"
-      /></a>
+      <img
+        class="header-button"
+        id="back-button"
+        src="../../static/icons/common/go_back_icon.svg"
+      />
       <span class="header-label">댓글 단 부스</span>
       <div class="header-button"></div>
     </div>
@@ -47,39 +47,36 @@
 
     <div class="booth-list-container">
       <div class="booth-list-wrapper">
-        <div class="booth-list-heart-background">
+        <div class="booth-list-heart-background" id="like-button">
           <img
             class="heart-icon"
             src="../../static/icons/common/empty_heart_icon.svg"
           />
         </div>
-        <a href="#">
-          <img class="booth-list-image" src="#" />
-          <div class="booth-list-label-wrapper">
-            <div class="booth-list-label-header">부스 이름</div>
-            <div class="booth-list-label-content">
-              부스에 대한 간략한 소개를 하는 텍스트
-            </div>
+        <img class="booth-list-image" src="#" />
+        <div class="booth-list-label-wrapper" id="booth-label">
+          <div class="booth-list-label-header">부스 이름</div>
+          <div class="booth-list-label-content">
+            부스에 대한 간략한 소개를 하는 텍스트
           </div>
-        </a>
+        </div>
       </div>
       <div class="booth-list-wrapper">
-        <div class="booth-list-heart-background">
+        <div class="booth-list-heart-background" id="like-button">
           <img
             class="heart-icon"
             src="../../static/icons/common/empty_heart_icon.svg"
           />
         </div>
-        <a href="#">
-          <img class="booth-list-image" src="#" />
-          <div class="booth-list-label-wrapper">
-            <div class="booth-list-label-header">부스 이름</div>
-            <div class="booth-list-label-content">
-              부스에 대한 간략한 소개를 하는 텍스트
-            </div>
+        <img class="booth-list-image" src="#" />
+        <div class="booth-list-label-wrapper" id="booth-label">
+          <div class="booth-list-label-header">부스 이름</div>
+          <div class="booth-list-label-content">
+            부스에 대한 간략한 소개를 하는 텍스트
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </body>
+  <script src="../../static/js/auths/commentedBoothBoards.js"></script>
 </html>
