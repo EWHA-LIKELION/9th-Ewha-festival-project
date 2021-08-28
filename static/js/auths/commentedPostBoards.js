@@ -7,7 +7,7 @@ function clickGoBackButton(){
 
 goBackButton.onclick = clickGoBackButton;
 
-// ( > )아이콘 : 글 자세히 보기
+// 글 자세히 보기
 const readMorePosts = document.querySelectorAll("#commented-posts");
 
 function clickReadMorePost(){
