@@ -19,6 +19,6 @@ from festival.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<str:id>', instDetail, name="instDetail"),
-    path('<str:id>', boothDetail, name="boothDetail"),
+    path('<str:id>', collegePost, name="collegePost"),
+    path('<str:id>', boothPost, name="boothPost"),
 ]

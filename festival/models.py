@@ -5,10 +5,10 @@ from django.db.models.fields.files import ImageField
 # Create your models here.
 
 
-class Inst(models.Model):
+class collegePost(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
-    pub_time = models.DateTimeField(null=True)
+    pub_time = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
@@ -18,10 +18,10 @@ class Inst(models.Model):
         return self.body[:100]
 
 
-class Booth(models.Model):
+class boothPost(models.Model):
     title = models.CharField(max_length=30)
     intro = models.CharField(max_length=30)
-    pub_time = models.DateTimeField()
+    pub_time = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
