@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/component.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/details/detail.css"
+    />
+    <title>detail</title>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <img id="go-back-button"
+          class="header-button"
+          src="../../static/icons/common/go_back_icon.svg"
+      />
+      <span class="header-label">중앙운영위원회</span>
+      <div class="header-button"></div>
+    </div>
+
+    <div class="detail-container">
+
+      <div class="major-board-title">글의 제목입니다.</div>
+      <div class="article-info">
+        <div class="article-date">2021/08/23 13:30</div>
+        <div class="icon-number-box">
+          <img
+            class="comment-icon"
+            src="../../static/icons/common/comment_icon.svg"
+          />
+          <div class="comment-number">28</div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="article-text">
+        커다란 고래부터 작은 플랑크톤까지 먹이가 다양한데, 포식성 상어들의 경우
+        빠져도 얼마든지 다시 자라나는 날카로운 이빨과 강력한 턱 덕분에 바다의
+        최상위 포식자로 군림한다. 전세계 해양에 널리 분포하고 황소상어 등 일부
+        종은 기수역(하천·호수 및 연해 등의 수역 중 기수가 차지하는 지역),
+        민물에도 진출한다. 또한 심해성 상어도 알려져 있다. 2016년 3월 말
+        기준으로 전세계 9목 34과 105속 509종이 존재한다.
+      </div>
+
+      <div class="booth-introduction">사진</div>
+      <div class="gallery" id="gallery">
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
+        <div class="post-picture" id="post-picture"></div>
+      </div>
+    </div>
+
+    <!--중간에 껴있는 회색 박스-->
+    <div class="gray-dividing-box"></div>
+
+    <!--댓글-->
+    <div class="comment-container">
+
+      <div class="comment-info">
+        <div class="booth-introduction">댓글</div>
+        <div class="under-comment-number">28</div>
+      </div>
+      <!--댓글 세부-->
+      <div class="written-comment-box">
+
+        <div class="wrap-user-and-icon">
+          <div class="written-comment-user">사용자이름</div>
+          <img id="summary-icon"
+              src="../../static/icons/common/comment_more_icon.svg"
+              class="summary-icon"
+          />
+        </div>
+        <div class="written-comment-text">
+          커다란 고래부터 작은 플랑크톤커다란 고래부터 작은 플랑크톤까지
+          먹커다란 고래부터 작은 플랑크톤까지 먹커다란 고래부터 작은
+          플랑크톤까지 먹까지 먹이가 다양한데, 포식성 상어들의 경우 빠져도
+          얼마든지 다시
+        </div>
+
+      </div>
+
+      <div class="written-comment-box">
+
+        <div class="wrap-user-and-icon">
+          <div class="written-comment-user">사용자이름</div>
+          <img id="summary-icon"
+              src="../../static/icons/common/comment_more_icon.svg"
+              class="summary-icon"
+          />
+        </div>
+        <div class="written-comment-text">
+          커다란 고래부터 작은 플랑크톤커다란 고래부터 작은 플랑크톤까지
+          먹커다란 고래부터 작은 플랑크톤까지 먹커다란 고래부터 작은
+          플랑크톤까지 먹까지 먹이가 다양한데, 포식성 상어들의 경우 빠져도
+          얼마든지 다시
+        </div>
+
+      </div>
+
+
+    <!-- 댓글달기 -->
+    <form class="comment-box-wrapper">
+      
+      <input id ="comment-input" class="comment-inputbox" placeholder="댓글을 입력하세요" />
+     
+      <img  id="comment-submit-button"
+        src="../../static/icons/common/comment_submit.svg"
+        class="comment-submit-button"
+      />
+
+    </form>
+
+
+    <script src ="../../static/js/details/detail.js"></script>
+
+  </body>
+</html>

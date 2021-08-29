@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/component.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/auths/signup.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="background-image">
+    <div class="header-wrapper">
+      <a 
+      href="#" 
+      id="back-button"
+        ><img 
+          class="header-button" 
+          src="../../static/icons/common/go_back_icon.svg" 
+      /></a>
+      <!--뒤로가기-->
+      <span class="header-label">Create Account</span>
+      <a 
+      href="#"
+      id="home-button"
+        ><img
+          class="header-button"
+          src="../../static/icons/common/home_icon.svg"
+      /></a>
+      <!--홈으로 돌아가기-->
+    </div>
+    <div class="ID-img-wrapper">
+      <div class="ID-img">
+        <img src="../../static/icons/common/student_card_image.svg" />
+      </div>
+    </div>
+    <form id="signup-form">
+      <div class="user-input-all-wrapper">
+        <div class="user-input-wrapper">
+          <span class="user-input-label">이름</span>
+          <input
+            class="user-input"
+            id="signup-name"
+            type="text"
+            name="#"
+            placeholder="실명을 적어주세요."
+          />
+        </div>
+        <div class="user-input-wrapper">
+          <span class="user-input-label">닉네임</span>
+          <input
+            class="user-input"
+            id="signup-nickname"
+            type="text"
+            name="#"
+            placeholder="다른 사용자에게 보여지는 이름입니다."
+          />
+        </div>
+      </div>
+      <hr class="line-between" />
+      <div class="user-input-all-wrapper">
+        <div class="user-input-wrapper">
+          <span class="user-input-label">아이디</span>
+          <input 
+            class="user-input" 
+            id="signup-id" 
+            type="text" 
+            name="#" 
+          />
+        </div>
+        <div class="user-input-wrapper">
+          <span class="user-input-label">비밀번호</span>
+          <input 
+            class="user-input" 
+            id="signup-pw" 
+            type="password" 
+            name="#" 
+          />
+        </div>
+        <div class="user-input-wrapper">
+          <span class="user-input-label">비밀번호 재확인</span>
+          <input 
+            class="user-input" 
+            type="password" 
+            name="#"
+          />
+        </div>
+      </div>
+      <hr class="line-between" />
+      <div class="user-input-all-wrapper">
+        <div class="user-input-warn-wrapper">
+          <div class="user-input-label">이메일</div>
+          <div class="user-input-warn-label">
+            ewhain.net 권장 (다른 도메인 사용도 가능)
+          </div>
+          <input
+            class="user-input"
+            id="signup-mail"
+            type="text"
+            name="#"
+            placeholder="예)ewhafes@ewhain.net"
+          />
+        </div>
+        <div class="user-input-wrapper">
+          <div class="user-input-label">전화번호</div>
+          <input
+            class="user-input"
+            id="signup-phone"
+            type="text"
+            name="#"
+            placeholder="예)010-1234-5678"
+          />
+        </div>
+      </div>
+      <div class="signup-btn-wrapper">
+        <div class="signup-btn-label">
+          악성 댓글 작성 시에는 작성한 댓글이 삭제될 수 있습니다.
+        </div>
+        <button class="button-filled-green-signup" type="submit">회원가입</button>
+      </div>
+    </form>
+    <script src="../../static/js/auths/signup.js"></script>
+  </body>
+</html>
