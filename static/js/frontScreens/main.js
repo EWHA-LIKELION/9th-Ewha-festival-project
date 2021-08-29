@@ -1,10 +1,10 @@
 const mypageButton = document.getElementById("mypage-button");
 
-function onClickMypageButton(){
+function handleMyPageButtonClicked(){
     console.log("Mypage button clicked");
 }
 
-mypageButton.addEventListener("click", onClickMypageButton);
+mypageButton.addEventListener("click", handleMyPageButtonClicked);
 
 
 const searchWordInput = document.getElementById("search-word");
@@ -18,27 +18,27 @@ searchWordInput.addEventListener("input", onChangeSearchWordInput);
 
 const departmentButton = document.getElementById("department-board");
 
-function onClickDepartmentButton(){
+function handleDepartmentButtonClicked(){
     console.log("Department button clicked");
 }
 
-departmentButton.addEventListener("click", onClickDepartmentButton);
+departmentButton.addEventListener("click", handleDepartmentButtonClicked);
 
 
 const centralCommitteeButton = document.getElementById("central-committee-board");
 
-function onClickCentralCommitteeButton(){
+function handleCentralCommitteeButtonClicked(){
     console.log("Central Committee button clicked");
 }
 
-centralCommitteeButton.addEventListener("click", onClickCentralCommitteeButton);
+centralCommitteeButton.addEventListener("click", handleCentralCommitteeButtonClicked);
 
 
 const boothButton = document.getElementById("booth-board");
 
-function onClickBoothButton(){
+function handleBoothButtonClicked(){
     console.log("Booth button clicked");
 }
 
-boothButton.addEventListener("click", onClickBoothButton);
+boothButton.addEventListener("click", handleBoothButtonClicked);
 
