@@ -1,17 +1,24 @@
-const headerButtons = document.querySelectorAll("#headerButtons");
-for (let i = 0; i < headerButtons.length; i++) {
-    headerButtons[i].addEventListener("click", function() {
-        console.log("");
-    });
+const goBackButton = document.getElementById("goback-button");
+function handleGoBackButtonClicked() {
+    console.log("goback button clicked");
 }
-const articleBox = document.querySelector("#articleBox");
-function clickArticleBox() {
-    console.log("");
+goBackButton.addEventListener("click", handleGoBackButtonClicked);
+
+const homeButton = document.getElementById("home-button");
+function handleHomeButtonClicked() {
+    console.log("home button clicked");
 }
-articleBox.addEventListener("click", clickArticleBox);
+homeButton.addEventListener("click", handleHomeButtonClicked);
+
+const articleBox = document.getElementById("articleBox");
+function handleArticleBoxClicked() {
+    console.log("article box clicked");
+}
+articleBox.addEventListener("click", handleArticleBoxClicked);
+
 const majorHashTag = document.querySelectorAll("#majorHashTag");
 for (let i = 0; i < majorHashTag.length; i++) {
     majorHashTag[i].addEventListener("click", function() {
-        console.log("");
+        console.log("major hashtag clicked");
     });
 }
