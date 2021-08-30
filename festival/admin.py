@@ -4,3 +4,5 @@ from .models import *
 
 admin.site.register(collegePost)
 admin.site.register(boothPost)
+admin.site.register(collegeTags)
+admin.site.register(boothTags)

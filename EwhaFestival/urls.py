@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from festival.views import *
+import festival.views
+import account.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('<str:college_id>', collegePost, name="collegePost"),
-    path('<str:booth_id>', boothPost, name="boothPost"),
+    path('', festival.views.main, name='main'),
 ]
