@@ -22,12 +22,14 @@
         <a href="#"
           ><img
             class="header-button"
+            id="goback-button"
             src="../../static/icons/common/go_back_icon.svg"
         /></a>
         <span class="header-label">Ewha Festival 2021</span>
         <a href="#"
           ><img
             class="header-button"
+            id="home-button"
             src="../../static/icons/common/home_icon.svg"
         /></a>
       </div>
@@ -36,18 +38,10 @@
         <div class="subheader-icon"></div>
       </div>
       <div class="major-hashtag-container">
-        <div class="major-hashtag-white" onclick="location.href='#'">
-          정치외교학과
-        </div>
-        <div div class="major-hashtag-white" onclick="location.href='#'">
-          행정학과
-        </div>
-        <div class="major-hashtag-white" onclick="location.href='#'">
-          경제학과
-        </div>
-        <div class="major-hashtag-white" onclick="location.href='#'">
-          문언정보학과
-        </div>
+        <div class="major-hashtag-white" id="majorHashTag">정치외교학과</div>
+        <div div class="major-hashtag-white" id="majorHashTag">행정학과</div>
+        <div class="major-hashtag-white" id="majorHashTag">경제학과</div>
+        <div class="major-hashtag-white" id="majorHashTag">문언정보학과</div>
       </div>
       <div class="college-posts-container">
         <div class="board-wrapper">
@@ -73,4 +67,5 @@
       </div>
     </div>
   </body>
+  <script src="../../static/js/boards/collegeBoards.js"></script>
 </html>
