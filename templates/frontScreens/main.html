@@ -7,6 +7,12 @@
   <title>Document</title>
 </head>
 <body>
-  
+
+  {% if login_session %}
+  <a href="{% url 'logout' %}"><button>로그아웃</button></a>
+  {% else %}
+  <a href="{% url 'login' %}"><button>로그인</button></a>
+  <a href="{% url 'register' %}"><button>회원가입</button></a>
+  {% endif %}
 </body>
 </html>

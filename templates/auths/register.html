@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>로그인 페이지</h1>
+    <h1>회원가입 페이지</h1>
 <form action="" method="POST">
     {% csrf_token %}
     {% for form in forms %}
@@ -20,7 +20,7 @@
     {% if error %}
     {{ error }}
     {% endif %}
-    <button type="submit" name="login-submit" value="login">로그인하기</button>
+    <button type="submit" name="register-submit" value="register">회원가입하기</button>
 </form>
 
 </body>
