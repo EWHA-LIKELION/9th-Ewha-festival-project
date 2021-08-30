@@ -3,21 +3,21 @@ from .models import *
 # Create your views here.
 
 
-def inst(request):
-    insts = Inst.objects.all()
-    return render(request, 'instBoard.html', {'insts': insts})
+def college(request):
+    colleges = collegePost.objects.all()
+    return render(request, 'collegeBoard.html', {'colleges': colleges})
 
 
-def instDetail(request, id):
-    inst = get_object_or_404(Inst, pk=id)
-    return render(request, 'instDetail.html', {'inst': inst})
+def collegePost(request, id):
+    college = get_object_or_404(collegePost, pk=college_id)
+    return render(request, 'collegePost.html', {'college': college})
 
 
 def booth(request):
-    booths = Booth.objects.all()
+    booths = boothPost.objects.all()
     return render(request, 'boothBoard.html', {'booths': booths})
 
 
-def boothDetail(request, id):
-    booth = get_object_or_404(Booth, pk=id)
-    return render(request, 'boothDetail.html', {'booth': inst})
+def boothPost(request, id):
+    booth = get_object_or_404(Booth, pk=booth_id)
+    return render(request, 'boothDetail.html', {'booth': booth})
