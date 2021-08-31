@@ -10,6 +10,14 @@ from urllib.parse import urlparse
 def main(request):
     return render(request, 'frontScreens/main.html')
 
+def collegeList(request):
+    return render(request, 'frontScreens/collegeList.html')
+
+
+def engineeringPost(request):
+    collegePost = collegePost.objects.filter(college_name='엘텍공대')
+    return render(request, 'boards/boothBoards.html', {'collegePost':collegePost})
+
 
 def boardcollegePost(request):
     collegePost = collegePost.objects.all()

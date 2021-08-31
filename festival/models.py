@@ -10,6 +10,7 @@ from django.utils import timezone
 
 class collegePost(models.Model):
     title = models.CharField(max_length=50)
+    college_name = models.CharField(max_length=20)
     body = models.TextField()
     pub_time = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(blank=True, null=True)
