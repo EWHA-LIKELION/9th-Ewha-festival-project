@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/component.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/auths/commentedBoothBoards.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="background">
+    <div class="header-wrapper">
+      <img
+        class="header-button"
+        id="back-button"
+        src="../../static/icons/common/go_back_icon.svg"
+      />
+      <span class="header-label">댓글 단 부스</span>
+      <div class="header-button"></div>
+    </div>
+
+    <div class="booth-sort-wrapper">
+      <div class="booth-number-backtext">
+        총 <span class="booth-number">2</span>개의 부스
+      </div>
+      <div class="booth-sort-dropdown-wrapper">
+        <img
+          class="booth-sort-icon"
+          src="../../static/icons/common/sort_icon.svg"
+        />
+        <select class="booth-sort-dropdown">
+          <option value="0" selected>최신순</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="booth-list-container">
+      <div class="booth-list-wrapper">
+        <div class="booth-list-heart-background" id="like-button">
+          <img
+            class="heart-icon"
+            src="../../static/icons/common/empty_heart_icon.svg"
+          />
+        </div>
+        <img class="booth-list-image" src="#" />
+        <div class="booth-list-label-wrapper" id="booth-label">
+          <div class="booth-list-label-header">부스 이름</div>
+          <div class="booth-list-label-content">
+            부스에 대한 간략한 소개를 하는 텍스트
+          </div>
+        </div>
+      </div>
+      <div class="booth-list-wrapper">
+        <div class="booth-list-heart-background" id="like-button">
+          <img
+            class="heart-icon"
+            src="../../static/icons/common/empty_heart_icon.svg"
+          />
+        </div>
+        <img class="booth-list-image" src="#" />
+        <div class="booth-list-label-wrapper" id="booth-label">
+          <div class="booth-list-label-header">부스 이름</div>
+          <div class="booth-list-label-content">
+            부스에 대한 간략한 소개를 하는 텍스트
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../../static/js/auths/commentedBoothBoards.js"></script>
+</html>

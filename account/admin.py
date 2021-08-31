@@ -8,6 +8,8 @@ class UserAdmin(admin.ModelAdmin):
         'user_id',
         'user_pw',
         'user_name',
+        'user_image',
+        'user_phone',
         'user_nickname',
         'user_email',
     )

@@ -1,0 +1,73 @@
+/*search 공통 component*/
+.search-page-container{
+    background: #F6F6F6;
+    height: 100vh;
+}
+.search-header{
+    width:100%;
+    height:114px;
+    background: #FFFFFF;
+}
+.search-box-wrapper{
+    display:flex;
+    padding-left:28px;
+    padding-right:24px;
+    padding-top:9px;
+    padding-bottom:24px;
+    justify-content: space-between;
+}
+.search-box{
+    padding: 0 10px;
+    margin-left: 10px;
+    background:#E7E7E7;
+}
+.search-box input {
+    width: 100%;
+    height: 47px;
+    margin-left: 8px;
+}
+ul{
+    display: flex;
+}
+li{
+    display: inline-block;
+    width: 50%;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    cursor:pointer;
+}
+.active{
+    border-bottom: 4px solid #62D0A1;
+}
+.search-result-text{
+    margin-top:20px;
+    margin-left: 20px;
+}
+/*게시판 검색 결과 css*/
+ .search-board-container{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+/*부스 검색 결과 css*/
+.booth-list-container {
+    display: grid;
+    justify-content: center;
+    row-gap: 15px;
+    column-gap: 15px;
+    grid-template-columns: 160px 160px;
+    margin-top:20px;
+}
+.booth-list-heart-background {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    margin-top: 12px;
+    margin-left: 115px;
+}
+.heart-icon {
+    margin: 11px 9px;
+}

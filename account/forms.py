@@ -1,7 +1,6 @@
 from django import forms
 from django.forms.widgets import ClearableFileInput
-from .models import User
-from argon2 import PasswordHasher, exceptions #pip install argon2-cffi
+from .models import User #pip install argon2-cffi
 
 class RegisterForm(forms.ModelForm):
     user_id = forms.CharField(
