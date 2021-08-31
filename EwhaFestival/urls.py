@@ -21,4 +21,5 @@ import account.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', festival.views.main, name='main'),
+    path('account/', include('account.urls')),
 ]
