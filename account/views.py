@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import User
 from django.db import transaction
-from argon2 import PasswordHasher
 from .forms import RegisterForm, LoginForm
 from account.models import User
 
@@ -9,12 +8,12 @@ from account.models import User
 def main(request):
     return render(request, "frontScreens/main.html")
 
-def register(request):
+def signup(request):
     register_form = RegisterForm()
     context = {'forms': register_form}
 
     if request.method =='GET':
-        return render(request, 'auths/register.html', context)
+        return render(request, 'auths/signup.html', context)
 
     elif request.method =='POST':
         register_form = RegisterForm(request.POST)
@@ -34,6 +33,9 @@ def register(request):
                 for value in register_form.errors.values():
                     context['error'] = value
         return render(request, 'auths/register.html', context)
+
+def mypage(request):
+    return render(request, "auths/mypage.html")
 
 
 def login(request):
