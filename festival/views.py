@@ -4,8 +4,6 @@ from .models import collegePost, collegeTags, boothPost, boothTags
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
 
-from .forms import CommentForm
-
 
 # Create your views here.
 
