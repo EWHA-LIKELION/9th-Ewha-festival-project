@@ -1,9 +1,3 @@
-const backButton=document.getElementById('back-button')
-function handleBackButtonClick(){
-    console.log("go-back clicked");
-}
-backButton.addEventListener("click", handleBackButtonClick);
-
 const searchButton=document.getElementById('search-button')
 function handleSearchButtonClick(){
     console.log("search clicked");    

@@ -1,12 +1,3 @@
-const backButton = document.getElementById("back-button");
-
-function onClickBackButton(){
-    console.log("Back button clicked");
-}
-
-backButton.addEventListener("click", onClickBackButton);
-
-
 const loginButton = document.getElementById("login-button");
 
 function onClickLoginButton(){
