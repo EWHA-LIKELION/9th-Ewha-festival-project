@@ -6,6 +6,7 @@ import account.views
 
 
 urlpatterns = [
+    path('', account.views.login, name='login'),
     path('signup/', account.views.signup, name='signup'),
     path('mypage/', account.views.mypage, name='mypage'),
     path('login/', account.views.login, name='login'),

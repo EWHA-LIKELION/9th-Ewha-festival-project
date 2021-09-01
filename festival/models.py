@@ -11,8 +11,8 @@ from django.utils import timezone
 class collegePost(models.Model):
     title = models.CharField(max_length=50)
     college_name = models.CharField(max_length=20)
-    body = models.TextField()
     pub_time = models.DateTimeField(auto_now_add=True)
+    body = models.TextField()
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('collegeTags', blank=True)
 
@@ -35,7 +35,7 @@ class boothPost(models.Model):
     title = models.CharField(max_length=50)
     intro = models.CharField(max_length=30)
     pub_time = models.DateTimeField(auto_now_add=True)
-    pub_time = models.DateTimeField(auto_now_add=True)
+    body = models.TextField()
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('boothTags', blank=True)
 
