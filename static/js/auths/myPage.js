@@ -1,9 +1,3 @@
-const backButton=document.getElementById('back-button')
-function handleBackButtonClick(){
-    console.log("go-back clicked");
-}
-backButton.addEventListener("click", handleBackButtonClick);
-
 const commentedPostListButton=document.getElementById('commented-post-list-button')
 function handleCommentedPostListButtonClick(){
     console.log("commented-post-list clicked");
