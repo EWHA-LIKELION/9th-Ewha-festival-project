@@ -1,4 +1,5 @@
 from django.http.response import HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import collegePost, collegeTags, boothPost, boothTags
 from django.contrib.auth.decorators import login_required
@@ -13,37 +14,32 @@ def main(request):
 def collegeList(request):
     return render(request, 'frontScreens/collegeList.html')
 
-
-def engineeringPost(request):
-    collegePost = collegePost.objects.filter(college_name='엘텍공대')
-    return render(request, 'boards/boothBoards.html', {'collegePost':collegePost})
-
-
-def boardcollegePost(request):
-    collegePost = collegePost.objects.all()
-    return render(request, 'boards/boothBords.html', {'collegePost': collegePost})
+def boardcollegePost(request, college_id):
+    college = collegePost.objects.filter(college_name='college_id')
+    return render(request, 'boards/collegeBoards.html', {'college': college})
 
 
-def detailcollegePost(request, college_id):
-    collegePost = get_object_or_404(collegePost, pk=college_id)
-    return render(request, 'details/boothDetail.html', {'collegePost': collegePost})
+def detailcollegePost(request, college_id, pk_id):
+    college = collegePost.objects.filter(college_name='college_id')
+    detailcollegePost = get_object_or_404(collegePost, pk=pk_id)
+    return render(request, 'details/detail.html', {'college':college, 'detialcollegePost': detailcollegePost})
 
 
 def boardboothPost(request):
-    boothPost = boothPost.objects.all()
-    return render(request, 'boards/boothBords.html', {'boothPost': boothPost})
+    booth = boothPost.objects.all()
+    return render(request, 'boards/boothBoards.html', {'booth': booth})
 
 
-def detailcollegePost(request, booth_id):
+def detailboothPost(request, booth_id):
     boothePost = get_object_or_404(boothPost, pk=booth_id)
-    return render(request, 'details/boothDetail.html', {'boothPost': boothPost})
+    return render(request, 'details/detail.html', {'boothPost': boothPost})
 
 
 @login_required(login_url='account:login')
 def collegeLike(View):
     def get(Self, request, *args, **kwargs):
-        if collegePost_id in kwargs:
-            collegePost_id = kwargs['collegePost_id']
+        if college_id in kwargs:
+            college_id = kwargs['college_id']
             collegePost = collegePost.objects.get(pk=college_id)
             user = request.user
             if user in collegePost.college_like.all():
@@ -53,7 +49,24 @@ def collegeLike(View):
 
         referer_url = request.META.get('HTTP_REFERER')
         path = urlparse(referer_url).path
+        
+
+@login_required(login_url='account:login')
+def boothLike(View):
+    def get(Self, request, *args, **kwargs):
+        if booth_id in kwargs:
+            booth_id = kwargs['booth_id']
+            boothPost = boothPost.objects.get(pk=booth_id)
+            user = request.user
+            if user in boothPost.college_like.all():
+                boothPost.college_like.remove(user)
+            else:
+                boothPost.college_like.add(user)
+
+        referer_url = request.META.get('HTTP_REFERER')
+        path = urlparse(referer_url).path
         return HttpResponseRedirect(path)
+
 
 
 # 검색
