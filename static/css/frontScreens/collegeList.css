@@ -16,7 +16,6 @@
 .social-name {
   background-color: #3cbef6;
 }
-
 .natural-wrapper {
   background-color: #fffb92;
 }
@@ -64,6 +63,12 @@
 }
 .nursing-name {
   background-color: #ffb788;
+}
+.pharmacy-wrapper {
+  background-color: #FFC274;
+}
+.pharmacy-name {
+  background-color: #FFAD45;
 }
 .scranton-wrapper {
   background-color: #91ebda;
