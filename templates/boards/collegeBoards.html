@@ -22,12 +22,13 @@
         <a href="#"
           ><img
             class="header-button"
+            id="back-button"
             src="../../static/icons/common/go_back_icon.svg"
         /></a>
         <span class="header-label">Ewha Festival 2021</span>
         <a href="#"
           ><img
-            class="header-button"
+            class="header-button" id="home-button"
             src="../../static/icons/common/home_icon.svg"
         /></a>
       </div>
@@ -36,20 +37,20 @@
         <div class="subheader-icon"></div>
       </div>
       <div class="major-hashtag-container">
-        <div class="major-hashtag-white" onclick="location.href='#'">
+        <div class="major-hashtag-white" id="majorHashTag">
           정치외교학과
         </div>
-        <div div class="major-hashtag-white" onclick="location.href='#'">
+        <div div class="major-hashtag-white" id="majorHashTag">
           행정학과
         </div>
-        <div class="major-hashtag-white" onclick="location.href='#'">
+        <div class="major-hashtag-white" id="majorHashTag">
           경제학과
         </div>
-        <div class="major-hashtag-white" onclick="location.href='#'">
+        <div class="major-hashtag-white" id="majorHashTag">
           문언정보학과
         </div>
       </div>
-      <div class="board-wrapper">
+      <div class="board-wrapper" id="articleBox">
         <div class="wrap-title-arrow">
           <div class="post-title">글의 제목입니다.</div>
           <img
@@ -70,5 +71,7 @@
         </div>
       </div>
     </div>
+    <script src="../../static/js/common.js"></script>
   </body>
+  <script src="../../static/js/boards/collegeBoards.js"></script>
 </html>

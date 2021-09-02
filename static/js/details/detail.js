@@ -1,12 +1,3 @@
-// 헤더의 뒤로가기 버튼
-const goBackButton = document.getElementById("go-back-button");
-
-function clickGoBackButton(){
-    console.log("뒤로가기 버튼 클릭");
-}
-
-goBackButton.onclick = clickGoBackButton;
-
 // 사진 클릭
 const pictures = document.querySelectorAll("#post-picture");
 
