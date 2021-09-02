@@ -1,7 +1,7 @@
 from django.http.response import HttpResponseRedirect
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import collegePost, collegeTags, boothPost, boothTags
+from .models import collegePost, collegeComment, collegeTags, committeePost, committeeComment, boothPost, boothTags, boothComment
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
 
@@ -11,6 +11,10 @@ from urllib.parse import urlparse
 def main(request):
     return render(request, 'frontScreens/main.html')
 
+def collegehashtagList(request):
+    hashtag = collegeTags.objects.all
+    return render(request, 'boards/collegeBoards.html', {'collegehash' : collegehash})
+
 def collegeList(request):
     return render(request, 'frontScreens/collegeList.html')
 
@@ -18,11 +22,18 @@ def boardcollegePost(request, college_id):
     college = collegePost.objects.filter(college_name='college_id')
     return render(request, 'boards/collegeBoards.html', {'college': college})
 
-
 def detailcollegePost(request, college_id, pk_id):
     college = collegePost.objects.filter(college_name='college_id')
-    detailcollegePost = get_object_or_404(collegePost, pk=pk_id)
-    return render(request, 'details/detail.html', {'college':college, 'detialcollegePost': detailcollegePost})
+    detailcollegePost = get_object_or_404(college, pk=pk_id)
+    return render(request, 'details/detail.html', {'college':college, 'detailcollegePost': detailcollegePost})
+
+def committeeList(request):
+    committee = committeePost.objects.all()
+    return render(request, 'boards/centralCommitteeBoards.html', {'committee' : committee})
+
+def detailcommitteePost(request, pk_id):
+    committeePost= get_object_or_404(committeeList, pk=pk_id)
+    return render(request, 'details/detail.html', {'committeePost' : committeePost})
 
 
 def boardboothPost(request):
@@ -79,14 +90,14 @@ def search(request):
 
     if q1:
         collegepost = collegepost.filter(title__icontains=q1)
-        return render(request, 'search.html', {'collegeposts': collegepost, 'q1': q1})
+        return render(request, 'searches/searchBoards.html', {'collegeposts': collegepost, 'q1': q1})
 
     elif q2:
         boothpost = boothpost.filter(title__icontains=q2)
-        return render(request, 'search.html', {'boothposts': boothpost, 'q2': q2})
+        return render(request, 'searches/searchBooth.html', {'boothposts': boothpost, 'q2': q2})
 
     else:
-        return render(request, 'search.html')
+        return render(request, 'searches/search.html')
 
 
 # 부스글에 댓글
@@ -127,3 +138,4 @@ def comment_write_college(request, post_pk):
         collegeComment.objects.create(
             post=post, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'board/college_detail.html', context=content)
+

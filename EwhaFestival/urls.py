@@ -25,4 +25,6 @@ urlpatterns = [
     path('', festival.views.main, name='main'),
     path('account/', include('account.urls')),
     path('festival/', include('festival.urls')),
+    path('committee/', festival.views.committeeList, name="committeList"),
+    path('committe/<int:pk_id>', festival.views.detailcommitteePost, name="detailcommitteePost")
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

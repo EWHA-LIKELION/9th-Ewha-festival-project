@@ -27,8 +27,55 @@ class collegePost(models.Model):
         return self.body[:30]
 
 
+class collegeComment(models.Model):
+    post = models.ForeignKey(collegePost, on_delete=models.CASCADE, null=True, related_name='comments')
+    comment_contents = models.TextField()
+    comment_writer = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True)
+    comment_date = models.DateTimeField(default=timezone.now)
+
+    def approve(self):
+        self.save
+
+    def __str__(self):
+        return self.comment_contents
+
 class collegeTags(models.Model):
     college_tag = models.CharField(max_length=10, unique=True)
+
+
+class committeePost(models.Model):
+    title = models.CharField(max_length=50)
+    pub_time = models.DateTimeField(auto_now_add=True)
+    body = models.TextField()
+    image = models.ImageField(blank=True, null=True)
+
+    # 저장하기
+    committee_like = models.ManyToManyField(
+        User, related_name='committee_like', blank=True)
+
+    def __str__(self): 
+        return self.title
+
+    def summary(self):
+        return self.body[:30]
+ 
+
+class committeeTags(models.Model):
+    committe_tag = models.CharField(max_length=10, unique=True)
+
+    
+class committeeComment(models.Model):
+    post = models.ForeignKey(committeePost, on_delete=models.CASCADE, null=True, related_name='comments')
+    comment_contents = models.TextField()
+    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_date = models.DateTimeField(default=timezone.now)
+
+    def approve(self):
+        self.save
+
+    def __str__(self):
+        return self.comment_contents
 
 
 class boothPost(models.Model):
@@ -51,19 +98,7 @@ class boothTags(models.Model):
     booth_tag = models.CharField(max_length=10, unique=True)
 
 
-class collegeComment(models.Model):
-    post = models.ForeignKey(
-        collegePost, on_delete=models.CASCADE, null=True, related_name='comments')
-    comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True)
-    comment_date = models.DateTimeField(default=timezone.now)
 
-    def approve(self):
-        self.save
-
-    def __str__(self):
-        return self.comment_contents
 
 
 class boothComment(models.Model):
