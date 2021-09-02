@@ -51,9 +51,10 @@ class boothTags(models.Model):
     booth_tag = models.CharField(max_length=10, unique=True)
 
 
+# 댓글
 class collegeComment(models.Model):
     post = models.ForeignKey(
-        collegePost, on_delete=models.CASCADE, null=True, related_name='comments')
+        collegePost, on_delete=models.CASCADE, null=True, related_name='comments')  # related_name : 역참조 -> post를 외부키로 연결할 때 related_name을 comments로 정의해서 나중에 html에서 댓글 출력할 때 바로 comments로 접근할 수 있다!
     comment_contents = models.TextField()
     comment_writer = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True)

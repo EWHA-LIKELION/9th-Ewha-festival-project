@@ -32,6 +32,28 @@
         <li>부스</li>
       </ul> 
     </div>
+
+
+    <form action="." method="post"> {% csrf_token %} 
+      {{ form.as_p }} <!-- form --> 
+      <input type="submit">
+    </form> 
+    
+    {% if object_list_college %} <!-- 검색 결과가 있을 경우-->  
+    {% for post in object_list_college %} 
+    {<a href="{{ post.get_absolute_url }}">{{ collegepost.title }}</a> <!-- 검색된 리스트를 보여준다. --> 
+    {% endfor %}
+    {% if object_list_booth %}
+    {% for post in object_list_booth %}
+    {<a href="{{ post.get_absolute_url }}">{{ boothpost.title }}</a> <!-- 검색된 리스트를 보여준다. -->
+    {% endfor %}
+    {% elif search_word %} <!--검색 결과가 없을 경우-->
+    "{{ search_word }}" 검색 결과가 없습니다 <!-- 검색된 결과가 없다는 메세지를 보여준다. -->
+    {% endif %}
+  
+
+
+    
 </div>
 </body>
 </html>

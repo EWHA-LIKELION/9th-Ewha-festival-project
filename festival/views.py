@@ -5,14 +5,21 @@ from .models import collegePost, collegeTags, boothPost, boothTags
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
 
+# 검색에 필요한 임포트
+from django.views.generic.edit import FormView
+from .forms import SearchForm
+from django.db.models import Q
+
 
 # Create your views here.
 
 def main(request):
     return render(request, 'frontScreens/main.html')
 
+
 def collegeList(request):
     return render(request, 'frontScreens/collegeList.html')
+
 
 def boardcollegePost(request, college_id):
     college = collegePost.objects.filter(college_name='college_id')
@@ -22,7 +29,7 @@ def boardcollegePost(request, college_id):
 def detailcollegePost(request, college_id, pk_id):
     college = collegePost.objects.filter(college_name='college_id')
     detailcollegePost = get_object_or_404(collegePost, pk=pk_id)
-    return render(request, 'details/detail.html', {'college':college, 'detialcollegePost': detailcollegePost})
+    return render(request, 'details/detail.html', {'college': college, 'detialcollegePost': detailcollegePost})
 
 
 def boardboothPost(request):
@@ -49,7 +56,7 @@ def collegeLike(View):
 
         referer_url = request.META.get('HTTP_REFERER')
         path = urlparse(referer_url).path
-        
+
 
 @login_required(login_url='account:login')
 def boothLike(View):
@@ -68,32 +75,52 @@ def boothLike(View):
         return HttpResponseRedirect(path)
 
 
+# 단대별 게시판에서 검색
+class CollegeSearchView(FormView):
+    # forms.py에서 만든 form객체(SearchForm)를 form_class로 지정
+    form_class = SearchForm
+    # 사용할 템플릿(검색어를 입력하면 리스트를 보여줄 html페이지)
+    template_name = 'templates/searches/search.html'
 
-# 검색
-def search(request):
-    collegepost = collegePost.objects.all().order_by('-id')
-    q1 = request.POST.get('q1', "")
+    def form_valid(self, form):  # post method로 값이 전달됐을 경우
+        schWord = '%s' % self.request.POST['search_word']  # 검색어
+        post_list_college = collegePost.objects.filter(Q(title__icontains=schWord) | Q(
+            body__icontains=schWord)   # title,context 칼럼에 대소문자를 구분하지 않고 단어가 포함되어있는지 (icontains) 검사
+        ).distinct()  # 중복을 제거
 
-    boothpost = boothPost.objects.all().order_by('-id')
-    q2 = request.POST.get('q2', "")
+        # 결과값 반환 form
+        context = {}
+        context['form'] = form
+        context['search_term'] = schWord
+        # 검색된 결과를 컨텍스트 변수에 담는다.
+        context['object_list_college'] = post_list_college
+        # form_valid()함수는 리다이렉트 처리를 위해 HttpResponseRedirect객체를 반환하는데 render()함수는 httpResponse객체를 반환하도록 도와준다(리다이렉트 처리 되지 않도록)
+        return render(self.request, self.template_name, context)
 
-    if q1:
-        collegepost = collegepost.filter(title__icontains=q1)
-        return render(request, 'search.html', {'collegeposts': collegepost, 'q1': q1})
 
-    elif q2:
-        boothpost = boothpost.filter(title__icontains=q2)
-        return render(request, 'search.html', {'boothposts': boothpost, 'q2': q2})
+# 부스 글 검색
+class BoothSearchView(FormView):
 
-    else:
-        return render(request, 'search.html')
+    form_class = SearchForm
+    template_name = 'templates/searches/search.html'
+
+    def form_valid(self, form):
+        schWord = '%s' % self.request.POST['search_word']
+        post_list_booth = boothPost.objects.filter(Q(title__icontains=schWord) | Q(
+            body__icontains=schWord)).distinct()
+
+        context = {}
+        context['form'] = form
+        context['search_term'] = schWord
+        context['object_list_booth'] = post_list_booth
+        return render(self.request, self.template_name, context)
 
 
 # 부스글에 댓글
-@login_required
+@login_required(login_url='account:login')
 def comment_write_booth(request, post_pk):
     if request.method == 'POST':
-        post = get_object_or_404(Post, pk=booth_id)
+        post = get_object_or_404(boothPost, pk=booth_id)
         context = {'boothposts': boothpost, }
         content = request.POST.get('content')
 
@@ -110,10 +137,10 @@ def comment_write_booth(request, post_pk):
 
 
 # 단과대게시판글에 댓글
-@login_required
+@login_required(login_url='account:login')
 def comment_write_college(request, post_pk):
     if request.method == 'POST':
-        post = get_object_or_404(Post, pk=college_id)
+        post = get_object_or_404(collegePost, pk=college_id)
         context = {'collegeposts': collegepost, }
         content = request.POST.get('content')
 
