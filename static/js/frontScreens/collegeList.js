@@ -1,6 +1,9 @@
-const A=document.getElementById=("collegebutton")
-function aa(event){
-    event.preventDefault();
-    console.log(event.srcElement);
+const collegeWrapper=document.querySelectorAll(".college-button-wrapper");
+console.log(collegeWrapper);
+for (let i=0; i<collegeWrapper.length;i++){
+    collegeWrapper[i].addEventListener("click", handleClickCollege);
 }
-A.addEventListener('click', aa);
+function handleClickCollege(e){
+    console.log(e.target.id)
+    document.location.href='/festival/'+e.target.id;
+}
