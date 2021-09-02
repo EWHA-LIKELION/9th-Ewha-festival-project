@@ -19,4 +19,4 @@ function handleSearchButtonClick(){
     console.log("search clicked");    
     document.location.href="/festival/search";
 }
-searchButton ? searchButton.addEventListener("click", handleSearchButtonClick);
+searchButton ? searchButton.addEventListener("click", handleSearchButtonClick):'';
