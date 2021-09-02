@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from .views import *
 import account.views
 
+app_name='account'
 
 urlpatterns = [
     path('', account.views.login, name='login'),
