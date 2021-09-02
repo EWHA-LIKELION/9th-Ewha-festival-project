@@ -1,6 +1,7 @@
 const commentedPostListButton = document.getElementById('commented-post-list');
 function handleCommentedPostListButtonClick() {
-  console.log('commented-post-list clicked');
+  document.location.href = '/';
+  //link 아직 없음
 }
 commentedPostListButton.addEventListener(
   'click',
@@ -12,6 +13,8 @@ const commentedBoothListButton = document.getElementById(
 );
 function handleCommentedBoothListButtonClick() {
   console.log('commented-booth-list clicked');
+  document.location.href = '/';
+  //link 아직 없음
 }
 commentedBoothListButton.addEventListener(
   'click',
@@ -21,5 +24,7 @@ commentedBoothListButton.addEventListener(
 const likedBoothListButton = document.getElementById('liked-booth-list');
 function handleLikedBoothListButtonClick() {
   console.log('liked-booth-list clicked');
+  document.location.href = '/';
+  //link 아직 없음
 }
 likedBoothListButton.addEventListener('click', handleLikedBoothListButtonClick);
