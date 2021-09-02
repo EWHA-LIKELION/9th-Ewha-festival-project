@@ -4,6 +4,7 @@ for (let i=0; i<collegeWrapper.length;i++){
     collegeWrapper[i].addEventListener("click", handleClickCollege);
 }
 function handleClickCollege(e){
-    console.log(e.target.id)
-    document.location.href='/festival/'+e.target.id;
+    e.stopPropagation();
+    console.log(e.currentTarget.id)
+    document.location.href='/festival/'+e.currentTarget.id;
 }
