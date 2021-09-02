@@ -32,7 +32,7 @@ def signup(request):
             if register_form.errors:
                 for value in register_form.errors.values():
                     context['error'] = value
-        return render(request, 'auths/register.html', context)
+        return render(request, 'auths/signup.html', context)
 
 def mypage(request):
     return render(request, "auths/mypage.html")
