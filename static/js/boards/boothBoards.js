@@ -1,10 +1,4 @@
-const searchButton = document.getElementById('search-button');
-function handleSearchButtonClick() {
-  console.log('search clicked');
-}
-searchButton.addEventListener('click', handleSearchButtonClick);
-
-const themeHashtagButton = document.querySelectorAll('#theme-hashtag-button');
+const themeHashtagButton=document.querySelectorAll("#theme-hashtag-button");
 for (let i = 0; i < themeHashtagButton.length; i++) {
   themeHashtagButton[i].addEventListener('click', function () {
     console.log('hashtag button clicked');
