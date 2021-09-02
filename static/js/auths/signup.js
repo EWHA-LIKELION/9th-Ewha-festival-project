@@ -1,21 +1,3 @@
-const backButton = document.getElementById("back-button");
-
-function onClickBackButton(){
-    console.log("Back button clicked");
-}
-
-backButton.addEventListener("click", onClickBackButton);
-
-
-const homeButton = document.getElementById("home-button");
-
-function onClickHomeButton(){
-    console.log("Home button clicked");
-}
-
-homeButton.addEventListener("click", onClickHomeButton);
-
-
 const signupForm = document.getElementById("signup-form");
 const signupInputName = document.getElementById("signup-name");
 const signupInputNickname = document.getElementById("signup-nickname");
