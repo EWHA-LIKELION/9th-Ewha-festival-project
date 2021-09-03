@@ -5,11 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/static/css/component.css"
-    />
+    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -19,20 +15,16 @@
   </head>
   <body>
     <div class="header-wrapper">
-      <img id="back-button"
-          class="header-button"
-          src="/static/icons/common/go_back_icon.svg"
+      <img
+        id="back-button"
+        class="header-button"
+        src="/static/icons/common/go_back_icon.svg"
       />
       <span class="header-label">중앙운영위원회</span>
       <div class="header-button"></div>
     </div>
-<<<<<<< HEAD
 
-    
-=======
->>>>>>> d05c6d298f908b518b70ac664d7fb67f91e4f1f2
     <div class="detail-container">
-
       <div class="major-board-title">{{ post.title }}</div>
       <div class="article-info">
         <div class="article-date">{{ post.pub_time|date:"Y/m/d H:i" }}</div>
@@ -47,9 +39,7 @@
 
       <hr />
 
-      <div class="article-text">
-        {{ post.body }}
-      </div>
+      <div class="article-text">{{ post.body }}</div>
       <div class="booth-introduction">사진</div>
       <div class="gallery" id="gallery">
         <div class="post-picture" id="post-picture"></div>
@@ -65,63 +55,44 @@
 
     <!--댓글-->
     <div class="comment-container">
-
       <div class="comment-info">
         <div class="booth-introduction">댓글</div>
         <div class="under-comment-number">28</div>
       </div>
       <!--댓글 세부-->
+      {% for comment in post.comments.all %}
       <div class="written-comment-box">
-
         <div class="wrap-user-and-icon">
-          <div class="written-comment-user">사용자이름</div>
-          <img id="summary-icon"
-              src="/static/icons/common/comment_more_icon.svg"
-              class="summary-icon"
+          <div class="written-comment-user">{{comment.comment_writer}}</div>
+          <img
+            id="summary-icon"
+            src="/static/icons/common/comment_more_icon.svg"
+            class="summary-icon"
           />
         </div>
-        <div class="written-comment-text">
-          커다란 고래부터 작은 플랑크톤커다란 고래부터 작은 플랑크톤까지
-          먹커다란 고래부터 작은 플랑크톤까지 먹커다란 고래부터 작은
-          플랑크톤까지 먹까지 먹이가 다양한데, 포식성 상어들의 경우 빠져도
-          얼마든지 다시
-        </div>
-
+        <div class="written-comment-text">{{comment.comment_contents}}</div>
       </div>
-
-      <div class="written-comment-box">
-
-        <div class="wrap-user-and-icon">
-          <div class="written-comment-user">사용자이름</div>
-          <img id="summary-icon"
-              src="/static/icons/common/comment_more_icon.svg"
-              class="summary-icon"
-          />
-        </div>
-        <div class="written-comment-text">
-          커다란 고래부터 작은 플랑크톤커다란 고래부터 작은 플랑크톤까지
-          먹커다란 고래부터 작은 플랑크톤까지 먹커다란 고래부터 작은
-          플랑크톤까지 먹까지 먹이가 다양한데, 포식성 상어들의 경우 빠져도
-          얼마든지 다시
-        </div>
-
-      </div>
-
+      {% empty %}
+      <div>아직 댓글이 없어요~ 첫 댓글 달던지 말던지~</div>
+      {% endfor %}
+    </div>
 
     <!-- 댓글달기 -->
     <form class="comment-box-wrapper">
-      
-      <input id ="comment-input" class="comment-inputbox" placeholder="댓글을 입력하세요" />
-     
-      <img  id="comment-submit-button"
+      <input
+        id="comment-input"
+        class="comment-inputbox"
+        placeholder="댓글을 입력하세요"
+      />
+
+      <img
+        id="comment-submit-button"
         src="/static/icons/common/comment_submit.svg"
         class="comment-submit-button"
       />
-
     </form>
 
-
-    <script src ="/static/js/details/detail.js"></script>
+    <script src="/static/js/details/detail.js"></script>
     <script src="/static/js/common.js"></script>
   </body>
 </html>

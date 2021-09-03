@@ -232,7 +232,9 @@ def eduComment(request, pk_id):
 #---------------------------인문대
 def humanities(request): #글리스트
     post = humanitiesPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = humanitiesTags.objects.all()
+
+    return render(request, 'boards/collegeBoards.html', {'post':post,'hashtag':hashtag})
 
 def detailhumanities(request, pk_id): #글 상세보기
     post = get_object_or_404(humanitiesPost, pk=pk_id)
