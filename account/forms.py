@@ -12,7 +12,7 @@ class RegisterForm(forms.ModelForm):
                 'placeholder':'아이디',
             }
         ),
-        error_messages={'requird':'아이디를 입력해주세요.',
+        error_messages={'required':'아이디를 입력해주세요.',
                         'unique': '중복된 아이디입니다.'}
     )
 
@@ -25,7 +25,7 @@ class RegisterForm(forms.ModelForm):
                 'placeholder':'비밀번호',
             }
         ),
-        error_messages={'requird':'비밀번호를 입력해주세요.'}
+        error_messages={'required':'비밀번호를 입력해주세요.'}
     )
 
     user_pw_confirm = forms.CharField(
@@ -37,7 +37,7 @@ class RegisterForm(forms.ModelForm):
                 'placeholder':'비밀번호 확인',
             }
         ),
-        error_messages={'requird':'비밀번호가 일치하지 않습니다.'}
+        error_messages={'required':'비밀번호가 일치하지 않습니다.'}
     )
     
     user_name = forms.CharField(
@@ -49,7 +49,7 @@ class RegisterForm(forms.ModelForm):
                 'placeholder':'이름',
             }
         ),
-        error_messages={'requird':'이름을 입력해주세요.'}
+        error_messages={'required':'이름을 입력해주세요.'}
     )
 
     user_nickname = forms.CharField(
@@ -61,7 +61,7 @@ class RegisterForm(forms.ModelForm):
                 'placeholder':'닉네임',
             }
         ),
-        error_messages={'requird':'닉네임을 입력해주세요.',
+        error_messages={'required':'닉네임을 입력해주세요.',
                         'unique': '중복된 닉네임입니다.'}
     )
 
@@ -74,7 +74,7 @@ class RegisterForm(forms.ModelForm):
                 'placeholder':'이메일',
             }
         ),
-        error_messages={'requird':'이메일을 입력해주세요.',
+        error_messages={'required':'이메일을 입력해주세요.',
         'unique': '중복된 이메일입니다.'}
     )
     

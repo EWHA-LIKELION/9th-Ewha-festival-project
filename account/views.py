@@ -26,7 +26,7 @@ def signup(request):
                 user_email = register_form.user_email
             )
             user.save()
-            return redirect('main')
+            return redirect('/')
         else:
             context['forms'] = register_form
             if register_form.errors:
