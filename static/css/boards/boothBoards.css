@@ -19,6 +19,7 @@ a {
   position: absolute;
   margin-top: 12px;
   margin-left: 115px;
+  z-index: 10;
 }
 .heart-icon {
   margin: 11px 9px;

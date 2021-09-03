@@ -14,9 +14,11 @@ function handleHomeButtonClick() {
 homeButton ? homeButton.addEventListener('click', handleHomeButtonClick) : '';
 
 /* 검색버튼 */
-const searchButton=document.getElementById('search-button')
-function handleSearchButtonClick(){
-    console.log("search clicked");    
-    document.location.href="/festival/search";
+const searchButton = document.getElementById('search-button');
+function handleSearchButtonClick() {
+  console.log('search clicked');
+  document.location.href = '/festival/search';
 }
-searchButton ? searchButton.addEventListener("click", handleSearchButtonClick):'';
+searchButton
+  ? searchButton.addEventListener('click', handleSearchButtonClick)
+  : '';
