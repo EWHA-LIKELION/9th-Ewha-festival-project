@@ -22,6 +22,9 @@ admin.site.register(eduTags)
 admin.site.register(eduPost)
 admin.site.register(eduComment)
 
+admin.site.register(engineeringPost)
+admin.site.register(engineeringComment)
+
 admin.site.register(humanitiesTags)
 admin.site.register(humanitiesPost)
 admin.site.register(humanitiesComment)
