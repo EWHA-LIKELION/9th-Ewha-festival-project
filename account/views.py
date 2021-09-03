@@ -37,7 +37,6 @@ def signup(request):
 def mypage(request):
     return render(request, "auths/mypage.html")
 
-
 def login(request):
     loginform = LoginForm()
     context ={'forms': loginform}
@@ -74,3 +73,7 @@ def hello(request):
         context['login_session'] = True
     
     return render (request, 'main', context)
+
+
+
+
