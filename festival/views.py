@@ -77,8 +77,9 @@ def boothLike(View):
 
 # 단대별 게시판에서 검색
 class CollegeSearchView(FormView):
+    v  v
     # forms.py에서 만든 form객체(SearchForm)를 form_class로 지정
-    form_class = SearchForm
+   form_class = SearchForm
     # 사용할 템플릿(검색어를 입력하면 리스트를 보여줄 html페이지)
     template_name = 'templates/searches/search.html'
 
