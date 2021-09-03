@@ -31,27 +31,39 @@
           src="/static/icons/common/home_icon.svg"
       /></a>
       <!--홈으로 돌아가기-->
-    </div>
-    <div class="ID-img-wrapper">
-      <label for="student-card"><img src="/static/icons/common/student_card_image.svg"></label>
-      <input type="file" class="student-card" id="student-card" accept="image/*">
-      <div class="preview">
-        <p>현재 선택된 파일이 없습니다.</p>
+    </div>    
+    <form id="signup-form" action="{% url 'account:signup' %}" method="POST">
+    {% csrf_token %}
+    <!-- 학생증 사진 -->
+      <div class="ID-img-wrapper">
+        <label for="student-card"><img src="/static/icons/common/student_card_image.svg"></label>
+        <input type="file" class="student-card" id="student-card" accept="image/*">
+        <div class="preview">
+          <p>현재 선택된 파일이 없습니다.</p>
+        </div>
       </div>
-    </div>
-    <form id="signup-form">
-      <div class="user-input-all-wrapper">
+      <div class="user-input-all-wrapper">         
+      {% for field in forms %}
         <div class="user-input-wrapper">
-          <span class="user-input-label">이름</span>
-          <input
+          <span class="user-input-label">{{field.label}}</span>
+          <input type="{{ field.field.widget.input_type }}"
+                        class="user-input"
+                        id="{{ field.id_for_label }}"
+                        placeholder="{{ field.label }}"
+                        name="{{ field.name }}">
+        </div>
+        {% if field.errors %}
+            <span style="color: red">{{ field.errors }}</span>
+        {% endif %}
+        {% endfor %}          
+        <!-- <input
             class="user-input"
             id="signup-name"
             type="text"
             name="#"
             placeholder="실명을 적어주세요."
-          />
-        </div>
-        <div class="user-input-wrapper">
+          /> -->
+        <!-- <div class="user-input-wrapper">
           <span class="user-input-label">닉네임</span>
           <input
             class="user-input"
@@ -102,7 +114,7 @@
             placeholder="예)010-1234-5678"
           />
         </div>
-      </div>
+      </div> -->
       <div class="signup-btn-wrapper">
         <div class="signup-btn-label">
           악성 댓글 작성 시에는 작성한 댓글이 삭제될 수 있습니다.

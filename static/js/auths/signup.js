@@ -1,11 +1,3 @@
-const signupForm = document.getElementById("signup-form");
-const signupInputName = document.getElementById("signup-name");
-const signupInputNickname = document.getElementById("signup-nickname");
-const signupInputID = document.getElementById("signup-id");
-const signupInputPW = document.getElementById("signup-pw");
-const signupInputMail = document.getElementById("signup-mail");
-const signupInputPhone = document.getElementById("signup-phone");
-
 const studentCardImg=document.getElementById("student-card");
 const preview=document.querySelector(".preview");
 studentCardImg.style.opacity=0;
@@ -30,9 +22,9 @@ function updateImageDisplay() {
     }
   }
 studentCardImg.addEventListener('change', updateImageDisplay);
-function onSignupSubmit(event){
-    event.preventDefault();
-    console.log("Signup Submit");
-}
+// function onSignupSubmit(event){
+//     event.preventDefault();
+//     console.log("Signup Submit");
+// }
 
-signupForm.addEventListener("submit", onSignupSubmit);
+// signupForm.addEventListener("submit", onSignupSubmit);

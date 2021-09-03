@@ -26,7 +26,7 @@ def signup(request):
                 user_email = register_form.user_email
             )
             user.save()
-            return redirect('main')
+            return redirect('/')
         else:
             context['forms'] = register_form
             if register_form.errors:
@@ -56,7 +56,7 @@ def login(request):
             if loginform.errors:
                 for value in loginform.errors.values():
                     context['error'] = value
-        return render(request, 'auths/signup.html', context)
+        return render(request, 'auths/login.html', context)
 
 def logout(request):
     request.session.flush()
