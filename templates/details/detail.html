@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,9 +30,9 @@
     
     <div class="detail-container">
 
-      <div class="major-board-title">제목ㄱ</div>
+      <div class="major-board-title">{{ post.title }}</div>
       <div class="article-info">
-        <div class="article-date">2021/08/23 13:30</div>
+        <div class="article-date">{{ post.pub_time|date:"Y/m/d H:i" }}</div>
         <div class="icon-number-box">
           <img
             class="comment-icon"
@@ -44,14 +45,8 @@
       <hr />
 
       <div class="article-text">
-        커다란 고래부터 작은 플랑크톤까지 먹이가 다양한데, 포식성 상어들의 경우
-        빠져도 얼마든지 다시 자라나는 날카로운 이빨과 강력한 턱 덕분에 바다의
-        최상위 포식자로 군림한다. 전세계 해양에 널리 분포하고 황소상어 등 일부
-        종은 기수역(하천·호수 및 연해 등의 수역 중 기수가 차지하는 지역),
-        민물에도 진출한다. 또한 심해성 상어도 알려져 있다. 2016년 3월 말
-        기준으로 전세계 9목 34과 105속 509종이 존재한다.
+        {{ post.body }}
       </div>
-
       <div class="booth-introduction">사진</div>
       <div class="gallery" id="gallery">
         <div class="post-picture" id="post-picture"></div>

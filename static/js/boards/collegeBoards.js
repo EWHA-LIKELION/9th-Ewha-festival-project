@@ -14,5 +14,5 @@ collegePost.forEach((post) => {
 function handlePostClicked(event) {
   event.stopPropagation();
   console.log(event.currentTarget);
-  document.location.href = `/festival/college/eltec/${event.currentTarget.id.toString()}`;
+  document.location.href = `${event.currentTarget.id.toString()}`;
 }
