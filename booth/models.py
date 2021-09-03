@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
+
+
 class boothPost(models.Model):
     title = models.CharField(max_length=50)
     intro = models.CharField(max_length=30)
@@ -21,11 +23,14 @@ class boothPost(models.Model):
     def __str__(self):
         return self.title
 
+
 class boothTags(models.Model):
     booth_tag = models.CharField(max_length=10, unique=True)
 
+
 class boothComment(models.Model):
-    post = models.ForeignKey(boothPost, on_delete=models.CASCADE, null=True, related_name='comments')
+    post = models.ForeignKey(
+        boothPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
     comment_writer = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True)

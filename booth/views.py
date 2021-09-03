@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 # Create your views here.
 
+
 def boardboothPost(request):
     booth = boothPost.objects.all()
     return render(request, 'boards/boothBoards.html', {'post': booth})
@@ -15,6 +16,22 @@ def boardboothPost(request):
 def detailboothPost(request, booth_id):
     boothePost = get_object_or_404(boothPost, pk=booth_id)
     return render(request, 'details/detail.html', {'post': boothPost})
+
+
+# 최신순(recent), 오래된순(old), 댓글많은순(review) 부스글 정렬
+class boothPostSort(View):
+    def get(self, request):
+        sort = request.GET.get('sort', None)
+
+        if sort == 'recent':
+            booth_posts = boothPost.objects.order_by('pub_time')
+
+        if sort == 'old':
+            booth_posts = boothPost.objects.order_by('-pub_time')
+
+        if sort == 'review':
+            booth_posts = boothPost.annotate(
+                review_count=Count('comments')).order_by('-review_count')
 
 
 @login_required(login_url='account:login')
@@ -49,5 +66,5 @@ def comment_write_booth(request, pk_id):
             return render(request, 'details/detail.html', context=content)
 
             committeeComment.objects.create(
-            post=boothpost, comment_writer=conn_profile, comment_contents=content)
+                post=boothpost, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
