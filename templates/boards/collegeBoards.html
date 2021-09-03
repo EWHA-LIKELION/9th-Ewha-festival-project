@@ -58,6 +58,7 @@
             <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
+              {{ articlepost.comments.all|length }}
             </div>
           </div>
         </div>
