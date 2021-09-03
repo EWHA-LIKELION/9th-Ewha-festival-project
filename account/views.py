@@ -1,8 +1,13 @@
+from committee.models import committeeComment
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import User
 from django.db import transaction
 from .forms import RegisterForm, LoginForm
 from account.models import User
+from booth.models import boothComment
+from committee.models import committeeComment
+from festival.models import *
 
 # Create your views here.
 def main(request):
@@ -26,7 +31,7 @@ def signup(request):
                 user_email = register_form.user_email
             )
             user.save()
-            return redirect('main')
+            return redirect('/')
         else:
             context['forms'] = register_form
             if register_form.errors:
@@ -42,7 +47,7 @@ def login(request):
     context ={'forms': loginform}
 
     if request.method =='GET':
-        return render(request,'auths/login.html',context)
+        return render(request,'auths/login.html', context)
     
     elif request.method =='POST':
         loginform = LoginForm(request.POST)
@@ -62,6 +67,7 @@ def logout(request):
     request.session.flush()
     return redirect('main')
 
+
 def hello(request):
     context ={}
 
@@ -75,5 +81,17 @@ def hello(request):
     return render (request, 'main', context)
 
 
+@login_required(login_url='account:login')
+def myboothComment(request):
+    commentbooth = boothComment.objects.all()
+    commentboothList = commentbooth.filter(comment_writer = request.user)
+
+    return render(request, 'auths/commentedBoothBoards.html', {'commentboothList':commentboothList})
 
 
+@login_required(login_url='account:login')
+def mypostComment(request):
+    committeepost = committeeComment.objects.all()
+    committeepostList = committeepost.filter(comment_writer = request.user)
+    
+    return render(request, 'auths/commentedPostBoards.html', {'committepostList':committeepostList})

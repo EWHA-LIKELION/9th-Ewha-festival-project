@@ -27,8 +27,7 @@ class boothTags(models.Model):
 class boothComment(models.Model):
     post = models.ForeignKey(boothPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     class Meta:

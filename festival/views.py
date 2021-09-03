@@ -204,7 +204,8 @@ def musicComment(request, pk_id):
 #----------------------------사범대
 def edu(request): #글리스트
     post = eduPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = eduTags.objects.all()
+    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
 def detailedu(request, pk_id): #글 상세보기
     post = get_object_or_404(eduPost, pk=pk_id)
@@ -232,7 +233,8 @@ def eduComment(request, pk_id):
 #---------------------------인문대
 def humanities(request): #글리스트
     post = humanitiesPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = humanitiesTags.objects.all()
+    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
 def detailhumanities(request, pk_id): #글 상세보기
     post = get_object_or_404(humanitiesPost, pk=pk_id)
@@ -260,7 +262,8 @@ def humanitiesComment(request, pk_id):
 #--------------------------사회대
 def social(request): #글리스트
     post = socialPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = socialTags.objects.all()
+    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
 def detailsocial(request, pk_id): #글 상세보기
     post = get_object_or_404(socialPost, pk=pk_id)
@@ -288,6 +291,7 @@ def socialComment(request, pk_id):
 #--------------------------자연대
 def natural(request): #글리스트
     post = naturalPost.objects.all()
+    hashtag = naturalPost.objects.all()
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailnatural(request, pk_id): #글 상세보기
@@ -316,7 +320,8 @@ def naturalComment(request, pk_id):
 #--------------------------스크랜튼
 def scraton(request): #글리스트
     post = scratonPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = scratonTags.objects.all()
+    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
 def detailscraton(request, pk_id): #글 상세보기
     post = get_object_or_404(scratonPost, pk=pk_id)
@@ -346,7 +351,8 @@ def scratonComment(request, pk_id):
 #--------------------------조예대
 def art(request): #글리스트
     post = artPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = artTags.objects.all()
+    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
 def detailart(request, pk_id): #글 상세보기
     post = get_object_or_404(artPost, pk=pk_id)
