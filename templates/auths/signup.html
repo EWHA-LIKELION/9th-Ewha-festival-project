@@ -52,6 +52,9 @@
                         placeholder="{{ field.label }}"
                         name="{{ field.name }}">
         </div>
+        {% if field.errors %}
+            <span style="color: red">{{ field.errors }}</span>
+        {% endif %}
         {% endfor %}          
         <!-- <input
             class="user-input"
