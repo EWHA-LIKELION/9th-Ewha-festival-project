@@ -26,7 +26,7 @@ def signup(request):
                 user_email = register_form.user_email
             )
             user.save()
-            return redirect('main')
+            return redirect('/')
         else:
             context['forms'] = register_form
             if register_form.errors:
@@ -36,7 +36,6 @@ def signup(request):
 
 def mypage(request):
     return render(request, "auths/mypage.html")
-
 
 def login(request):
     loginform = LoginForm()
@@ -74,3 +73,7 @@ def hello(request):
         context['login_session'] = True
     
     return render (request, 'main', context)
+
+
+
+
