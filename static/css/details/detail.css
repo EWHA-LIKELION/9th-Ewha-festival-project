@@ -1,0 +1,139 @@
+
+body{
+    background-color: #62d0a1;
+  }
+
+.header-wrapper{
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+}   
+
+.detail-container{
+    position: relative;
+    height: auto;
+    width: 100%;
+    padding: 30px;
+    margin: 57px 0px 0px ;
+    background: white;
+    border-radius: 35px 35px 0px 0px ;
+}
+
+.major-hashtag-colored{
+    position: absolute;
+    width: auto;
+    top:-15px;
+    right: 15px;
+    padding: 0 13px 0 13px;
+}
+
+.major-board-title {
+    width: 100%;
+    height: auto;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.article-date{
+    width: 200px;
+    height: 20px;
+}
+
+.article-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon-number-box{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.comment-icon{
+    width: 13px;
+    height: 13px;
+    text-align: center;
+}
+
+.comment-number{
+    font-size: 13px;
+    color: #3CC3CC;
+    margin-left: 5px;
+}
+
+hr{
+    border:solid;
+    border-width: 1px;
+    color: #E8ECE9;    /* IE */
+    border-color: #E8ECE9;  /* 사파리 */
+    background-color: #E8ECE9;   /* 크롬, 모질라 등, 기타 브라우저 */
+}
+
+.article-text{
+    margin-bottom: 12px;
+}
+
+.gallery{
+    display: flex;
+    flex-wrap: nowrap;
+    /* max-width: 425px; 미정 */
+    overflow: scroll;
+}
+
+.gallery::-webkit-scrollbar{
+    display: none;
+}
+
+.post-picture{
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.gray-dividing-box{
+    background: #EFEFEF;
+    height: 15px;
+    width: 100%;
+}
+
+.comment-container{
+    background: white;
+    width: 100%;
+    height: 500px;
+    padding: 30px;
+}
+
+.comment-info{
+    display: flex;
+}
+
+.booth-introduction{
+    width: auto;
+}
+
+.under-comment-number{
+    font-size: 16px;
+    color: #3CC3CC;
+    font-weight: bold;
+    margin-left: 5px;
+    line-height: 26px;
+}
+
+.written-comment-box{
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+
+}
+
+.written-comment-text{
+    margin: 0 10px 10px 10px;
+}
+
+.comment-box-wrapper{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}

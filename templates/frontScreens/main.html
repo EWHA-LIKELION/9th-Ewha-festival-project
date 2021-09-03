@@ -1,12 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/component.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/frontScreens/main.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="background-image">
+    <div class="container">
+      <!-- headline -->
+      <div class="festival-headline">Ewha Festival 2021</div>
+      <img
+        src="../../static/icons/common/mypage_icon.svg"
+        class="mypage-icon"
+        id="mypage-button"
+      />
+      <div class="welcome-text">이화의 축제를 즐기세요.</div>
+      <div class="search-box" id='search-button'>
+        <img src="../../static/icons/common/search_icon.svg" />
+        <input id="search-word" type="text" placeholder="검색어를 입력해주세요." />
+      </div>
+
+      <!-- 이벤트 안내 케라셀 -->
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="..." class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <!--중간에 있는 글자-->
+      <img src="../../static/icons/common/main_middle_banner.svg" class="main-middle-banner" />
+      <!-- 게시판 바로가기 container -->
+      <div class="boards-wrapper">
+        <div class="board-btn-wrapper" id="department-board">
+          <div class="board-btn-name">단과대·과별 게시판</div>
+          <img
+            src="../../static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+          <div class="board-detail-explanation">상세설명 텍스트</div>
+        </div>
+        <div class="board-btn-wrapper" id="central-committee-board">
+          <div class="board-btn-name">중운위</div>
+          <img
+            src="../../static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+          <div class="board-detail-explanation">상세 설명 텍스트</div>
+        </div>
+        <div class="board-btn-wrapper" id="booth-board">
+          <div class="board-btn-name">부스</div>
+          <img
+            src="../../static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+          <div class="board-detail-explanation">상세설명 텍스트</div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../../static/js/frontScreens/main.js"></script>
+    <script src="../../static/js/common.js"></script>
+  </body>
+
 </html>

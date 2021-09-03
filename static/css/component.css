@@ -1,17 +1,33 @@
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
-@import 'reset.css';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import "reset.css";
 
 * {
   box-sizing: border-box;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
-    'Malgun Gothic', sans-serif !important;
+    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", sans-serif !important;
 }
 body {
   max-width: 425px;
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
+}
+.background-image {
+  background-image: url(../icons/common/background.svg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (min-width: 425px) {
+  .background-image {
+    background-size: contain;
+  }
+}
+.background-color-white {
+  background: #f6f6f6;
 }
 /* 버튼 컴포넌트  button */
 .button-filled-gray {
@@ -64,7 +80,7 @@ body {
 .user-input-wrapper {
   display: flex;
   flex-wrap: wrap;
-  width: 336px;
+  width: 100%;
   height: 77px;
 }
 .user-input-label {
@@ -74,7 +90,7 @@ body {
   color: #000000;
 }
 .user-input {
-  width: 336px;
+  width: 100%;
   height: 47px;
   border-radius: 10px;
   background-color: #e7e7e7;
@@ -83,9 +99,11 @@ body {
 }
 /* hashtag */
 .major-hashtag-container {
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   height: 35px;
+  justify-content: center;
 }
 .major-hashtag-colored {
   background-color: #80e0ff;
@@ -94,14 +112,20 @@ body {
   margin-right: 8px;
   height: 35px;
   line-height: 35px;
+  padding: 0 12px;
   font-size: 13px;
   font-weight: 500;
   text-align: center;
   color: rgb(0 0 0/0.6);
   box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
 }
+.major-hashtag-white:hover {
+  cursor: pointer;
+  border-style: none;
+  background-color: #80e0ff;
+  box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
+}
 .major-hashtag-white {
-  background-color: white;
   border-radius: 12px;
   border-style: solid;
   border-color: #80e0ff;
@@ -109,6 +133,7 @@ body {
   margin-right: 8px;
   height: 35px;
   line-height: 35px;
+  padding: 0 12px;
   font-size: 13px;
   font-weight: 500;
   text-align: center;
@@ -202,6 +227,8 @@ body {
 .header-button {
   width: 35px;
   height: 35px;
+  display: inline-block;
+  content: none;
 }
 
 .header-label {
@@ -212,7 +239,7 @@ body {
 /* subheader */
 .subheader-container {
   display: flex;
-  width: 375px;
+  width: 100%;
   height: 57px;
   background: #ffffff;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
@@ -222,10 +249,10 @@ body {
 }
 
 .subheader-text {
-  position: fixed;
+  position: absolute;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -238,19 +265,21 @@ body {
   margin-right: 10%;
   width: 21px;
   height: 21px;
-  background-image: url('./Icon.svg');
+  background-image: url("../../static/icons/common/search_icon.svg");
   background-size: cover;
 }
 
 /* 학과(혹은 단대) 게시글 리스트 요소 */
 .board-wrapper {
+  margin-top: 20px;
   border-radius: 12px;
   left: 53.2%;
-  width: 335px;
+  width: 100%;
   height: 153px;
   max-height: 100%;
   max-width: 100%;
   background: #ffffff;
+  margin-bottom: 8px;
 }
 .contents-wrapper {
   display: grid;
@@ -258,17 +287,22 @@ body {
   grid-template-columns: 1fr 2fr 2fr;
   column-gap: 4%;
   margin-left: 10px;
-  margin-right: 1%;
+  margin-right: 4%;
   margin-top: 2%;
   border-radius: 12px;
 }
 .wrap-title-arrow {
-  margin-left: 10px;
   border-bottom: 1px solid rgba(26, 68, 38, 0.1);
   display: flex;
+  margin-top: 2%;
+  padding-bottom: 2%;
   justify-content: space-between;
 }
+img.arrow-image {
+  margin-right: 4%;
+}
 .post-title {
+  margin-left: 10px;
   width: 168.98px;
   height: 24.86px;
   font-family: Noto Sans KR;
@@ -282,6 +316,7 @@ body {
   width: 95px;
   height: 95px;
   border-radius: 9px;
+  background: #c4c4c4;
 }
 .post-article {
   grid-column: 2 / 4;
@@ -290,6 +325,7 @@ body {
   line-height: 22px;
   letter-spacing: -0.03em;
   color: rgba(0, 0, 0, 0.9);
+  margin-right: 2%;
 }
 .post-date {
   font-family: Manrope;
@@ -302,9 +338,14 @@ body {
 }
 .post-comment-number {
   width: 37.2px;
-  height: 19.12px;
   align-self: end;
   justify-self: end;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #3cc3cc;
 }
 
 /* 부스 글 리스트 요소 */
@@ -313,8 +354,9 @@ body {
   flex-wrap: wrap;
   width: 160px;
   height: 204px;
-  border-radius: 0px 0px 17px 17px;
+  border-radius: 17px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+  background-color: white;
 }
 
 .booth-list-image {
@@ -325,17 +367,18 @@ body {
 }
 
 .booth-list-label-header {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #000000;
   opacity: 90%;
   margin-top: 7px;
+  margin-bottom: 5px;
   margin-left: 14px;
 }
 
 .booth-list-label-content {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 12px;
   line-height: 15px;
   font-weight: 500px;
@@ -352,6 +395,8 @@ body {
   width: 74px;
   height: 95px;
   box-shadow: 0px 5px 5px rgb(0 0 0/0.1);
+  margin-bottom: 19px;
+  margin-right: 13px;
 }
 .college-icon {
   margin: auto;
@@ -427,4 +472,15 @@ img .summary-icon {
 .comment-submit-button {
   position: absolute;
   right: 28px;
+}
+
+/* 검색input */
+.search-box {  
+  display: flex;
+  border-radius: 5px;
+}
+.search-box input {
+  font-size: 1.2rem;
+  border-style: none;
+  background: transparent;
 }

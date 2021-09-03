@@ -1,0 +1,12 @@
+.collegeBoards-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5e5;
+  align-items: center;
+  height: 100vh;
+}
+.college-posts-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+}
