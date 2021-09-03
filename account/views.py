@@ -73,3 +73,7 @@ def hello(request):
         context['login_session'] = True
     
     return render (request, 'main', context)
+
+
+
+
