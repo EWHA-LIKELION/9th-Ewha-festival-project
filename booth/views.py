@@ -7,10 +7,14 @@ from urllib.parse import urlparse
 
 # Create your views here.
 
+# 부스 게시판
+
 
 def boardboothPost(request):
     booth = boothPost.objects.all()
     return render(request, 'boards/boothBoards.html', {'post': booth})
+
+# 부스 게시판 상세 글
 
 
 def detailboothPost(request, booth_id):
@@ -23,15 +27,17 @@ class boothPostSort(View):
     def get(self, request):
         sort = request.GET.get('sort', None)
 
-        if sort == 'recent':
+        if sort == 'recent':  # 최신순
             booth_posts = boothPost.objects.order_by('pub_time')
 
-        if sort == 'old':
+        if sort == 'old':  # 오래된순
             booth_posts = boothPost.objects.order_by('-pub_time')
 
-        if sort == 'review':
+        if sort == 'review':  # 댓글 많은 순
             booth_posts = boothPost.annotate(
                 review_count=Count('comments')).order_by('-review_count')
+
+# 부스 좋아요 (저장 기능)
 
 
 @login_required(login_url='account:login')
