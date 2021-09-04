@@ -21,15 +21,15 @@ for (const summaryIcon of summaryIcons) {
 }
 
 // 댓글 쓰기
-const commentInput = document.getElementById('comment-input');
-const commentSubmitBtn = document.getElementById('comment-submit-button');
+// const commentInput = document.getElementById('comment-input');
+// const commentSubmitBtn = document.getElementById('comment-submit-button');
 
-function commentSubmit(event) {
-  console.log(commentInput.value);
-  commentInput.value = '';
-}
+// function commentSubmit(event) {
+//   console.log(commentInput.value);
+//   commentInput.value = '';
+// }
 
-commentSubmitBtn.onclick = commentSubmit;
+// commentSubmitBtn.onclick = commentSubmit;
 
 const headerName = document.getElementById('header-name');
 const currentPosition = document.location.pathname.split('/');

@@ -20,7 +20,7 @@ const centralCommitteeButton = document.getElementById("central-committee-board"
 
 function handleCentralCommitteeButtonClicked(){
     console.log("Central Committee button clicked");
-    document.location.href='/committeelist';
+    document.location.href='/committee';
 }
 
 centralCommitteeButton.addEventListener("click", handleCentralCommitteeButtonClicked);
@@ -30,7 +30,7 @@ const boothButton = document.getElementById("booth-board");
 
 function handleBoothButtonClicked(){
     console.log("Booth button clicked");
-    document.location.href='festival/booth';
+    document.location.href='/booth';
 }
 
 boothButton.addEventListener("click", handleBoothButtonClicked);

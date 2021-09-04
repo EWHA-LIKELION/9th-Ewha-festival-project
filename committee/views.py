@@ -11,7 +11,7 @@ def main(request):
 
 def committeeList(request):
     committe = committeePost.objects.all()
-    return render(request, 'boards/centralCommitteeBoards.html', {'post' : committee})
+    return render(request, 'boards/centralCommitteeBoards.html', {'post' : committeeList})
 
 def detailcommitteePost(request, pk_id):
     committeePost= get_object_or_404(committeeList, pk=pk_id)

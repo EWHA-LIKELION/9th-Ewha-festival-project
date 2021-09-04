@@ -13,8 +13,8 @@ def boardboothPost(request):
 
 
 def detailboothPost(request, booth_id):
-    boothePost = get_object_or_404(boothPost, pk=booth_id)
-    return render(request, 'details/detail.html', {'post': boothPost})
+    detailboothPost = get_object_or_404(boothPost, pk=booth_id)
+    return render(request, 'details/detail.html', {'post': detailboothPost})
 
 
 @login_required(login_url='account:login')
@@ -47,7 +47,5 @@ def comment_write_booth(request, pk_id):
         if not content:
             messages.info(request, '내용이 없습니다')
             return render(request, 'details/detail.html', context=content)
-
-            committeeComment.objects.create(
-            post=boothpost, comment_writer=conn_profile, comment_contents=content)
+            committeeComment.objects.create(post=boothpost, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)

@@ -63,6 +63,12 @@ body{
     color: #3CC3CC;
     margin-left: 5px;
 }
+.comment-submit-button{
+    background-image:url("/static/icons/common/comment_submit.svg");
+    width:35px;
+    height:35px;
+    border:none;
+}
 
 hr{
     border:solid;

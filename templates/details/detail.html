@@ -57,7 +57,7 @@
     <div class="comment-container">
       <div class="comment-info">
         <div class="booth-introduction">댓글</div>
-        <div class="under-comment-number">28</div>
+        <div class="under-comment-number">{{post.comments.all|length}}</div>
       </div>
       <!--댓글 세부-->
       {% for comment in post.comments.all %}
@@ -78,18 +78,19 @@
     </div>
 
     <!-- 댓글달기 -->
-    <form class="comment-box-wrapper">
+    <form class="comment-box-wrapper" method='POST'>
+      {% csrf_token %}
       <input
         id="comment-input"
         class="comment-inputbox"
         placeholder="댓글을 입력하세요"
       />
-
-      <img
+      <button class="comment-submit-button"></button>
+      <!-- <img
         id="comment-submit-button"
         src="/static/icons/common/comment_submit.svg"
         class="comment-submit-button"
-      />
+      /> -->
     </form>
 
     <script src="/static/js/common.js"></script>
