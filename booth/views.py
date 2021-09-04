@@ -13,8 +13,8 @@ def boardboothPost(request):
 
 
 def detailboothPost(request, booth_id):
-    boothePost = get_object_or_404(boothPost, pk=booth_id)
-    return render(request, 'details/detail.html', {'post': boothPost})
+    detailBoothPost = get_object_or_404(boothPost, pk=booth_id)
+    return render(request, 'details/boothDetail.html', {'post': detailBoothPost})
 
 
 @login_required(login_url='account:login')

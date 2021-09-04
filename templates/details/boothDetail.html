@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/details/boothDetail.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/details/detail.css"
+    />
+  </head>
+  <body>
+    <div class="booth-main-container">
+      <img
+        src="/static/icons/common/black_go_back.svg"
+        class="black-go-back"
+        id="go-back"
+      />
+      <div class="booth-list-heart-background" id="like-button">
+        <img
+          class="heart-icon"
+          src="/static/icons/common/empty_heart_icon.svg"
+          id="like-button-icon"
+        />
+      </div>
+      <img
+        src="https://images.unsplash.com/photo-1593642702909-dec73df255d7?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+        class="booth-main-image"
+      />
+      <div class="booth-container">
+        <div class="booth-content-container">
+          <div class="detail-booth-container">
+            <div class="major-board-title">{{ post.title }}</div>
+            <div class="article-info">
+              <div class="article-date">
+                {{ post.pub_time|date:"Y/m/d H:i" }}
+              </div>
+              <div class="icon-number-box">
+                <img
+                  class="comment-icon"
+                  src="/static/icons/common/comment_icon.svg"
+                />
+                <div class="comment-number">{{post.comments.all|length}}</div>
+              </div>
+            </div>
+
+            <hr />
+
+            <div class="article-text">{{ post.body }}</div>
+            <div class="booth-introduction">사진</div>
+            <div class="gallery" id="gallery">
+              <div class="post-picture" id="post-picture"></div>
+              <div class="post-picture" id="post-picture"></div>
+              <div class="post-picture" id="post-picture"></div>
+              <div class="post-picture" id="post-picture"></div>
+              <div class="post-picture" id="post-picture"></div>
+            </div>
+          </div>
+
+          <!--중간에 껴있는 회색 박스-->
+          <div class="gray-dividing-box"></div>
+
+          <!--댓글-->
+          <div class="detail-booth-container">
+            <div class="booth-comment-container">
+              <div class="comment-info">
+                <div class="booth-introduction">댓글</div>
+                <div class="under-comment-number">28</div>
+              </div>
+              <!--댓글 세부-->
+              {% for comment in post.comments.all %}
+              <div class="written-comment-box">
+                <div class="wrap-user-and-icon">
+                  <div class="written-comment-user">
+                    {{comment.comment_writer}}
+                  </div>
+                  <img
+                    id="summary-icon"
+                    src="/static/icons/common/comment_more_icon.svg"
+                    class="summary-icon"
+                  />
+                </div>
+                <div class="written-comment-text">
+                  {{comment.comment_contents}}
+                </div>
+              </div>
+              {% empty %}
+              <div>아직 댓글이 없어요~ 첫 댓글 달던지 말던지~</div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <!-- 댓글달기 -->
+          <form class="comment-box-wrapper">
+            <input
+              id="comment-input"
+              class="comment-inputbox"
+              placeholder="댓글을 입력하세요"
+            />
+
+            <img
+              id="comment-submit-button"
+              src="/static/icons/common/comment_submit.svg"
+              class="comment-submit-button"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/static/js/details/boothDetail.js"></script>
+  </body>
+</html>
