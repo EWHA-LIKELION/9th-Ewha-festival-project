@@ -40,6 +40,6 @@ boothPosts.forEach((booth) => {
 function handlePostClicked(event) {
   if (event.target.id === '') {
     console.log('page move!');
-    document.location.href = `/booth/${event.currentTarget.id}`;
+    document.location.href = `${event.currentTarget.id}`;
   }
 }
