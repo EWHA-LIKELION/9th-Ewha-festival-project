@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/static/css/component.css"
-    />
+    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
     <link
       rel="stylesheet"
       type="text/css"
@@ -46,10 +42,7 @@
         총 <span class="booth-number">75</span>개의 부스
       </div>
       <div class="booth-sort-dropdown-wrapper">
-        <img
-          class="booth-sort-icon"
-          src="/static/icons/common/sort_icon.svg"
-        />
+        <img class="booth-sort-icon" src="/static/icons/common/sort_icon.svg" />
         <select class="booth-sort-dropdown">
           <option class="dropdown-item" selected>최신순</option>
           <option class="dropdown-item">1</option>
@@ -59,7 +52,8 @@
       </div>
     </div>
     <div class="booth-list-container">
-      <div class="booth-list-wrapper" id="1">
+      {% for boothpost in post.all %}
+      <div class="booth-list-wrapper" id="{{boothpost.id}}">
         <div class="booth-list-heart-background" id="like-button">
           <img
             class="heart-icon"
@@ -67,14 +61,13 @@
             id="like-button-icon"
           />
         </div>
-        <img class="booth-list-image" src="#" />
+        <img class="booth-list-image" src="{{boothpost.image.url}}" />
         <div class="booth-list-label-wrapper">
-          <div class="booth-list-label-header">부스 이름</div>
-          <div class="booth-list-label-content">
-            부스에 대한 간략한 소개를 하는 텍스트
-          </div>
+          <div class="booth-list-label-header">{{boothpost.title}}</div>
+          <div class="booth-list-label-content">{{boothpost.intro}}</div>
         </div>
       </div>
+      {% endfor %}
     </div>
   </body>
   <script src="/static/js/boards/boothBoards.js"></script>

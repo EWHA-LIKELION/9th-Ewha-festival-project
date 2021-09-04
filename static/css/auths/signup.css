@@ -13,7 +13,7 @@
     align-items: center;
 }
 .student-card{
-    width: 0;
+    /* width: 0; */
 }
 .user-input-all-wrapper {
     display: flex;
