@@ -169,9 +169,9 @@ def detailmusic(request, pk_id): #글 상세보기
     return render(request, 'details/detail.html', {'post':post})
 
 @login_required(login_url='account:login')
-def musicComment(request, pk_id):
+def musicComment(request, pk_id): 
+    post = get_object_or_404(musicPost, pk=pk_id)
     if request.method == 'POST':
-        post = get_object_or_404(musicPost, pk=pk_id)
         context = {'post': post}
         content = request.POST.get('content')
 
