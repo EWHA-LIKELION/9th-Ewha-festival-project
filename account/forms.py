@@ -3,12 +3,22 @@ from django.forms.widgets import ClearableFileInput
 from .models import User #pip install argon2-cffi
 
 class RegisterForm(forms.ModelForm):
+    user_image = forms.ImageField(
+        label='학생증 사진',
+        required=True,
+        widget=forms.FileInput(
+            attrs={
+                'class':'student-card',
+            }
+        ),
+        error_messages={'required':'학생증 사진을 첨부해주세요.'}
+    )
     user_id = forms.CharField(
         label='아이디',
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-id',
+                'class' : 'user-input',
                 'placeholder':'아이디',
             }
         ),
@@ -21,7 +31,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'class' : 'user-pw',
+                'class' : 'user-input',
                 'placeholder':'비밀번호',
             }
         ),
@@ -33,7 +43,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'class' : 'user-pw-confirm',
+                'class' : 'user-input',
                 'placeholder':'비밀번호 확인',
             }
         ),
@@ -45,7 +55,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-name',
+                'class' : 'user-input',
                 'placeholder':'이름',
             }
         ),
@@ -57,7 +67,7 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-nickname',
+                'class' : 'user-input',
                 'placeholder':'닉네임',
             }
         ),
@@ -70,31 +80,46 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.EmailInput(
             attrs={
-                'class' : 'user-nickname',
+                'class' : 'user-input',
                 'placeholder':'이메일',
             }
         ),
         error_messages={'required':'이메일을 입력해주세요.',
         'unique': '중복된 이메일입니다.'}
     )
-    
+    user_phone = forms.CharField(
+        label='전화번호',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class' : 'user-input',
+                'placeholder':'전화번호',
+            }
+        ),
+        error_messages={'required':'전화번호를 입력해주세요.',
+                        'unique': '중복된 전화번호입니다.'}
+    )
     field_order =[
+        'user_image',
         'user_name',
         'user_nickname',
         'user_id',
         'user_pw',
         'user_pw_confirm',
-        'user_email'
+        'user_email',
+        'user_phone',
     ]
 
     class Meta:
         model = User
         fields = [
+            'user_image',
             'user_id',
             'user_pw',
             'user_name',
             'user_nickname',
-            'user_email'
+            'user_email',
+            'user_phone',
         ]
 
     def clean(self):
