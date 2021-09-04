@@ -110,6 +110,7 @@ def detailpharmacy(request, pk_id): #글 상세보기
     return render(request, 'details/detail.html', {'post':post})
 
 @login_required(login_url='account:login')
+
 def pharmacyComment(request, pk_id):
     if request.method == 'POST':
         post = get_object_or_404(pharmacyPost, pk=pk_id)
@@ -126,8 +127,6 @@ def pharmacyComment(request, pk_id):
         pharmacyComment.objects.create(
             post=post, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
-
-
 
 
 #--------------------------공대
@@ -222,7 +221,8 @@ def eduComment(request, pk_id):
 def humanities(request): #글리스트
     post = humanitiesPost.objects.all()
     hashtag = humanitiesTags.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
+
+    return render(request, 'boards/collegeBoards.html', {'post':post,'hashtag':hashtag})
 
 def detailhumanities(request, pk_id): #글 상세보기
     post = get_object_or_404(humanitiesPost, pk=pk_id)
@@ -363,7 +363,6 @@ def artComment(request, pk_id):
         artComment.objects.create(
             post=post, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
-
 
 
 #--------------------------호크마

@@ -5,6 +5,7 @@ from .views import *
 import account.views
 import booth.views
 
+app_name='account'
 
 urlpatterns = [
     path('', account.views.login, name='login'),

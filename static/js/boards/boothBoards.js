@@ -1,4 +1,4 @@
-const themeHashtagButton=document.querySelectorAll("#theme-hashtag-button");
+const themeHashtagButton = document.querySelectorAll('#theme-hashtag-button');
 for (let i = 0; i < themeHashtagButton.length; i++) {
   themeHashtagButton[i].addEventListener('click', function () {
     console.log('hashtag button clicked');
@@ -32,9 +32,14 @@ function handleLikeButtonClicked(event) {
   }
 }
 
-const boothLabel = document.querySelectorAll('#booth-label');
-for (let i = 0; i < boothLabel.length; i++) {
-  boothLabel[i].addEventListener('click', function () {
-    console.log('booth clicked');
-  });
+const boothPosts = document.querySelectorAll('.booth-list-wrapper');
+boothPosts.forEach((booth) => {
+  booth.addEventListener('click', handlePostClicked);
+});
+
+function handlePostClicked(event) {
+  if (event.target.id === '') {
+    console.log('page move!');
+    document.location.href = `/festival/booth/${event.currentTarget.id}`;
+  }
 }

@@ -1,24 +1,24 @@
-const goBackButton = document.getElementById("goback-button");
-function handleGoBackButtonClicked() {
-    console.log("goback button clicked");
+const majorHashTag = document.querySelectorAll('.major-hashtag-white');
+function handleHashtagClicked(event) {
+  console.log(event.target.id);
 }
-goBackButton.addEventListener("click", handleGoBackButtonClicked);
+majorHashTag.forEach((hashtag) => {
+  hashtag.addEventListener('click', handleHashtagClicked);
+});
 
-const homeButton = document.getElementById("home-button");
-function handleHomeButtonClicked() {
-    console.log("home button clicked");
-}
-homeButton.addEventListener("click", handleHomeButtonClicked);
+const collegePost = document.querySelectorAll('.board-wrapper');
+collegePost.forEach((post) => {
+  post.addEventListener('click', handlePostClicked);
+});
 
-const articleBox = document.getElementById("articleBox");
-function handleArticleBoxClicked() {
-    console.log("article box clicked");
+//대학 링크도 가변적으로 수정해야함
+function handlePostClicked(event) {
+  event.stopPropagation();
+  console.log(event.currentTarget);
+  document.location.href = `${event.currentTarget.id.toString()}`;
 }
-articleBox.addEventListener("click", handleArticleBoxClicked);
+const currentCollege = document.location.pathname.split('/');
+console.log(currentCollege[currentCollege.length - 2]);
 
-const majorHashTag = document.querySelectorAll("#majorHashTag");
-for (let i = 0; i < majorHashTag.length; i++) {
-    majorHashTag[i].addEventListener("click", function() {
-        console.log("major hashtag clicked");
-    });
-}
+const collegeName = document.getElementById('college-name');
+collegeName.textContent = college[currentCollege[currentCollege.length - 2]];
