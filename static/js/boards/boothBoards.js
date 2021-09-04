@@ -1,8 +1,64 @@
-const themeHashtagButton = document.querySelectorAll('#theme-hashtag-button');
-for (let i = 0; i < themeHashtagButton.length; i++) {
-  themeHashtagButton[i].addEventListener('click', function () {
-    console.log('hashtag button clicked');
-  });
+const currentLocation = document.location.pathname.split('/');
+const currentUrl = currentLocation[1];
+
+let tagList = [];
+const TAG_LS = `${currentUrl}`;
+
+function saveToLS() {
+  localStorage.setItem(TAG_LS, JSON.stringify(tagList));
+}
+
+function loadSelectedTags() {
+  const selectedTag = localStorage.getItem(TAG_LS);
+  if (selectedTag !== null) {
+    const parseTags = JSON.parse(selectedTag);
+    parseTags.forEach((tag) => {
+      tagList.push(tag);
+      const boothTag = document.getElementById(tag);
+      boothTag.classList.add(`${currentUrl}-hashtag-filled`);
+    });
+  }
+  filterPosts();
+}
+
+function filterPosts() {
+  const filteredElement = document.querySelectorAll('.booth-list-wrapper');
+  const filterList = JSON.parse(localStorage.getItem(TAG_LS));
+  if (filterList && filterList.length) {
+    filteredElement.forEach((element) => {
+      if (filterList.includes(element.className.split(' ')[1])) {
+        element.style.visibility = 'visible';
+      } else {
+        element.style.visibility = 'hidden';
+      }
+    });
+  } else {
+    filteredElement.forEach((element) => {
+      element.style.visibility = 'visible';
+    });
+  }
+}
+
+const themeHashtagButton = document.querySelectorAll('.major-hashtag-item');
+themeHashtagButton.forEach((tag) => {
+  tag.addEventListener('click', handleBoothTagClicked);
+  tag.classList.add(`${currentUrl}-hashtag-outline`);
+});
+
+function handleBoothTagClicked(event) {
+  if (
+    event.currentTarget.classList.value.indexOf(
+      `${currentUrl}-hashtag-filled`
+    ) === -1
+  ) {
+    event.currentTarget.classList.add(`${currentUrl}-hashtag-filled`);
+    tagList.push(event.currentTarget.id);
+  } else {
+    event.currentTarget.classList.remove(`${currentUrl}-hashtag-filled`);
+    tagList = tagList.filter((tag) => tag !== event.currentTarget.id);
+  }
+  saveToLS();
+  filterPosts();
 }
 
 const likeBoothButton = document.querySelectorAll('#like-button');
@@ -43,3 +99,4 @@ function handlePostClicked(event) {
     document.location.href = `${event.currentTarget.id}`;
   }
 }
+loadSelectedTags();

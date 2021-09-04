@@ -221,12 +221,7 @@ def eduComment(request, pk_id):
 def humanities(request): #글리스트
     post = humanitiesPost.objects.all()
     hashtag = humanitiesTags.objects.all()
-<<<<<<< HEAD
-
-    return render(request, 'boards/collegeBoards.html', {'post':post,'hashtag':hashtag})
-=======
     return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
->>>>>>> 76cd28d35640ac13ea36fbbcf1c103af66025ab0
 
 def detailhumanities(request, pk_id): #글 상세보기
     post = get_object_or_404(humanitiesPost, pk=pk_id)
@@ -283,8 +278,8 @@ def socialComment(request, pk_id):
 #--------------------------자연대
 def natural(request): #글리스트
     post = naturalPost.objects.all()
-    hashtag = naturalPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = naturalTags.objects.all()
+    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
 def detailnatural(request, pk_id): #글 상세보기
     post = get_object_or_404(naturalPost, pk=pk_id)
