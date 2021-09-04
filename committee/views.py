@@ -19,7 +19,7 @@ def detailcommitteePost(request, pk_id):
 
 
 #committe 댓글
-@login_required
+@login_required(login_url='account:login')
 def commentCommittee(request, pk_id):
     if request.method == 'POST':
         committeepost = get_object_or_404(committeePost, pk_id=pk_id)
@@ -37,3 +37,10 @@ def commentCommittee(request, pk_id):
             post=committeepost, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
 
+
+
+@login_required(login_url='account:login')
+def mycommitteeComment(request):
+    comment = committeeComment.objects.all()
+    commentList = comment.filter(comment_writer=request.user.user_nickname)
+    return render(request, 'auths/commentedPostBoards.html', {'commentList':commentList})
