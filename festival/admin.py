@@ -11,7 +11,6 @@ admin.site.register(convergenceComment)
 admin.site.register(businessPost)
 admin.site.register(businessComment)
 
-admin.site.register(pharmacyTags)
 admin.site.register(pharmacyPost)
 admin.site.register(pharmacyComment)
 

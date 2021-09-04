@@ -51,3 +51,4 @@ def comment_write_booth(request, pk_id):
             committeeComment.objects.create(
             post=boothpost, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
+
