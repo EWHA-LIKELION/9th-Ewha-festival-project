@@ -61,7 +61,9 @@
             id="like-button-icon"
           />
         </div>
-        <img class="booth-list-image" src="{{boothpost.image.url}}" />
+        {% with boothpost.images.all|first as image%}
+        <img class="booth-list-image" src="{{image.image.url}}" />
+        {% endwith %}
         <div class="booth-list-label-wrapper">
           <div class="booth-list-label-header">{{boothpost.title}}</div>
           <div class="booth-list-label-content">{{boothpost.intro}}</div>

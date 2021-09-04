@@ -58,11 +58,13 @@
             <div class="article-text">{{ post.body }}</div>
             <div class="booth-introduction">사진</div>
             <div class="gallery" id="gallery">
+              {% for image in post.images.all %}
               <img
                 class="post-picture"
                 id="post-picture"
-                src="{{post.image.url}}"
+                src="{{image.image.url}}"
               ></img>
+              {% endfor %}
             </div>
           </div>
 

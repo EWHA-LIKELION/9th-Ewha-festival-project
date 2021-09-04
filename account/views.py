@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db import transaction
 from django.views import generic
 from .models import User
@@ -9,6 +9,7 @@ from .forms import RegisterForm, LoginForm
 from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
+from django.contrib.auth import get_user_model
 
 
 # Create your views here.
@@ -47,7 +48,13 @@ def signup(request):
        
 
 def mypage(request):
-    return render(request, "auths/mypage.html")
+    User = get_user_model()
+    user = get_object_or_404(User)
+    context = {
+        'user':user
+    }
+    return render(request, 'auths/mypage.html', context)
+    #return render(request, "auths/mypage.html")
 
 def login(request):
     loginform = LoginForm()
@@ -75,17 +82,17 @@ def logout(request):
     return redirect('main')
 
 
-def hello(request):
-    context ={}
+#def hello(request, pk):
+    # context ={}
 
-    login_session = request.session.get('login_session','') #로그인 세션 정보 갖고 있는지
+    # login_session = request.session.get('login_session','') #로그인 세션 정보 갖고 있는지
 
-    if login_session=='':
-        context['login_session'] = False
-    else: 
-        context['login_session'] = True
+    # if login_session=='':
+    #     context['login_session'] = False
+    # else: 
+    #     context['login_session'] = True
     
-    return render (request, 'main', context)
+    # return render (request, 'main', context)
 
 
 @login_required(login_url='account:login')

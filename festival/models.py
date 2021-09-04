@@ -22,7 +22,7 @@ class nursingPost(models.Model):
 
 class nursingImage(models.Model):
     post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 class nursingComment(models.Model):
     post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='comments')
@@ -62,7 +62,7 @@ class convergenceComment(models.Model):
         return self.comment_contents
 class convergenceImage(models.Model):
     post = models.ForeignKey(convergencePost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 #-------------------------경영대
@@ -91,7 +91,7 @@ class businessComment(models.Model):
         return self.comment_contents
 class businessImage(models.Model):
     post = models.ForeignKey(businessPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 #-------------------------약대
@@ -121,7 +121,7 @@ class pharmacyComment(models.Model):
 
 class pharmacyImage(models.Model):
     post = models.ForeignKey(pharmacyPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 
@@ -153,7 +153,7 @@ class engineeringComment(models.Model):
 
 class engineeringImage(models.Model):
     post = models.ForeignKey(engineeringPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 
@@ -184,7 +184,7 @@ class musicComment(models.Model):
 
 class musicImage(models.Model):
     post = models.ForeignKey(musicPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 #-------------------------사범대
@@ -219,7 +219,7 @@ class eduComment(models.Model):
 
 class eduImage(models.Model):
     post = models.ForeignKey(eduPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 #-------------------------인문대
@@ -254,7 +254,7 @@ class humanitiesComment(models.Model):
 
 class humanitiesImage(models.Model):
     post = models.ForeignKey(humanitiesPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 #-------------------------사회대
@@ -290,7 +290,7 @@ class socialComment(models.Model):
 
 class socialImage(models.Model):
     post = models.ForeignKey(socialPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 #-------------------------자연대
@@ -325,7 +325,7 @@ class naturalComment(models.Model):
 
 class naturalImage(models.Model):
     post = models.ForeignKey(naturalPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 
@@ -361,7 +361,7 @@ class scratonComment(models.Model):
 
 class scratonmage(models.Model):
     post = models.ForeignKey(scratonPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 
@@ -398,7 +398,7 @@ class artComment(models.Model):
 
 class artImage(models.Model):
     post = models.ForeignKey(artPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
 
 
@@ -427,8 +427,8 @@ class hokmaComment(models.Model):
 
     def __str__(self):
         return self.comment_contents
-
+        
 class hokmaImage(models.Model):
     post = models.ForeignKey(hokmaPost, on_delete=models.CASCADE, null=True, related_name='images')
-    image = ImageField(upload_to = 'boothImage/')
+    image = ImageField(upload_to = 'festivalImage/')
     
