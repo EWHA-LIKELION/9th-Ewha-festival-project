@@ -3,8 +3,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+app_name='committee'
 urlpatterns = [
-    path('committee/', views.committeeList, name="committeList"),
-    path('committe/<int:pk_id>', views.detailcommitteePost, name="detailcommitteePost")
+    path('', views.committeeList, name="committeList"),
+    path('<int:pk_id>', views.detailcommitteePost, name="detailcommitteePost")
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     

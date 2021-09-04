@@ -4,8 +4,8 @@ from django.conf.urls.static import static
 from .views import *
 import booth.views
 
-
+app_name='booth'
 urlpatterns = [
-    path('booth/', views.boardboothPost, name="boothPost"),
-    path('booth/<int:pk_id>', views.detailboothPost, name="detailboothPost"),
+    path('', booth.views.boardboothPost, name="boothPost"),
+    path('<int:pk_id>', booth.views.detailboothPost, name="detailboothPost"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

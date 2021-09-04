@@ -10,7 +10,7 @@ def main(request):
     return render(request, 'frontScreens/main.html')
 
 def committeeList(request):
-    committe = committeePost.objects.all()
+    committee = committeePost.objects.all()
     return render(request, 'boards/centralCommitteeBoards.html', {'post' : committee})
 
 def detailcommitteePost(request, pk_id):
