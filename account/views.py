@@ -19,11 +19,13 @@ def signup(request):
         register_form = RegisterForm(request.POST)
         if register_form.is_valid():
             user = User (
+                user_image=register_form.user_image,
                 user_id = register_form.user_id,
                 user_pw = register_form.user_pw,
                 user_name = register_form.user_name,
                 user_nickname = register_form.user_nickname,
-                user_email = register_form.user_email
+                user_email = register_form.user_email,
+                user_phone=register_form.user_phone,
             )
             user.save()
             return redirect('/')
