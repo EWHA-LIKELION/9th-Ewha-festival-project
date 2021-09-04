@@ -52,6 +52,17 @@ class RegisterForm(forms.ModelForm):
         error_messages={'requird':'이름을 입력해주세요.'}
     )
 
+    user_image = forms.ImageField(
+        label='학생증 사진',
+        required=True,
+    )
+
+    user_phone = forms.CharField(
+        label='전화번호',
+        required=True,
+    )
+
+
     user_nickname = forms.CharField(
         label='닉네임',
         required=True,
@@ -93,6 +104,8 @@ class RegisterForm(forms.ModelForm):
             'user_id',
             'user_pw',
             'user_name',
+            'user_image',
+            'user_phone',
             'user_nickname',
             'user_email'
         ]

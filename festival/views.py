@@ -127,18 +127,6 @@ def pharmacyComment(request, pk_id):
             post=post, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
 
-    def get(Self, request, *args, **kwargs):
-        if pk_id in kwargs:
-            pk_id = kwargs['pk_id']
-            post = pharmacyPost.objects.get(pk=pk_id)
-            user = request.user
-            if user in pharmacyPost.college_like.all():
-                pharmacyPost.college_like.remove(user)
-            else:
-                pharmacyPost.college_like.add(user)
-
-        referer_url = request.META.get('HTTP_REFERER')
-        path = urlparse(referer_url).path
 
 
 

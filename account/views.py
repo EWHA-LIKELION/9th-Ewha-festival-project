@@ -60,8 +60,8 @@ def login(request):
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
-                    context['error'] = value
-        return render(request, 'auths/login.html', context)
+                    context['error'] = value                   
+    return render(request, 'auths/login.html', context)
 
 def logout(request):
     request.session.flush()
