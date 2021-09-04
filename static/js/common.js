@@ -22,3 +22,19 @@ function handleSearchButtonClick() {
 searchButton
   ? searchButton.addEventListener('click', handleSearchButtonClick)
   : '';
+
+const college = {
+  humanities: '인문과학대학',
+  social: '사회과학대학',
+  natural: '자연과학대학',
+  engineering: '엘텍공과대학',
+  music: '음악대학',
+  art: '조형예술대학',
+  edu: '사범대학',
+  business: '경영대학',
+  convergence: '신산업융합대학',
+  nursing: '간호대학',
+  scraton: '스크랜튼대학',
+  hokma: '호크마교양대학',
+  pharmacy: '약학대학',
+};
