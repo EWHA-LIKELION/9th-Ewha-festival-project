@@ -87,6 +87,7 @@ hr{
     flex-wrap: nowrap;
     /* max-width: 425px; 미정 */
     overflow: scroll;
+    flex-direction: column;
 }
 
 .gallery::-webkit-scrollbar{

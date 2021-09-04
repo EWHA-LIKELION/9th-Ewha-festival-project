@@ -42,7 +42,10 @@
       <div class="article-text">{{ post.body }}</div>
       <div class="booth-introduction">사진</div>
       <div class="gallery" id="gallery">
-        <img class="post-picture" id="post-picture" src="{{post.image.url}}" />
+        {% for image in post.images.all %}
+        <img class="post-picture" id="post-picture" src="{{image.image.url}}" />
+        <br/>
+        {% endfor %}
       </div>
     </div>
 
