@@ -37,4 +37,5 @@ const college = {
   scraton: '스크랜튼대학',
   hokma: '호크마교양대학',
   pharmacy: '약학대학',
+  committee: '중앙운영위원회',
 };
