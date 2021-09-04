@@ -3,16 +3,28 @@ from django.forms.widgets import ClearableFileInput
 from .models import User #pip install argon2-cffi
 
 class RegisterForm(forms.ModelForm):
+    user_image = forms.ImageField(
+        label='학생증 사진',
+        required=True,
+        widget=forms.FileInput(
+            attrs={
+                'class':'student-card',
+            }
+        ),
+        error_messages={'required':'학생증 사진을 첨부해주세요.'}
+    )
+
     user_id = forms.CharField(
+
         label='아이디',
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-id',
+                'class' : 'user-input',
                 'placeholder':'아이디',
             }
         ),
-        error_messages={'requird':'아이디를 입력해주세요.',
+        error_messages={'required':'아이디를 입력해주세요.',
                         'unique': '중복된 아이디입니다.'}
     )
 
@@ -21,11 +33,11 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'class' : 'user-pw',
+                'class' : 'user-input',
                 'placeholder':'비밀번호',
             }
         ),
-        error_messages={'requird':'비밀번호를 입력해주세요.'}
+        error_messages={'required':'비밀번호를 입력해주세요.'}
     )
 
     user_pw_confirm = forms.CharField(
@@ -33,11 +45,11 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                'class' : 'user-pw-confirm',
+                'class' : 'user-input',
                 'placeholder':'비밀번호 확인',
             }
         ),
-        error_messages={'requird':'비밀번호가 일치하지 않습니다.'}
+        error_messages={'required':'비밀번호가 일치하지 않습니다.'}
     )
     
     user_name = forms.CharField(
@@ -45,11 +57,11 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-name',
+                'class' : 'user-input',
                 'placeholder':'이름',
             }
         ),
-        error_messages={'requird':'이름을 입력해주세요.'}
+        error_messages={'required':'이름을 입력해주세요.'}
     )
 
     user_nickname = forms.CharField(
@@ -57,11 +69,11 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.TextInput(
             attrs={
-                'class' : 'user-nickname',
+                'class' : 'user-input',
                 'placeholder':'닉네임',
             }
         ),
-        error_messages={'requird':'닉네임을 입력해주세요.',
+        error_messages={'required':'닉네임을 입력해주세요.',
                         'unique': '중복된 닉네임입니다.'}
     )
 
@@ -70,36 +82,56 @@ class RegisterForm(forms.ModelForm):
         required=True,
         widget=forms.EmailInput(
             attrs={
-                'class' : 'user-nickname',
+                'class' : 'user-input',
                 'placeholder':'이메일',
             }
         ),
-        error_messages={'requird':'이메일을 입력해주세요.',
+        error_messages={'required':'이메일을 입력해주세요.',
         'unique': '중복된 이메일입니다.'}
+    )
+
+    user_phone = forms.CharField(
+        label='전화번호',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class' : 'user-input',
+                'placeholder':'전화번호',
+            }
+        ),
+        error_messages={'required':'전화번호를 입력해주세요.',
+                        'unique': '중복된 전화번호입니다.'}
     )
     
     field_order =[
+        'user_image',
         'user_name',
         'user_nickname',
         'user_id',
         'user_pw',
         'user_pw_confirm',
-        'user_email'
+        'user_email',
+        'user_phone',
     ]
 
     class Meta:
         model = User
         fields = [
-            'user_id',
-            'user_pw',
+            'user_image',
             'user_name',
             'user_nickname',
-            'user_email'
+            'user_id',
+            'user_pw',
+            'user_pw_confirm',
+            'user_email',
+            'user_phone',
         ]
 
     def clean(self):
         cleaned_data = super().clean() # super().clean() 메서드를 호출하게 되면 부모 클래스의 모든 유효성 검사 논리가 유지됩니다.
 
+        user_image=cleaned_data.get('user_image','')
+        user_phone=cleaned_data.get('user_phone', '')
         user_name = cleaned_data.get('user_name','')
         user_nickname = cleaned_data.get('user_nickname','')
         user_id = cleaned_data.get('user_id','')
@@ -114,6 +146,8 @@ class RegisterForm(forms.ModelForm):
         elif 8 >len(user_pw):
             return self.add_error('user_pw', '비밀번호는 8자 이상 입력해 주세요.')
         else:
+            self.user_image = user_image
+            self.user_phone = user_phone
             self.user_id = user_id
             self.user_pw = user_pw
             self.user_pw_confirm = user_pw_confirm
@@ -178,3 +212,15 @@ class LoginForm(forms.Form):
                 #PasswordHasher().verify(user.user_pw, user_pw)
             #except exceptions.VerifyMismatchError:
                 #return self.add_error('user_pw','비밀번호가 다릅니다.')
+
+
+# class RegisterForm(forms.ModelForm):
+
+#     class Meta:
+#         model = User
+#         fields = ['user_id', 'user_pw', 'user_name', 'user_image', 'user_phone', 'user_nickname', 'user_email']
+#         field_order = [
+#             'user_image',
+#             'user_id',
+#             'user_pw'
+#         ]

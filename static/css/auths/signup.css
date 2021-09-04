@@ -9,13 +9,12 @@
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
 }
-
-.ID-img {
-    width: auto;
-    height: auto;
+.student-card{
+    width: 0;
 }
-
 .user-input-all-wrapper {
     display: flex;
     flex-wrap: wrap;

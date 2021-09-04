@@ -1,13 +1,15 @@
-from committee.models import committeeComment
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from .models import User
 from django.db import transaction
-from .forms import RegisterForm, LoginForm
+from django.views import generic
+from .models import User
 from account.models import User
-from booth.models import boothComment
+from .forms import RegisterForm, LoginForm
+from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
+
 
 # Create your views here.
 def main(request):
@@ -21,14 +23,18 @@ def signup(request):
         return render(request, 'auths/signup.html', context)
 
     elif request.method =='POST':
-        register_form = RegisterForm(request.POST)
+        register_form = RegisterForm(request.POST, request.FILES)
+
+
         if register_form.is_valid():
             user = User (
+                user_image = register_form.user_image,
                 user_id = register_form.user_id,
                 user_pw = register_form.user_pw,
                 user_name = register_form.user_name,
                 user_nickname = register_form.user_nickname,
-                user_email = register_form.user_email
+                user_email = register_form.user_email,
+                user_phone = register_form.user_phone
             )
             user.save()
             return redirect('/')
@@ -38,6 +44,7 @@ def signup(request):
                 for value in register_form.errors.values():
                     context['error'] = value
         return render(request, 'auths/signup.html', context)
+       
 
 def mypage(request):
     return render(request, "auths/mypage.html")
@@ -60,8 +67,8 @@ def login(request):
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
-                    context['error'] = value
-        return render(request, 'auths/login.html', context)
+                    context['error'] = value                   
+    return render(request, 'auths/login.html', context)
 
 def logout(request):
     request.session.flush()
@@ -95,3 +102,19 @@ def mypostComment(request):
     committeepostList = committeepost.filter(comment_writer = request.user)
     
     return render(request, 'auths/commentedPostBoards.html', {'committepostList':committeepostList})
+
+
+class myLike(generic.ListView):
+    model = boothPost
+    template_name = 'auths/likedBoothBoards.html'
+
+    def dispatch(self,request, *args, **kwargs):
+        if not request.user.is_authenticated: #로그인 확인
+            messages.warning(request, '로그인을 먼저 하세요')
+            return HttpResponseRedirect('/')
+        return super(myLike, self).dispatch(request,*args, **kwargs)
+
+    def get_queryset(self): #좋아요한 글 보여주기
+        user = self.request.user
+        queryset = user.booth_like.all()
+        return queryset #좋아요한 글 전부 리턴

@@ -15,8 +15,7 @@ class boothPost(models.Model):
     hashtag_set = models.ManyToManyField('boothTags', blank=True)
 
     # 저장하기
-    booth_like = models.ManyToManyField(
-        User, related_name='booth_like', blank=True)
+    booth_like = models.ManyToManyField(User, related_name='booth_like', blank=True)
 
     def __str__(self):
         return self.title

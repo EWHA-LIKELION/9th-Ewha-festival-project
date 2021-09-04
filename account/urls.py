@@ -5,12 +5,14 @@ from .views import *
 import account.views
 import booth.views
 
+app_name='account'
 
 urlpatterns = [
     path('', account.views.login, name='login'),
     path('signup/', account.views.signup, name='signup'),
     path('mypage/', account.views.mypage, name='mypage'),
     path('mypage/boothComment', account.views.myboothComment, name='myboothComment'),
+    path('mypage/boothLike', myLike.as_view(), name='myLike'),
     path('login/', account.views.login, name='login'),
     path('logout/', account.views.logout, name='logout'),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
