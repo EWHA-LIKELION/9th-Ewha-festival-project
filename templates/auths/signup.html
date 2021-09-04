@@ -32,16 +32,16 @@
       /></a>
       <!--홈으로 돌아가기-->
     </div>    
-    <form id="signup-form" action="{% url 'account:signup' %}" method="POST">
+    <form id="signup-form" action="{% url 'account:signup' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- 학생증 사진 -->
-      <div class="ID-img-wrapper">
+      <!-- <div class="ID-img-wrapper">
         <label for="student-card"><img src="/static/icons/common/student_card_image.svg"></label>
         <input type="file" class="student-card" id="student-card" accept="image/*">
         <div class="preview">
           <p>현재 선택된 파일이 없습니다.</p>
         </div>
-      </div>
+      </div> -->
       <div class="user-input-all-wrapper">         
       {% for field in forms %}
         <div class="user-input-wrapper">

@@ -13,13 +13,17 @@ class nursingPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.title
 
     def summary(self):
         return self.body[:30]
+
+class nursingImage(models.Model):
+    post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'boothImage/')
+    
 class nursingComment(models.Model):
     post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()

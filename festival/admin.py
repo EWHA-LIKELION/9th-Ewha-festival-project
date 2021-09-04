@@ -2,7 +2,13 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-admin.site.register(nursingPost)
+class nursingImages(admin.TabularInline):
+    model = nursingImage
+
+class nursingAdmin(admin.ModelAdmin):
+    inlines = [nursingImages, ]
+
+admin.site.register(nursingPost, nursingAdmin)
 admin.site.register(nursingComment)
 
 admin.site.register(convergencePost)

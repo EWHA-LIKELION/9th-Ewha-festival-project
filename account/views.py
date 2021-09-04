@@ -23,14 +23,18 @@ def signup(request):
         return render(request, 'auths/signup.html', context)
 
     elif request.method =='POST':
-        register_form = RegisterForm(request.POST)
+        register_form = RegisterForm(request.POST, request.FILES)
+
+
         if register_form.is_valid():
             user = User (
+                user_image = register_form.user_image,
                 user_id = register_form.user_id,
                 user_pw = register_form.user_pw,
                 user_name = register_form.user_name,
                 user_nickname = register_form.user_nickname,
-                user_email = register_form.user_email
+                user_email = register_form.user_email,
+                user_phone = register_form.user_phone
             )
             user.save()
             return redirect('/')
@@ -40,6 +44,7 @@ def signup(request):
                 for value in register_form.errors.values():
                     context['error'] = value
         return render(request, 'auths/signup.html', context)
+       
 
 def mypage(request):
     return render(request, "auths/mypage.html")
