@@ -1,8 +1,11 @@
 from django.urls import path
 from django.conf import settings 
 from django.conf.urls.static import static
-from . import views
+from .views import *
+import booth.views
+
+app_name='booth'
 urlpatterns = [
-    path('', views.boardboothPost, name="boothPost"),
-    path('<int:booth_id>', views.detailboothPost, name="detailboothPost"),
+    path('', booth.views.boardboothPost, name="boothPost"),
+    path('<int:pk_id>', booth.views.detailboothPost, name="detailboothPost"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

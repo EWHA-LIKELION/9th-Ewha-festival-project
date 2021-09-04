@@ -13,16 +13,17 @@ class nursingPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
-
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='nursing_like', blank=True)
 
     def __str__(self):
         return self.title
 
     def summary(self):
         return self.body[:30]
+
+class nursingImage(models.Model):
+    post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'boothImage/')
+    
 class nursingComment(models.Model):
     post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
@@ -43,9 +44,6 @@ class convergencePost(models.Model):
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
-
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='convergence_like', blank=True)
 
     def __str__(self):
         return self.title
@@ -72,9 +70,7 @@ class businessPost(models.Model):
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='business_like', blank=True)
-
+  
     def __str__(self):
         return self.title
 
@@ -100,20 +96,12 @@ class pharmacyPost(models.Model):
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
-    hashtag_set = models.ManyToManyField('pharmacyTags', blank=True)
-
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='pharmacy_like', blank=True)
 
     def __str__(self):
         return self.title
 
     def summary(self):
         return self.body[:30]
-
-class pharmacyTags(models.Model):
-    college_tag = models.CharField(max_length=20, unique=True)
-
 class pharmacyComment(models.Model):
     post = models.ForeignKey(pharmacyPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
@@ -137,8 +125,6 @@ class engineeringPost(models.Model):
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
 
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='engineering_like', blank=True)
 
     def __str__(self):
         return self.title
@@ -168,9 +154,6 @@ class musicPost(models.Model):
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
 
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='music_like', blank=True)
-
     def __str__(self):
         return self.title
 
@@ -198,9 +181,6 @@ class eduPost(models.Model):
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('eduTags', blank=True)
-
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='edu_like', blank=True)
 
     def __str__(self):
         return self.title
@@ -234,9 +214,6 @@ class humanitiesPost(models.Model):
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('humanitiesTags', blank=True)
 
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='humanities_like', blank=True)
-
     def __str__(self):
         return self.title
 
@@ -268,8 +245,6 @@ class socialPost(models.Model):
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('socialTags', blank=True)
 
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='social_like', blank=True)
 
     def __str__(self):
         return self.title
@@ -301,9 +276,6 @@ class naturalPost(models.Model):
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('naturalTags', blank=True)
-
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='naturallike', blank=True)
 
     def __str__(self):
         return self.title
@@ -338,9 +310,6 @@ class scratonPost(models.Model):
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('scratonTags', blank=True)
 
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='scraton_like', blank=True)
-
     def __str__(self):
         return self.title
 
@@ -373,8 +342,6 @@ class artPost(models.Model):
     image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('artTags', blank=True)
 
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='art_like', blank=True)
 
     def __str__(self):
         return self.title
@@ -406,9 +373,6 @@ class hokmaPost(models.Model):
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     image = models.ImageField(blank=True, null=True)
-
-    # 저장하기
-    college_like = models.ManyToManyField(User, related_name='hokma_like', blank=True)
 
     def __str__(self):
         return self.title

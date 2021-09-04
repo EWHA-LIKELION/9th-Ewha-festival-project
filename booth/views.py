@@ -20,7 +20,7 @@ def detailboothPost(request, booth_id):
 @login_required(login_url='account:login')
 def boothLike(View):
     def get(Self, request, *args, **kwargs):
-        if booth_id in kwargs:
+        if 'booth_id' in kwargs:
             booth_id = kwargs['booth_id']
             boothPost = boothPost.objects.get(pk=booth_id)
             user = request.user
@@ -47,5 +47,8 @@ def comment_write_booth(request, pk_id):
         if not content:
             messages.info(request, '내용이 없습니다')
             return render(request, 'details/detail.html', context=content)
-            committeeComment.objects.create(post=boothpost, comment_writer=conn_profile, comment_contents=content)
+
+            committeeComment.objects.create(
+            post=boothpost, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
+

@@ -13,7 +13,12 @@ class User(models.Model):
     def __str__(self):
         return self.user_name
 
+    def __str__(self):
+        return self.user_nickname
+
     class Meta:
         db_table = 'user'
         verbose_name = '유저'
         verbose_name_plural = '유저'
+
+

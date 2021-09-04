@@ -25,7 +25,7 @@ import committee.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', festival.views.main, name='main'),
-    path('account/', include('account.urls',namespace='account')),
+    path('account/', include('account.urls')),
     path('festival/', include('festival.urls')),
     path('booth/', include('booth.urls')),
     path('committee/', include('committee.urls')),

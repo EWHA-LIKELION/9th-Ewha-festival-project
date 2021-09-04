@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 
+app_name='committee'
 urlpatterns = [
     path('', views.committeeList, name="committeeList"),
     path('<int:pk_id>', views.detailcommitteePost, name="detailcommitteePost")

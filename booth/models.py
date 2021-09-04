@@ -15,8 +15,7 @@ class boothPost(models.Model):
     hashtag_set = models.ManyToManyField('boothTags', blank=True)
 
     # 저장하기
-    booth_like = models.ManyToManyField(
-        User, related_name='booth_like', blank=True)
+    booth_like = models.ManyToManyField(User, related_name='booth_like', blank=True)
 
     def __str__(self):
         return self.title
@@ -27,8 +26,7 @@ class boothTags(models.Model):
 class boothComment(models.Model):
     post = models.ForeignKey(boothPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     class Meta:
