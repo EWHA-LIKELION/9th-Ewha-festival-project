@@ -1,5 +1,5 @@
 const likeBoothButton = document.getElementById('like-button');
-function handleLikeButtonClicked(event) {
+function handleLikeButtonFilled(event) {
   if (event.target.src) {
     if (event.target.src.indexOf('empty') !== -1) {
       event.target.src = event.target.src.replace('empty', 'filled');
