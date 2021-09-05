@@ -20,9 +20,9 @@ const centralCommitteeButton = document.getElementById(
   'central-committee-board'
 );
 
-function handleCentralCommitteeButtonClicked() {
-  console.log('Central Committee button clicked');
-  document.location.href = '/committee/committee';
+function handleCentralCommitteeButtonClicked(){
+    console.log("Central Committee button clicked");
+    document.location.href='/committee';
 }
 
 centralCommitteeButton.addEventListener(

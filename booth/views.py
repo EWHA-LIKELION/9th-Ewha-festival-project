@@ -20,7 +20,7 @@ def detailboothPost(request, booth_id):
 @login_required(login_url='account:login')
 def boothLike(View):
     def get(Self, request, *args, **kwargs):
-        if booth_id in kwargs:
+        if 'booth_id' in kwargs:
             booth_id = kwargs['booth_id']
             boothPost = boothPost.objects.get(pk=booth_id)
             user = request.user
@@ -51,3 +51,4 @@ def comment_write_booth(request, pk_id):
             committeeComment.objects.create(
             post=boothpost, comment_writer=conn_profile, comment_contents=content)
         return render(request, 'details/detail.html', context=content)
+
