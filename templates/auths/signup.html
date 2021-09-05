@@ -34,20 +34,7 @@
     </div>    
     <form id="signup-form" action="{% url 'account:signup' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-      <div class="user-input-all-wrapper">     
-       <!-- 학생증 사진 부분 -->
-        <!-- <div class="ID-img-wrapper">
-        <label for="student-card"><img src="/static/icons/common/student_card_image.svg"></label>
-        <input type="{{ field.field.widget.input_type }}" 
-              class="student-card" 
-              id="{{ field.id_for_label }}" 
-              accept="image/*"
-              name="{{ field.name }}"
-              >
-        <div class="preview">               
-          <p>현재 선택된 파일이 없습니다.</p>
-        </div>
-      </div>-->      
+      <div class="user-input-all-wrapper">   
       {% for field in forms %}
         {% if field.name == "user_image" %}
         <div class="ID-img-wrapper">

@@ -41,9 +41,9 @@
 
     <div class="booth-sort-wrapper">
       <div class="booth-number-backtext">
-        총 <span class="booth-number">75</span>개의 부스
+        총 <span class="booth-number">{{post.all|length}}</span>개의 부스
       </div>
-      <div class="booth-sort-dropdown-wrapper">
+      <!-- <div class="booth-sort-dropdown-wrapper">
         <img class="booth-sort-icon" src="/static/icons/common/sort_icon.svg" />
         <select class="booth-sort-dropdown">
           <option class="dropdown-item" selected>최신순</option>
@@ -51,7 +51,7 @@
           <option class="dropdown-item">2</option>
           <option class="dropdown-item">3</option>
         </select>
-      </div>
+      </div> -->
     </div>
     <div class="booth-list-container">
       {% for boothpost in post.all %} {% if boothpost.hashtag_set.all %}
