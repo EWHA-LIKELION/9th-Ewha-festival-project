@@ -169,9 +169,9 @@ def detailmusic(request, pk_id): #글 상세보기
     return render(request, 'details/detail.html', {'post':post})
 
 @login_required(login_url='account:login')
-def musicComment(request, pk_id):
+def musicComment(request, pk_id): 
+    post = get_object_or_404(musicPost, pk=pk_id)
     if request.method == 'POST':
-        post = get_object_or_404(musicPost, pk=pk_id)
         context = {'post': post}
         content = request.POST.get('content')
 
@@ -221,7 +221,8 @@ def eduComment(request, pk_id):
 def humanities(request): #글리스트
     post = humanitiesPost.objects.all()
     hashtag = humanitiesTags.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
+
+    return render(request, 'boards/collegeBoards.html', {'post':post,'hashtag':hashtag})
 
 def detailhumanities(request, pk_id): #글 상세보기
     post = get_object_or_404(humanitiesPost, pk=pk_id)

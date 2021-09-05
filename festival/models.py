@@ -13,13 +13,17 @@ class nursingPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.title
 
     def summary(self):
         return self.body[:30]
+
+class nursingImage(models.Model):
+    post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 class nursingComment(models.Model):
     post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
@@ -39,7 +43,6 @@ class convergencePost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -57,7 +60,10 @@ class convergenceComment(models.Model):
 
     def __str__(self):
         return self.comment_contents
-
+class convergenceImage(models.Model):
+    post = models.ForeignKey(convergencePost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 #-------------------------경영대
 class businessPost(models.Model):
@@ -65,7 +71,7 @@ class businessPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
   
     def __str__(self):
         return self.title
@@ -83,7 +89,10 @@ class businessComment(models.Model):
 
     def __str__(self):
         return self.comment_contents
-
+class businessImage(models.Model):
+    post = models.ForeignKey(businessPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 #-------------------------약대
 class pharmacyPost(models.Model):
@@ -91,7 +100,7 @@ class pharmacyPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
 
     def __str__(self):
         return self.title
@@ -110,7 +119,10 @@ class pharmacyComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
-
+class pharmacyImage(models.Model):
+    post = models.ForeignKey(pharmacyPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 
 #-------------------------공대
@@ -119,7 +131,7 @@ class engineeringPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
 
 
     def __str__(self):
@@ -139,7 +151,10 @@ class engineeringComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
-
+class engineeringImage(models.Model):
+    post = models.ForeignKey(engineeringPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 
 #-------------------------음대
@@ -148,7 +163,7 @@ class musicPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
 
     def __str__(self):
         return self.title
@@ -167,7 +182,10 @@ class musicComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
-
+class musicImage(models.Model):
+    post = models.ForeignKey(musicPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 #-------------------------사범대
 class eduPost(models.Model):
@@ -175,7 +193,7 @@ class eduPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
     hashtag_set = models.ManyToManyField('eduTags', blank=True)
 
     def __str__(self):
@@ -199,7 +217,10 @@ class eduComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
-
+class eduImage(models.Model):
+    post = models.ForeignKey(eduPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 #-------------------------인문대
 class humanitiesPost(models.Model):
@@ -207,7 +228,7 @@ class humanitiesPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
     hashtag_set = models.ManyToManyField('humanitiesTags', blank=True)
 
     def __str__(self):
@@ -231,6 +252,10 @@ class humanitiesComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
+class humanitiesImage(models.Model):
+    post = models.ForeignKey(humanitiesPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 #-------------------------사회대
 class socialPost(models.Model):
@@ -238,7 +263,7 @@ class socialPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
     hashtag_set = models.ManyToManyField('socialTags', blank=True)
 
 
@@ -263,6 +288,10 @@ class socialComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
+class socialImage(models.Model):
+    post = models.ForeignKey(socialPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 #-------------------------자연대
 class naturalPost(models.Model):
@@ -270,7 +299,7 @@ class naturalPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
     hashtag_set = models.ManyToManyField('naturalTags', blank=True)
 
     def __str__(self):
@@ -294,7 +323,10 @@ class naturalComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
-
+class naturalImage(models.Model):
+    post = models.ForeignKey(naturalPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 
 #-------------------------스크랜튼
@@ -303,7 +335,7 @@ class scratonPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
     hashtag_set = models.ManyToManyField('scratonTags', blank=True)
 
     def __str__(self):
@@ -327,6 +359,10 @@ class scratonComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
+class scratonmage(models.Model):
+    post = models.ForeignKey(scratonPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 
 #-------------------------조예대
@@ -335,7 +371,7 @@ class artPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
     hashtag_set = models.ManyToManyField('artTags', blank=True)
 
 
@@ -360,6 +396,10 @@ class artComment(models.Model):
     def __str__(self):
         return self.comment_contents
 
+class artImage(models.Model):
+    post = models.ForeignKey(artPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    
 
 
 #-------------------------호크마
@@ -368,7 +408,7 @@ class hokmaPost(models.Model):
     college_name = models.CharField(max_length=20)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
+     
 
     def __str__(self):
         return self.title
@@ -387,3 +427,8 @@ class hokmaComment(models.Model):
 
     def __str__(self):
         return self.comment_contents
+        
+class hokmaImage(models.Model):
+    post = models.ForeignKey(hokmaPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'festivalImage/')
+    

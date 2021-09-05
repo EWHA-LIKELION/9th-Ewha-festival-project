@@ -61,7 +61,9 @@
             />
           </div>
           <div class="contents-wrapper">
-            <img class="post-picture" src="{{articlepost.image.url}}" />
+            {% with articlepost.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
             <div class="post-article">{{articlepost.body}}</div>
             <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">

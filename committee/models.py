@@ -10,7 +10,6 @@ class committeePost(models.Model):
     title = models.CharField(max_length=50)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
 
     # 저장하기
     committee_like = models.ManyToManyField(User, related_name='committee_like', blank=True)
@@ -20,6 +19,10 @@ class committeePost(models.Model):
 
     def summary(self):
         return self.body[:30]
+
+class committeeImage(models.Model):
+    post = models.ForeignKey(committeePost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'committeeImage/') 
 
 class committeeComment(models.Model):
     post = models.ForeignKey(committeePost, on_delete=models.CASCADE, null=True, related_name='comments')

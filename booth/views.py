@@ -21,7 +21,7 @@ def detailboothPost(request, booth_id):
 @login_required(login_url='account:login')
 def boothLike(View):
     def get(Self, request, *args, **kwargs):
-        if booth_id in kwargs:
+        if 'booth_id' in kwargs:
             booth_id = kwargs['booth_id']
             boothPost = boothPost.objects.get(pk=booth_id)
             user = request.user
