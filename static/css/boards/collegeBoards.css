@@ -1,7 +1,6 @@
 .collegeBoards-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5e5;
   align-items: center;
   height: 100vh;
 }

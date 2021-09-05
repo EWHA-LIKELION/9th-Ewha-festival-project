@@ -11,7 +11,6 @@ class boothPost(models.Model):
     intro = models.CharField(max_length=30)
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
-    image = models.ImageField(blank=True, null=True)
     hashtag_set = models.ManyToManyField('boothTags', blank=True)
 
     # 저장하기
@@ -34,3 +33,6 @@ class boothComment(models.Model):
 
     def __str__(self):
         return '%s - %s' % (self.comment_writer, self.comment_contents)
+class boothImage(models.Model):
+    post = models.ForeignKey(boothPost, on_delete=models.CASCADE, null=True, related_name='images')
+    image = ImageField(upload_to = 'boothImage/') 
