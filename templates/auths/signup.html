@@ -49,16 +49,28 @@
         </div>
       </div>-->      
       {% for field in forms %}
+        {% if field.name == "user_image" %}
+        <div class="ID-img-wrapper">
+          <label for="{{ field.id_for_label }}"><img src="/static/icons/common/student_card_image.svg"></label>
+          <input type="{{ field.field.widget.input_type }}" 
+                class="student-card" 
+                id="{{ field.id_for_label }}" 
+                accept="image/*"
+                name="{{ field.name }}">
+          <div class="preview">현재 선택된 파일이 없습니다.</div>
+        </div>
+        {% else %}
         <div class="user-input-wrapper">
           <span class="user-input-label">{{field.label}}</span>
           <input type="{{ field.field.widget.input_type }}"
-                        class="{{ field.field.widget.attrs.class }}"
-                        id="{{ field.id_for_label }}"
-                        placeholder="{{ field.label }}"
-                        name="{{ field.name }}">
+                  class="{{ field.field.widget.attrs.class }}"
+                  id="{{ field.id_for_label }}"
+                  placeholder="{{ field.label }}"
+                  name="{{ field.name }}">
         </div>
       {% if field.errors %}
           <span style="color: red">{{ field.errors }}</span>
+      {% endif %}
       {% endif %}
       {% endfor %}
       <div class="signup-btn-wrapper">
