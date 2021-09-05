@@ -19,12 +19,15 @@ from django.urls import path, include
 from django.conf.urls.static import static
 import festival.views
 import account.views
+import booth.views
+import committee.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', festival.views.main, name='main'),
     path('account/', include('account.urls')),
     path('festival/', include('festival.urls')),
+    path('booth/', include('booth.urls')),
     path('committee/', include('committee.urls')),
     path('booth/', include('booth.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

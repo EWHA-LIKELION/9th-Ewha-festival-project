@@ -1,11 +1,11 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
-@import "reset.css";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import 'reset.css';
 
 * {
   box-sizing: border-box;
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-    "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", sans-serif !important;
+    'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', sans-serif !important;
 }
 body {
   max-width: 425px;
@@ -99,46 +99,77 @@ body {
 }
 /* hashtag */
 .major-hashtag-container {
-  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   height: 35px;
-  justify-content: center;
+  overflow: scroll;
+  width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0px 12px 0px 20px;
 }
-.major-hashtag-colored {
-  background-color: #80e0ff;
-  border-radius: 12px;
-  border-style: none;
-  margin-right: 8px;
-  height: 35px;
+.major-hashtag-container::-webkit-scrollbar {
+  display: none;
+}
+.major-hashtag-label {
   line-height: 35px;
-  padding: 0 12px;
   font-size: 13px;
   font-weight: 500;
   text-align: center;
   color: rgb(0 0 0/0.6);
-  box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
+  width: 100%;
+  white-space: nowrap;
 }
-.major-hashtag-white:hover {
-  cursor: pointer;
-  border-style: none;
-  background-color: #80e0ff;
-  box-shadow: 0px 4px 4px rgb(100 205 239/0.6);
-}
-.major-hashtag-white {
+.major-hashtag-item {
   border-radius: 12px;
-  border-style: solid;
+  border: 1px solid;
   border-color: #80e0ff;
-  border-width: 1px;
   margin-right: 8px;
   height: 35px;
-  line-height: 35px;
-  padding: 0 12px;
-  font-size: 13px;
-  font-weight: 500;
-  text-align: center;
-  color: rgb(0 0 0/0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 12px;
 }
+.humanities-hashtag-outline {
+  border-color: #cbcbcb;
+}
+.humanities-hashtag-filled {
+  background-color: #cbcbcb;
+}
+.social-hashtag-outline {
+  border-color: #80e0ff;
+}
+.social-hashtag-filled {
+  background-color: #80e0ff;
+}
+.edu-hashtag-outline {
+  border-color: #52d1ea;
+}
+.edu-hashtag-filled {
+  background-color: #52d1ea;
+}
+.natural-hashtag-outline {
+  border-color: #ffe05b;
+}
+.natural-hashtag-filled {
+  background-color: #ffe05b;
+}
+
+.scraton-hashtag-outline {
+  border-color: #91ebda;
+}
+.scraton-hashtag-filled {
+  background-color: #91ebda;
+}
+.booth-hashtag-outline {
+  border-color: #91ebda;
+}
+.booth-hashtag-filled {
+  background-color: #91ebda;
+}
+
 /* text */
 .festival-headline {
   width: 226px;
@@ -246,13 +277,14 @@ body {
   border-radius: 0px 0px 17px 17px;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .subheader-text {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 23px;
@@ -265,13 +297,12 @@ body {
   margin-right: 10%;
   width: 21px;
   height: 21px;
-  background-image: url("../../static/icons/common/search_icon.svg");
+  background-image: url('../../static/icons/common/search_icon.svg');
   background-size: cover;
 }
 
 /* 학과(혹은 단대) 게시글 리스트 요소 */
 .board-wrapper {
-  margin-top: 20px;
   border-radius: 12px;
   left: 53.2%;
   width: 100%;
@@ -312,11 +343,19 @@ img.arrow-image {
   color: rgba(0, 0, 0, 0.9);
 }
 .post-picture {
+  
+  width:100%;
+  border-radius: 9px;
+  background: #c4c4c4;
+  object-fit: cover;
+}
+.post-picture-outside {
   grid-row: 1 / 3;
   width: 95px;
   height: 95px;
   border-radius: 9px;
   background: #c4c4c4;
+  object-fit: cover;
 }
 .post-article {
   grid-column: 2 / 4;
@@ -326,6 +365,12 @@ img.arrow-image {
   letter-spacing: -0.03em;
   color: rgba(0, 0, 0, 0.9);
   margin-right: 2%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 라인수 */
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
 }
 .post-date {
   font-family: Manrope;
@@ -367,7 +412,7 @@ img.arrow-image {
 }
 
 .booth-list-label-header {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 16px;
   font-weight: 700;
   color: #000000;
@@ -378,7 +423,7 @@ img.arrow-image {
 }
 
 .booth-list-label-content {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 12px;
   line-height: 15px;
   font-weight: 500px;
@@ -475,7 +520,7 @@ img .summary-icon {
 }
 
 /* 검색input */
-.search-box {  
+.search-box {
   display: flex;
   border-radius: 5px;
 }

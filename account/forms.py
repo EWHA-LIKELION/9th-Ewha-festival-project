@@ -14,7 +14,6 @@ class RegisterForm(forms.ModelForm):
         ),
         error_messages={'required':'학생증 사진을 첨부해주세요.'}
     )
-
     user_id = forms.CharField(
 
         label='아이디',
@@ -90,7 +89,6 @@ class RegisterForm(forms.ModelForm):
         error_messages={'required':'이메일을 입력해주세요.',
         'unique': '중복된 이메일입니다.'}
     )
-
     user_phone = forms.CharField(
         label='전화번호',
         required=True,

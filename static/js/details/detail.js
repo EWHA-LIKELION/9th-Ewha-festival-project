@@ -20,17 +20,42 @@ for (const summaryIcon of summaryIcons) {
   summaryIcon.onclick = clickSummaryIcon;
 }
 
-// 댓글 쓰기
-const commentInput = document.getElementById('comment-input');
-const commentSubmitBtn = document.getElementById('comment-submit-button');
+// //댓글 쓰기
+// const commentInput = document.getElementById('comment-input');
+// const commentSubmitBtn = document.getElementById('comment-submit-button');
 
-function commentSubmit(event) {
-  console.log(commentInput.value);
-  commentInput.value = '';
-}
+// function commentSubmit(event) {
+//   // console.log(commentInput.value);
+//   let content=commentInput.value;
+//   event.preventDefault();
+//   let param={
+//     'pk_id': '{{post.pk}}',
+//     'content':content,
+//   }    
+//   console.log(param);
+//   $.ajax({
+//     url:`${currentCollege}/{{post.pk}}`,
+//     type:'POST',
+//     headers:{
+//       'X-CSRFTOKEN':'{{csrf_token}}',
+//     },
+//     data:JSON.stringify(param),
+//     success:function(data){
+//       console.log(data);
+//     },
+//     error:function(e){
+//       console.log('error');
+//       console.log({{post.pk}});
+//     }      
 
-commentSubmitBtn.onclick = commentSubmit;
+//   })
+//   //commentInput.value = '';
+// }
+
+// commentSubmitBtn.onclick = commentSubmit;
 
 const headerName = document.getElementById('header-name');
 const currentPosition = document.location.pathname.split('/');
-headerName.textContent = college[currentPosition[currentPosition.length - 2]];
+const currentCollege=currentPosition[currentPosition.length - 2]
+console.log(currentCollege);
+headerName.textContent = college[currentCollege];

@@ -7,5 +7,5 @@ import booth.views
 app_name='booth'
 urlpatterns = [
     path('', booth.views.boardboothPost, name="boothPost"),
-    path('<int:pk_id>', booth.views.detailboothPost, name="detailboothPost"),
+    path('<int:booth_id>', booth.views.detailboothPost, name="detailboothPost"),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

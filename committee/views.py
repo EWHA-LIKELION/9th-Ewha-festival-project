@@ -15,8 +15,8 @@ def committeeList(request):
     return render(request, 'boards/centralCommitteeBoards.html', {'post' : committee})
 
 def detailcommitteePost(request, pk_id):
-    committeePost= get_object_or_404(committeeList, pk=pk_id)
-    return render(request, 'details/detail.html', {'post' : committeePost})
+    detailCommitteePost= get_object_or_404(committeePost, pk=pk_id)
+    return render(request, 'details/detail.html', {'post' : detailCommitteePost})
 
 
 #committe 댓글

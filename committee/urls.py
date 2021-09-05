@@ -5,7 +5,7 @@ from . import views
 
 app_name='committee'
 urlpatterns = [
-    path('', views.committeeList, name="committeList"),
+    path('', views.committeeList, name="committeeList"),
     path('<int:pk_id>', views.detailcommitteePost, name="detailcommitteePost")
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     

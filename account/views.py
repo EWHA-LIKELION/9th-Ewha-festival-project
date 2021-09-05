@@ -9,9 +9,6 @@ from .forms import RegisterForm, LoginForm
 from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
-from argon2 import PasswordHasher
-from itertools import chain
-ph = PasswordHasher()
 # Create your views here.
 def main(request):
     return render(request, "frontScreens/main.html")
@@ -29,7 +26,7 @@ def signup(request):
         if register_form.is_valid():
             register_form.user_image = request.FILES['user_image'],
             register_form.user_id = request.POST.get('user_id'),
-            register_form.user_pw = PasswordHasher().hash(request.POST.get('user_pw')),
+            register_form.user_pw = request.POST.get('user_pw'),
             register_form.user_email = request.POST.get('user_email'),
             register_form.user_name = request.POST.get('user_image'),
             register_form.user_nickname = request.POST.get('user_nickname'),
@@ -58,7 +55,6 @@ def hello(request):
 def mypage(request, pk_id):
     user = get_object_or_404(Profile, pk=pk_id)
     return render(request, "auths/myPage.html", {'user':user})
-
 
 def login(request):
     loginform = LoginForm()
@@ -153,8 +149,6 @@ def mypostComment(request, pk_id):
     }
 
     return render(request, 'auths/commentedPostBoards.html', context)
-
-
 
 class myLike(generic.ListView):
     model = boothPost
