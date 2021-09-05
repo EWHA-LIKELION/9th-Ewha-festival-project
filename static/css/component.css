@@ -394,6 +394,11 @@ img.arrow-image {
 }
 
 /* 부스 글 리스트 요소 */
+@media (max-width: 340px){
+  .booth-list-wrapper{
+    margin-bottom:20px;
+  }
+}
 .booth-list-wrapper {
   display: flex;
   flex-wrap: wrap;

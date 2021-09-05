@@ -4,12 +4,17 @@
 a {
   text-decoration: none;
 }
-.booth-list-container {
-  display: grid;
-  justify-content: center;
-  row-gap: 15px;
-  column-gap: 15px;
-  grid-template-columns: 160px 160px;
+@media (min-width: 340px) {
+  .booth-list-container {
+    display: grid;
+    justify-content: center;
+    row-gap: 15px;
+    column-gap: 15px;
+    grid-template-columns: 160px 160px;
+  }
+}
+.booth-list-container{
+    justify-content: center;
 }
 .booth-list-heart-background {
   width: 35px;
@@ -37,10 +42,8 @@ a {
 }
 .booth-sort-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: 20px;
-  width: 335px;
+  width: 85%;
 }
 .booth-sort-dropdown-wrapper {
   display: flex;
