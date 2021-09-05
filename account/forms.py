@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.widgets import ClearableFileInput
 from .models import Profile #pip install argon2-cffi
-from argon2 import PasswordHasher
+
 
 class RegisterForm(forms.ModelForm):
     user_image = forms.ImageField(
