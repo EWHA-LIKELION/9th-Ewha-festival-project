@@ -38,7 +38,7 @@
       <div class="login-label-title">Ewha festival 2021</div>
       <div class="login-label-content">이화의 축제를 즐기세요.</div>
     </div>
-    <form id="login-form" action="{% url 'account:login' %}" method="post">
+    <form id="login-form" action="{% url 'account:login' %}" method="POST">
       {% csrf_token %}      
       <div class="user-input-all-wrapper">
       {% for field in forms %}      

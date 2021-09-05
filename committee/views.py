@@ -2,6 +2,7 @@ from django.http.response import HttpResponseRedirect
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import committeePost, committeeComment
+from account.models import Profile
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
 
@@ -27,7 +28,7 @@ def commentCommittee(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')

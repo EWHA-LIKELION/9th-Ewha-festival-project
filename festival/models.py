@@ -2,7 +2,7 @@ from django.db import models
 from django.db.models.constraints import UniqueConstraint
 from django.db.models.fields import BLANK_CHOICE_DASH, DateField, TextField
 from django.db.models.fields.files import ImageField
-from django.contrib.auth.models import User
+from account.models import Profile
 from django.utils import timezone
 
 # Create your models here.
@@ -27,7 +27,7 @@ class nursingImage(models.Model):
 class nursingComment(models.Model):
     post = models.ForeignKey(nursingPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -53,7 +53,7 @@ class convergencePost(models.Model):
 class convergenceComment(models.Model):
     post = models.ForeignKey(convergencePost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -79,7 +79,7 @@ class businessPost(models.Model):
 class businessComment(models.Model):
     post = models.ForeignKey(businessPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -105,7 +105,7 @@ class pharmacyPost(models.Model):
 class pharmacyComment(models.Model):
     post = models.ForeignKey(pharmacyPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -134,7 +134,7 @@ class engineeringPost(models.Model):
 class engineeringComment(models.Model):
     post = models.ForeignKey(engineeringPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -162,7 +162,7 @@ class musicPost(models.Model):
 class musicComment(models.Model):
     post = models.ForeignKey(musicPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -194,7 +194,7 @@ class eduTags(models.Model):
 class eduComment(models.Model):
     post = models.ForeignKey(eduPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -226,7 +226,7 @@ class humanitiesTags(models.Model):
 class humanitiesComment(models.Model):
     post = models.ForeignKey(humanitiesPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -258,7 +258,7 @@ class socialTags(models.Model):
 class socialComment(models.Model):
     post = models.ForeignKey(socialPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -289,7 +289,7 @@ class naturalTags(models.Model):
 class naturalComment(models.Model):
     post = models.ForeignKey(naturalPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -322,7 +322,7 @@ class scratonTags(models.Model):
 class scratonComment(models.Model):
     post = models.ForeignKey(scratonPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -355,7 +355,7 @@ class artTags(models.Model):
 class artComment(models.Model):
     post = models.ForeignKey(artPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
@@ -383,7 +383,7 @@ class hokmaPost(models.Model):
 class hokmaComment(models.Model):
     post = models.ForeignKey(hokmaPost, on_delete=models.CASCADE, null=True, related_name='comments')
     comment_contents = models.TextField()
-    comment_writer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    comment_writer = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     comment_date = models.DateTimeField(default=timezone.now)
 
     def approve(self):
