@@ -9,6 +9,7 @@ from .forms import RegisterForm, LoginForm
 from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
+
 # Create your views here.
 def main(request):
     return render(request, "frontScreens/main.html")
@@ -55,6 +56,7 @@ def hello(request):
 def mypage(request, pk_id):
     user = get_object_or_404(Profile, pk=pk_id)
     return render(request, "auths/myPage.html", {'user':user})
+
 
 def login(request):
     loginform = LoginForm()
@@ -149,6 +151,7 @@ def mypostComment(request, pk_id):
     }
 
     return render(request, 'auths/commentedPostBoards.html', context)
+
 
 class myLike(generic.ListView):
     model = boothPost
