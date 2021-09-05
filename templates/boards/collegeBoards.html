@@ -12,7 +12,7 @@
     />
     <title>Document</title>
   </head>
-  <body>
+  <body class="background-color-white">
     <div class="collegeBoards-wrapper">
       <div class="header-wrapper">
         <a href="#"
@@ -36,15 +36,23 @@
       {% if hashtag %}
       <div class="major-hashtag-container">
         {% for tag in hashtag.all %}
-        <div class="major-hashtag-white" id="{{tag.college_tag}}">
-          {{tag.college_tag}}
+        <div class="major-hashtag-item" id="{{tag.college_tag}}">
+          <div class="major-hashtag-label">{{tag.college_tag}}</div>
         </div>
         {% endfor %}
       </div>
       {% endif %}
       <div class="college-posts-container">
-        {% for articlepost in post.all %}
-        <div class="board-wrapper" id="{{articlepost.id}}">
+        {% for articlepost in post.all %} {% if articlepost.hashtag_set.all%}
+        <div
+          class="board-wrapper {{articlepost.hashtag_set.all.0.college_tag}}"
+          id="{{articlepost.id}}"
+        >
+        {% else %}<div
+        class="board-wrapper"
+        id="{{articlepost.id}}"
+      >
+          {% endif %}
           <div class="wrap-title-arrow">
             <div class="post-title">{{articlepost.title}}</div>
             <img
@@ -69,5 +77,8 @@
     </div>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/boards/collegeBoards.js"></script>
+    <script>
+
+    </script>
   </body>
 </html>

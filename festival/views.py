@@ -279,8 +279,8 @@ def socialComment(request, pk_id):
 #--------------------------자연대
 def natural(request): #글리스트
     post = naturalPost.objects.all()
-    hashtag = naturalPost.objects.all()
-    return render(request, 'boards/collegeBoards.html', {'post':post})
+    hashtag = naturalTags.objects.all()
+    return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
 def detailnatural(request, pk_id): #글 상세보기
     post = get_object_or_404(naturalPost, pk=pk_id)

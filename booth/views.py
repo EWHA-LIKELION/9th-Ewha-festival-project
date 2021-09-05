@@ -9,7 +9,8 @@ from urllib.parse import urlparse
 
 def boardboothPost(request):
     booth = boothPost.objects.all()
-    return render(request, 'boards/boothBoards.html', {'post': booth})
+    boothtags = boothTags.objects.all()
+    return render(request, 'boards/boothBoards.html', {'post': booth,'hashtag':boothtags})
 
 
 def detailboothPost(request, booth_id):
