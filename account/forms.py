@@ -1,6 +1,7 @@
 from django import forms
 from django.forms.widgets import ClearableFileInput
-from .models import User #pip install argon2-cffi
+from .models import Profile #pip install argon2-cffi
+
 
 class RegisterForm(forms.ModelForm):
     user_image = forms.ImageField(
@@ -113,7 +114,7 @@ class RegisterForm(forms.ModelForm):
     ]
 
     class Meta:
-        model = User
+        model = Profile
         fields = [
             'user_image',
             'user_name',
@@ -152,6 +153,7 @@ class RegisterForm(forms.ModelForm):
             self.user_name = user_name
             self.user_nickname = user_nickname
             self.user_email = user_email
+
 
 class LoginForm(forms.Form):
     user_id = forms.CharField(
@@ -196,13 +198,13 @@ class LoginForm(forms.Form):
             return self.add_error('user_pw','비밀번호를 다시 입력해 주세요.')
         else:
             try:
-                user = User.objects.get(user_id=user_id)
-            except User.DoesNotExist :
+                user = Profile.objects.get(user_id=user_id)
+            except Profile.DoesNotExist :
                 return self.add_error('user_id','아이디가 존재하지 않습니다.')
             
             try:
-                user = User.objects.get(user_pw=user_pw)
-            except User.DoesNotExist :
+                user = Profile.objects.get(user_pw=user_pw)
+            except Profile.DoesNotExist :
                 return self.add_error('user_pw','비밀번호가 존재하지 않습니다.')
             
             self.login_session = user.user_id
@@ -212,13 +214,3 @@ class LoginForm(forms.Form):
                 #return self.add_error('user_pw','비밀번호가 다릅니다.')
 
 
-# class RegisterForm(forms.ModelForm):
-
-#     class Meta:
-#         model = User
-#         fields = ['user_id', 'user_pw', 'user_name', 'user_image', 'user_phone', 'user_nickname', 'user_email']
-#         field_order = [
-#             'user_image',
-#             'user_id',
-#             'user_pw'
-#         ]

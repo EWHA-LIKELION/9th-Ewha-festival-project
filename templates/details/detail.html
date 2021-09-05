@@ -87,44 +87,39 @@
         name="content"
       />
       <button class="comment-submit-button" id='comment-submit-button' type="submit"></button>
-      <!-- <img
-        id="comment-submit-button"
-        src="/static/icons/common/comment_submit.svg"
-        class="comment-submit-button"
-      /> -->
     </form>
     <script>
       //댓글 쓰기
-const commentInput = document.getElementById('comment-input');
-const commentSubmitBtn = document.getElementById('comment-submit-button');
+    const commentInput = document.getElementById('comment-input');
+    const commentSubmitBtn = document.getElementById('comment-submit-button');
 
-function commentSubmit(event) {
-  // console.log(commentInput.value);
-  let content=commentInput.value;
-  event.preventDefault();
-  let param={
-    'pk_id': '{{post.pk}}',
-    'content':content,
-  }    
-  console.log(currentCollege);
-  $.ajax({
-    url:`{{post.pk}}`,
-    type:'POST',
-    headers:{
-      'X-CSRFTOKEN':'{{csrf_token}}',
-    },
-    data:JSON.stringify(param),
-    success:function(data){
-      console.log("SUCCESS");
-      console.log(data);
-    },
-    error:function(e){
-      console.log(e);
-    }  
-  })
-  content = '';
-}
-commentSubmitBtn.onclick = commentSubmit;
+    function commentSubmit(event) {
+      // console.log(commentInput.value);
+      let content=commentInput.value;
+      event.preventDefault();
+      let param={
+        'pk_id': '{{post.pk}}',
+        'content':content,
+      }    
+      console.log(currentCollege);
+      $.ajax({
+        url:`{{post.pk}}`,
+        type:'POST',
+        headers:{
+          'X-CSRFTOKEN':'{{csrf_token}}',
+        },
+        data:JSON.stringify(param),
+        success:function(data){
+          console.log("SUCCESS");
+          console.log(data);
+        },
+        error:function(e){
+          console.log(e);
+        }  
+      })
+      content = '';
+    }
+    commentSubmitBtn.onclick = commentSubmit;
 
     </script>
     <script src="/static/js/common.js"></script>

@@ -4,10 +4,8 @@ from .models import *
 
 class nursingImages(admin.TabularInline):
     model = nursingImage
-
 class nursingAdmin(admin.ModelAdmin):
     inlines = [nursingImages, ]
-
 admin.site.register(nursingPost, nursingAdmin)
 admin.site.register(nursingComment)
 
