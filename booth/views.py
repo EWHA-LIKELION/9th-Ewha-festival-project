@@ -1,4 +1,5 @@
 from django.http.response import HttpResponseRedirect
+from django.views.generic.base import View
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import boothPost, boothTags, boothComment
@@ -18,22 +19,18 @@ def detailboothPost(request, booth_id):
     detailBoothPost = get_object_or_404(boothPost, pk=booth_id)
     return render(request, 'details/boothDetail.html', {'post': detailBoothPost})
 
-
-@login_required(login_url='account:login')
-def boothLike(View):
-    def get(Self, request, *args, **kwargs):
-        if 'booth_id' in kwargs:
-            booth_id = kwargs['booth_id']
-            boothPost = boothPost.objects.get(pk=booth_id)
-            user = request.user
-            if user in boothPost.booth_like.all():
-                boothPost.booth_like.remove(user)
-            else:
-                boothPost.booth_like.add(user)
-
-        referer_url = request.META.get('HTTP_REFERER')
-        path = urlparse(referer_url).path
-        return HttpResponseRedirect(path)
+def likelist(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        booth = boothPost.objects.get(pk=pk_id)
+        if user in booth.booth_like.all():
+            booth.booth_like.remove(user)
+        else:
+            booth.booth_like.add(user)
+    referer_url = request.META.get('HTTP_REFERER')
+    path = urlparse(referer_url).path
+    return HttpResponseRedirect(path)
 
 
 @login_required(login_url='account:login')
