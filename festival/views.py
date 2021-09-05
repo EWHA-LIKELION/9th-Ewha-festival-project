@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from .models import *
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
+from account.models import Profile
 
 
 # Create your views here.
@@ -34,7 +35,7 @@ def nursingComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -62,7 +63,7 @@ def convergenceComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -89,7 +90,7 @@ def businessComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -118,7 +119,7 @@ def pharmacyComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -146,7 +147,7 @@ def engineeringComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -176,7 +177,7 @@ def musicComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -206,7 +207,7 @@ def eduComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -236,7 +237,7 @@ def humanitiesComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -265,7 +266,7 @@ def socialComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -294,7 +295,7 @@ def naturalComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -323,7 +324,7 @@ def scratonComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -354,7 +355,7 @@ def artComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')
@@ -382,7 +383,7 @@ def hokmaComment(request, pk_id):
         content = request.POST.get('content')
 
         conn_user = request.user
-        conn_profile = User.objects.get(user=conn_user)
+        conn_profile = Profile.objects.get(user=conn_user)
 
         if not content:
             messages.info(request, '내용이 없습니다')

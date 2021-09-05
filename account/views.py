@@ -1,17 +1,17 @@
+from festival.views import business
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import get_object_or_404, render, redirect
 from django.db import transaction
 from django.views import generic
-from .models import User
-from account.models import User
+from account.models import Profile
 from .forms import RegisterForm, LoginForm
 from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
-from django.contrib.auth import get_user_model
-
-
+from argon2 import PasswordHasher
+from itertools import chain
+ph = PasswordHasher()
 # Create your views here.
 def main(request):
     return render(request, "frontScreens/main.html")
@@ -26,18 +26,15 @@ def signup(request):
     elif request.method =='POST':
         register_form = RegisterForm(request.POST, request.FILES)
 
-
         if register_form.is_valid():
-            user = User (
-                user_image = register_form.user_image,
-                user_id = register_form.user_id,
-                user_pw = register_form.user_pw,
-                user_name = register_form.user_name,
-                user_nickname = register_form.user_nickname,
-                user_email = register_form.user_email,
-                user_phone = register_form.user_phone
-            )
-            user.save()
+            register_form.user_image = request.FILES['user_image'],
+            register_form.user_id = request.POST.get('user_id'),
+            register_form.user_pw = PasswordHasher().hash(request.POST.get('user_pw')),
+            register_form.user_email = request.POST.get('user_email'),
+            register_form.user_name = request.POST.get('user_image'),
+            register_form.user_nickname = request.POST.get('user_nickname'),
+            register_form.user_phone = request.POST.get('user_phone'),
+            register_form.save()
             return redirect('/')
         else:
             context['forms'] = register_form
@@ -46,15 +43,22 @@ def signup(request):
                     context['error'] = value
         return render(request, 'auths/signup.html', context)
        
+def hello(request):
+    context ={}
 
-def mypage(request):
-    User = get_user_model()
-    user = get_object_or_404(User)
-    context = {
-        'user':user
-    }
-    return render(request, 'auths/mypage.html', context)
-    #return render(request, "auths/mypage.html")
+    login_session = request.session.get('login_session','') #로그인 세션 정보 갖고 있는지
+
+    if login_session=='':
+        context['login_session'] = False
+    else: 
+        context['login_session'] = True
+    
+    return render (request, 'main', context)
+
+def mypage(request, pk_id):
+    user = get_object_or_404(Profile, pk=pk_id)
+    return render(request, "auths/myPage.html", {'user':user})
+
 
 def login(request):
     loginform = LoginForm()
@@ -77,38 +81,79 @@ def login(request):
                     context['error'] = value                   
     return render(request, 'auths/login.html', context)
 
+
+
 def logout(request):
     request.session.flush()
     return redirect('main')
 
 
-#def hello(request, pk):
-    # context ={}
-
-    # login_session = request.session.get('login_session','') #로그인 세션 정보 갖고 있는지
-
-    # if login_session=='':
-    #     context['login_session'] = False
-    # else: 
-    #     context['login_session'] = True
-    
-    # return render (request, 'main', context)
-
-
 @login_required(login_url='account:login')
-def myboothComment(request):
+def myboothComment(request, pk_id):
     commentbooth = boothComment.objects.all()
-    commentboothList = commentbooth.filter(comment_writer = request.user)
-
+    user = get_object_or_404(Profile, pk=pk_id)
+    commentboothList = commentbooth.filter(comment_writer = user)
     return render(request, 'auths/commentedBoothBoards.html', {'commentboothList':commentboothList})
 
 
 @login_required(login_url='account:login')
-def mypostComment(request):
-    committeepost = committeeComment.objects.all()
-    committeepostList = committeepost.filter(comment_writer = request.user)
-    
+def mycommitteeComment(request, pk_id):
+    commentcommittee = committeeComment.objects.all()
+    user = get_object_or_404(Profile, pk=pk_id)
+    committeepostList = commentcommittee.filter(comment_writer = user)
     return render(request, 'auths/commentedPostBoards.html', {'committepostList':committeepostList})
+
+@login_required(login_url='account:login')
+def mypostComment(request, pk_id):
+    user = get_object_or_404(Profile, pk=pk_id)
+
+    nursing = nursingComment.objects.all()
+    convergence = convergenceComment.objects.all()
+    business = businessComment.objects.all()
+    pharmacy = pharmacyComment.objects.all()
+    engineering = engineeringComment.objects.all()
+    music = musicComment.objects.all()
+    edu = eduComment.objects.all()
+    humanities = humanitiesComment.objects.all()
+    social = socialComment.objects.all()
+    natural = naturalComment.objects.all()
+    scraton = scratonComment.objects.all()
+    art = artComment.objects.all()
+    hokma = hokmaComment.objects.all()
+    
+    nursingList = nursing.filter(comment_writer = user)
+    convergenceList = convergence.filter(comment_writer = user)
+    businessList = business.filter(comment_writer = user)
+    pharmacyList = pharmacy.filter(comment_writer = user)
+    engineeringList = engineering.filter(comment_writer = user)
+    musicList = music.filter(comment_writer = user)
+    eduList = edu.filter(comment_writer = user)
+    humanitiesList = humanities.filter(comment_writer = user)
+    socialList = social.filter(comment_writer = user)
+    naturalList = natural.filter(comment_writer = user)
+    scratonList = scraton.filter(comment_writer = user)
+    artList = art.filter(comment_writer = user)
+    hokmaList = hokma.filter(comment_writer = user)
+
+
+    context = {
+        'nursingList' : nursingList,
+        'convergenceList' : convergenceList,
+        'businessList' : businessList,
+        'pharmacyList' : pharmacyList,
+        'engineeringList' : engineeringList,
+        'musicList' : musicList,
+        'eduList' : eduList,
+        'humanitiesList' : humanitiesList,
+        'socialList' : socialList,
+        'naturalList' : naturalList,
+        'scratonList' : scratonList,
+        'artList' : artList,
+        'hokmaList' : hokmaList,
+    }
+
+    return render(request, 'auths/commentedPostBoards.html', context)
+
 
 
 class myLike(generic.ListView):
