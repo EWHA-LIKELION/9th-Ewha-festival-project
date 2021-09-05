@@ -27,3 +27,5 @@ goBackButton.addEventListener('click', handleGoBackButtonClicked);
 function handleGoBackButtonClicked() {
   window.history.back();
 }
+const collegeTag = document.getElementById('college-tag');
+collegeTag.classList.add('booth-hashtag-filled');

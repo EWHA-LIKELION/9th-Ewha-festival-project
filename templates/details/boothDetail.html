@@ -33,10 +33,15 @@
         />
       </div>
       <img
-        src="{{post.image.url}}"
+        src="{{post.images.all.0.image.url}}"
         class="booth-main-image"
       />
       <div class="booth-container">
+        <div class="major-hashtag-item major-hashtag-colored" id="college-tag">
+          <div class="major-hashtag-label">
+            {{ post.hashtag_set.all.0.booth_tag }}
+          </div>
+        </div>
         <div class="booth-content-container">
           <div class="detail-booth-container">
             <div class="major-board-title">{{ post.title }}</div>
@@ -98,7 +103,9 @@
                 </div>
               </div>
               {% empty %}
-              <div>아직 댓글이 없어요~ 첫 댓글 달던지 말던지~</div>
+              <div class="no-comment-wrapper">
+                <div class="no-comment-text">아직 댓글이 없습니다.</div>
+              </div>
               {% endfor %}
             </div>
           </div>
