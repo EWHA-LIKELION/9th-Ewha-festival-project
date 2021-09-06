@@ -1,10 +1,13 @@
+from committee.models import committeePost
 from django.http.response import HttpResponseRedirect
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import *
+from booth.models import boothPost
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
 from account.models import Profile
+from django.db.models import Q
 import json
 
 
@@ -17,6 +20,66 @@ def main(request):
 # 부스보드 인포화면
 def collegeList(request):
     return render(request, 'frontScreens/collegeList.html')
+
+def search(request):  # 검색
+    query = request.GET['search']
+
+    nursing = nursingPost.objects.all()
+    convergence = convergencePost.objects.all()
+    business = businessPost.objects.all()
+    pharmacy = pharmacyPost.objects.all()
+    engineering = engineeringPost.objects.all()
+    music = musicPost.objects.all()
+    edu = eduPost.objects.all()
+    humanities = humanitiesPost.objects.all()
+    social = socialPost.objects.all()
+    natural = naturalPost.objects.all()
+    scraton = scratonPost.objects.all()
+    art = artPost.objects.all()
+    hokma = hokmaPost.objects.all()
+    committee = committeePost.objects.all()
+    booth = boothPost.objects.all()
+
+    if query:
+        nursing = nursing.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        convergence = convergence.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        business = business.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        pharmacy = pharmacy.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        engineering = engineering.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        music = music.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        edu = edu.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        humanities = humanities.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        social = social.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        natural = natural.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        scraton = scraton.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        art = art.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        hokma = hokma.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        committee = committee.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        booth = booth.filter(Q(title__icontains=query) | Q(body__icontains=query))
+
+        context = {
+            'nursing' : nursing,
+            'convergence' : convergence,
+            'business' : business,
+            'pharmacy' : pharmacy,
+            'engineering' : engineering,
+            'music' : music,
+            'edu' : edu,
+            'humanities' : humanities,
+            'social' : social,
+            'natural' : natural,
+            'scraton' : scraton,
+            'art' : art,
+            'hokma' : hokma,
+            'committee' : committee,
+            'booth' : booth,
+            'query' : query,
+        }        
+
+        return render(request, 'searches/search.html', context)
+        
+    else :
+        return redirect('main')
 
 
 #-------------- 간호대
@@ -48,6 +111,20 @@ def commentnursing(request, pk_id):
         return JsonResponse(context)
     else :
         return redirect('account:login')
+
+def nursingSearch(request):  # 검색
+    nursing = nursingPost.objects.all()
+    query = request.GET['search']
+
+    if query:
+        nursing = nursing.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        context = {
+            'nursing' : nursing,
+        }        
+        return render(request, 'searches/search.html', context)   
+          
+    else :
+        return redirect('main')
 
 #-------------- 신융대
 def convergence(request): #글리스트
@@ -424,24 +501,6 @@ def commenthokma(request, pk_id):
 
 
 
-
-# 검색
-def search(request):
-    collegepost = collegePost.objects.all().order_by('-id')
-    q1 = request.POST.get('q1', "")
-
-    boothpost = boothPost.objects.all().order_by('-id')
-    q2 = request.POST.get('q2', "")
-
-    if q1:
-        collegepost = collegepost.filter(title__icontains=q1)
-        return render(request, 'searches/searchBoards.html', {'collegeposts': collegepost, 'q1': q1})
-
-    elif q2:
-        boothpost = boothpost.filter(title__icontains=q2)
-        return render(request, 'searches/searchBooth.html', {'boothposts': boothpost, 'q2': q2})
-
-    else:
-        return render(request, 'searches/search.html')
-
+    
+        
 

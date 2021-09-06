@@ -70,8 +70,6 @@ def login(request):
                     context['error'] = value                   
     return render(request, 'auths/login.html', context)
 
-
-
 def logout(request):
     request.session.flush()
     return redirect('main')
@@ -95,16 +93,14 @@ def myboothComment(request, pk_id):
 
 
 @login_required(login_url='account:login')
-def mycommitteeComment(request, pk_id):
-    commentcommittee = committeeComment.objects.all()
-    user = get_object_or_404(Profile, pk=pk_id)
-    committeepostList = commentcommittee.filter(comment_writer = user)
-    return render(request, 'auths/commentedPostBoards.html', {'committepostList':committeepostList})
-
-@login_required(login_url='account:login')
 def mypostComment(request, pk_id):
     user = get_object_or_404(Profile, pk=pk_id)
+    
+    #committee에서 댓글
+    committee = committeeComment.objects.all()
+    committeeList = committee.filter(comment_writer = user)
 
+    #festival에서 댓글
     nursing = nursingComment.objects.all()
     convergence = convergenceComment.objects.all()
     business = businessComment.objects.all()
@@ -135,6 +131,7 @@ def mypostComment(request, pk_id):
 
 
     context = {
+        'committeeList' : committeeList,
         'nursingList' : nursingList,
         'convergenceList' : convergenceList,
         'businessList' : businessList,
