@@ -9,6 +9,8 @@ from .forms import RegisterForm, LoginForm
 from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
+from django.views.generic.base import View
+
 # Create your views here.
 def main(request):
     return render(request, "frontScreens/main.html")
@@ -40,21 +42,7 @@ def signup(request):
                     context['error'] = value
         return render(request, 'auths/signup.html', context)
        
-def hello(request):
-    context ={}
 
-    login_session = request.session.get('login_session','') #로그인 세션 정보 갖고 있는지
-
-    if login_session=='':
-        context['login_session'] = False
-    else: 
-        context['login_session'] = True
-    
-    return render (request, 'main', context)
-
-def mypage(request, pk_id):
-    user = get_object_or_404(Profile, pk=pk_id)
-    return render(request, "auths/myPage.html", {'user':user})
 
 
 def login(request):
@@ -68,9 +56,13 @@ def login(request):
         loginform = LoginForm(request.POST)
 
         if loginform.is_valid():
-            request.session['login_session'] = loginform.login_session
+            loginform.user_id = request.POST.get('user_id')
+            loginform.user_pw = request.POST.get('user_pw')
+
+            request.session['user'] = loginform.user_id
             request.session.set_expiry(0) #브라우저 닫을 시 세션 쿠키 삭제
             return redirect('main') #유효성검사 통과시 홈으로 
+
         else:
             context['forms'] = loginform
             if loginform.errors:
@@ -85,10 +77,19 @@ def logout(request):
     return redirect('main')
 
 
+def mypage(request):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get( user_id = user_id)
+        return render(request, 'auths/myPage.html', {'user':user})
+    else :
+        return redirect('account:login')
+
+
 @login_required(login_url='account:login')
 def myboothComment(request, pk_id):
     commentbooth = boothComment.objects.all()
-    user = get_object_or_404(Profile, pk=pk_id)
+    user = get_object_or_404(Profile, pk = pk_id )
     commentboothList = commentbooth.filter(comment_writer = user)
     return render(request, 'auths/commentedBoothBoards.html', {'commentboothList':commentboothList})
 
@@ -151,18 +152,13 @@ def mypostComment(request, pk_id):
 
     return render(request, 'auths/commentedPostBoards.html', context)
 
+def myLike(request):
+    user_id = request.session.get('user')
+    if user_id:
+        user = Profile.objects.get(user_id = user_id)
+        mylike = user.booth_like.all()
+        return render(request, 'auths/likedBoothBoards.html', {'mylike':mylike})
+    else :
+        return redirect('account:login')
 
-class myLike(generic.ListView):
-    model = boothPost
-    template_name = 'auths/likedBoothBoards.html'
 
-    def dispatch(self,request, *args, **kwargs):
-        if not request.user.is_authenticated: #로그인 확인
-            messages.warning(request, '로그인을 먼저 하세요')
-            return HttpResponseRedirect('/')
-        return super(myLike, self).dispatch(request,*args, **kwargs)
-
-    def get_queryset(self): #좋아요한 글 보여주기
-        user = self.request.user
-        queryset = user.booth_like.all()
-        return queryset #좋아요한 글 전부 리턴
