@@ -21,7 +21,6 @@ def boardboothPost(request):
         return render(request, 'boards/boothBoards.html', {'post': booth,'hashtag':boothtags})
     
 
-
 def detailboothPost(request, booth_id):
     user_id = request.session.get('user')
     detailBoothPost = get_object_or_404(boothPost, pk=booth_id)
@@ -30,6 +29,7 @@ def detailboothPost(request, booth_id):
         return render(request, 'details/boothDetail.html', {'post': detailBoothPost,'user':user})
     else :
         return render(request, 'details/boothDetail.html', {'post': detailBoothPost})
+
 
 def likelist(request, pk_id):
     user_id = request.session.get('user')

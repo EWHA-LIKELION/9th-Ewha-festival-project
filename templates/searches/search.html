@@ -20,7 +20,7 @@
   <div class="search-page-container">
     <div class="search-header">
       <div class="search-box-wrapper">
-          <img 
+          <!-- <img 
           id="back-button"
           src="/static/icons/common/go_back_no_background.svg">
           <div class="search-box">
@@ -32,7 +32,13 @@
       <ul class="menu">
         <li class="active">게시판</li>
         <li>부스</li>
-      </ul> 
+      </ul>  -->
+      {% for object in nursing.all %}
+      {{object.title}}
+      {% endfor %}
+      {% for object in humanities.all %}
+      {{object.title}}
+      {% endfor %}
     </div>
 </div>
 <script src="/static/js/common.js"></script>
