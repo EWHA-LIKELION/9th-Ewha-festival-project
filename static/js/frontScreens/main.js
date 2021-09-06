@@ -1,11 +1,11 @@
 const mypageButton = document.getElementById('mypage-button');
 
-function handleMyPageButtonClicked() {
-  console.log('Mypage button clicked');
-  document.location.href = 'account/mypage';
-}
+// function handleMyPageButtonClicked() {
+//   console.log('Mypage button clicked');
+//   document.location.href = 'account/mypage/user.pk_id';
+// }
 
-mypageButton.addEventListener('click', handleMyPageButtonClicked);
+// mypageButton.addEventListener('click', handleMyPageButtonClicked);
 
 const departmentButton = document.getElementById('department-board');
 
