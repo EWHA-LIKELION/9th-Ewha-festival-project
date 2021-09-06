@@ -12,7 +12,6 @@ class boothPost(models.Model):
     pub_time = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     hashtag_set = models.ManyToManyField('boothTags', blank=True)
-
     # 저장하기
     booth_like = models.ManyToManyField(Profile, related_name='booth_like', blank=True)
 
