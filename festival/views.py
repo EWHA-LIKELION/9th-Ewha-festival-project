@@ -1,10 +1,11 @@
 from django.http.response import HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import *
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
 from account.models import Profile
+import json
 
 
 # Create your views here.
@@ -27,24 +28,26 @@ def detailnursing(request, pk_id): #글 상세보기
     post = get_object_or_404(nursingPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def nursingComment(request, pk_id):
-    if request.method == 'POST':
+def commentnursing(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(nursingPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
+        nursing = nursingComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        nursing.save()
 
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        nursingComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
-
+        context = {
+            'content':nursing.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 #-------------- 신융대
 def convergence(request): #글리스트
@@ -55,23 +58,25 @@ def detailconvergence(request, pk_id): #글 상세보기
     post = get_object_or_404(convergencePost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def convergenceComment(request, pk_id):
-    if request.method == 'POST':
+def commentconvergence(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(convergencePost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        convergenceComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        convergence = convergenceComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        convergence.save()
+        context = {
+            'content':convergence.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 #-------------------------경영대
 def business(request): #글리스트
@@ -82,23 +87,25 @@ def detailbusiness(request, pk_id): #글 상세보기
     post = get_object_or_404(businessPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def businessComment(request, pk_id):
-    if request.method == 'POST':
+def commentbusiness(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(businessPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        businessComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        business = businessComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        business.save()
+        context = {
+            'content':business.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 
 #-------------------------약대
@@ -110,24 +117,26 @@ def detailpharmacy(request, pk_id): #글 상세보기
     post = get_object_or_404(pharmacyPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-
-def pharmacyComment(request, pk_id):
-    if request.method == 'POST':
+def commentpharmacy(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(pharmacyPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
+        pharmacy = pharmacyComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        pharmacy.save()
+        context = {
+            'content':pharmacy.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        pharmacyComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
 
 
 #--------------------------공대
@@ -139,23 +148,25 @@ def detailengineering(request, pk_id): #글 상세보기
     post = get_object_or_404(engineeringPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def engineeringComment(request, pk_id):
-    if request.method == 'POST':
+def commentengineering(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(engineeringPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        engineeringComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        engineering = engineeringComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        engineering.save()
+        context = {
+            'content':engineering.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 
 
@@ -169,23 +180,26 @@ def detailmusic(request, pk_id): #글 상세보기
     post = get_object_or_404(musicPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def musicComment(request, pk_id): 
-    post = get_object_or_404(musicPost, pk=pk_id)
-    if request.method == 'POST':
-        context = {'post': post}
-        content = request.POST.get('content')
+def commentmusic(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
+        post = get_object_or_404(musicPost, pk=pk_id)
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
+        music = musicComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        music.save()
+        context = {
+            'content':music.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        musicComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
 
 
 
@@ -199,23 +213,25 @@ def detailedu(request, pk_id): #글 상세보기
     post = get_object_or_404(eduPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def eduComment(request, pk_id):
-    if request.method == 'POST':
+def commentedu(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(eduPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        eduComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        edu = eduComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        edu.save()
+        context = {
+            'content':edu.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 
 #---------------------------인문대
@@ -229,24 +245,25 @@ def detailhumanities(request, pk_id): #글 상세보기
     post = get_object_or_404(humanitiesPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def humanitiesComment(request, pk_id):
-    if request.method == 'POST':
+def commenthumanities(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(humanitiesPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        humanitiesComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
-
+        humanities = humanitiesComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        humanities.save()
+        context = {
+            'content':humanities.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 #--------------------------사회대
 def social(request): #글리스트
@@ -258,23 +275,25 @@ def detailsocial(request, pk_id): #글 상세보기
     post = get_object_or_404(socialPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def socialComment(request, pk_id):
-    if request.method == 'POST':
+def commentsocial(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(socialPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        socialComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        social = socialComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        social.save()
+        context = {
+            'content':social.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 
 #--------------------------자연대
@@ -287,23 +306,26 @@ def detailnatural(request, pk_id): #글 상세보기
     post = get_object_or_404(naturalPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def naturalComment(request, pk_id):
-    if request.method == 'POST':
+def commentnatural(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(naturalPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
+        natural = naturalComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        natural.save()
+        context = {
+            'content':natural.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        naturalComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
 
 
 #--------------------------스크랜튼
@@ -316,23 +338,25 @@ def detailscraton(request, pk_id): #글 상세보기
     post = get_object_or_404(scratonPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def scratonComment(request, pk_id):
-    if request.method == 'POST':
+def commentscraton(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(scratonPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        scratonComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        scraton = scratonComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        scraton.save()
+        context = {
+            'content':scraton.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 
 
@@ -347,23 +371,25 @@ def detailart(request, pk_id): #글 상세보기
     post = get_object_or_404(artPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def artComment(request, pk_id):
-    if request.method == 'POST':
+def commentart(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(artPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        artComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        art = artComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        art.save()
+        context = {
+            'content':art.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 
 #--------------------------호크마
@@ -375,23 +401,25 @@ def detailhokma(request, pk_id): #글 상세보기
     post = get_object_or_404(hokmaPost, pk=pk_id)
     return render(request, 'details/detail.html', {'post':post})
 
-@login_required(login_url='account:login')
-def hokmaComment(request, pk_id):
-    if request.method == 'POST':
+def commenthokma(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
         post = get_object_or_404(hokmaPost, pk=pk_id)
-        context = {'post': post}
-        content = request.POST.get('content')
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        hokmaComment.objects.create(
-            post=post, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
+        hokma = hokmaComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        hokma.save()
+        context = {
+            'content':hokma.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
 
 
 

@@ -12,12 +12,23 @@ from account.models import Profile
 def boardboothPost(request):
     booth = boothPost.objects.all()
     boothtags = boothTags.objects.all()
-    return render(request, 'boards/boothBoards.html', {'post': booth,'hashtag':boothtags})
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        return render(request, 'boards/boothBoards.html', {'post': booth,'hashtag':boothtags, 'user':user})
+    else :
+        return render(request, 'boards/boothBoards.html', {'post': booth,'hashtag':boothtags})
+    
 
 
 def detailboothPost(request, booth_id):
+    user_id = request.session.get('user')
     detailBoothPost = get_object_or_404(boothPost, pk=booth_id)
-    return render(request, 'details/boothDetail.html', {'post': detailBoothPost})
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        return render(request, 'details/boothDetail.html', {'post': detailBoothPost,'user':user})
+    else :
+        return render(request, 'details/boothDetail.html', {'post': detailBoothPost})
 
 def likelist(request, pk_id):
     user_id = request.session.get('user')
@@ -28,10 +39,12 @@ def likelist(request, pk_id):
             booth.booth_like.remove(user)
         else:
             booth.booth_like.add(user)
+    else :
+        return redirect('account:login')
+
     referer_url = request.META.get('HTTP_REFERER')
     path = urlparse(referer_url).path
     return HttpResponseRedirect(path)
-
 
 @login_required(login_url='account:login')
 def comment_write_booth(request, pk_id):

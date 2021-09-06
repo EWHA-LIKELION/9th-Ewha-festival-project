@@ -108,7 +108,7 @@ function commentSubmit(event) {
   }    
   console.log(currentCollege);
   $.ajax({
-    url:`{{post.pk}}`,
+    url:`${currentCollege}/{{post.pk}}/comment`,
     type:'POST',
     headers:{
       'X-CSRFTOKEN':'{{csrf_token}}',
