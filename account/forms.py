@@ -2,6 +2,7 @@ from django import forms
 from django.forms.widgets import ClearableFileInput
 from .models import Profile #pip install argon2-cffi
 
+
 class RegisterForm(forms.ModelForm):
     user_image = forms.ImageField(
         label='학생증 사진',
@@ -147,7 +148,7 @@ class RegisterForm(forms.ModelForm):
             self.user_image = user_image
             self.user_phone = user_phone
             self.user_id = user_id
-            self.user_pw = user_pw
+            self.user_pw = PasswordHasher().hash(user_pw)
             self.user_pw_confirm = user_pw_confirm
             self.user_name = user_name
             self.user_nickname = user_nickname

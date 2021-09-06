@@ -10,6 +10,7 @@ from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
 from django.views.generic.base import View
+
 # Create your views here.
 def main(request):
     return render(request, "frontScreens/main.html")
@@ -41,6 +42,7 @@ def signup(request):
                     context['error'] = value
         return render(request, 'auths/signup.html', context)
        
+
 
 
 def login(request):
