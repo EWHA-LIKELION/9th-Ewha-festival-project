@@ -31,7 +31,7 @@ for (const summaryIcon of summaryIcons) {
 //   let param={
 //     'pk_id': '{{post.pk}}',
 //     'content':content,
-//   }    
+//   }
 //   console.log(param);
 //   $.ajax({
 //     url:`${currentCollege}/{{post.pk}}`,
@@ -46,7 +46,7 @@ for (const summaryIcon of summaryIcons) {
 //     error:function(e){
 //       console.log('error');
 //       console.log({{post.pk}});
-//     }      
+//     }
 
 //   })
 //   //commentInput.value = '';
@@ -56,6 +56,8 @@ for (const summaryIcon of summaryIcons) {
 
 const headerName = document.getElementById('header-name');
 const currentPosition = document.location.pathname.split('/');
-const currentCollege=currentPosition[currentPosition.length - 2]
+const currentCollege = currentPosition[currentPosition.length - 2];
 console.log(currentCollege);
 headerName.textContent = college[currentCollege];
+const collegeTag = document.getElementById('college-tag');
+collegeTag.classList.add(`${currentCollege}-hashtag-filled`);

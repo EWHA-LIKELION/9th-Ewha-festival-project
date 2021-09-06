@@ -25,7 +25,15 @@
     </div>
 
     <div class="detail-container">
+      {% if post.hashtag_set %}
+      <div class="major-hashtag-item major-hashtag-colored" id="college-tag">
+        <div class="major-hashtag-label">
+          {{ post.hashtag_set.all.0.college_tag }}
+        </div>
+      </div>
+      {% endif %}
       <div class="major-board-title">{{ post.title }}</div>
+
       <div class="article-info">
         <div class="article-date">{{ post.pub_time|date:"Y/m/d H:i" }}</div>
         <div class="icon-number-box">
@@ -44,7 +52,7 @@
       <div class="gallery" id="gallery">
         {% for image in post.images.all %}
         <img class="post-picture" id="post-picture" src="{{image.image.url}}" />
-        <br/>
+        <br />
         {% endfor %}
       </div>
     </div>
@@ -72,7 +80,9 @@
         <div class="written-comment-text">{{comment.comment_contents}}</div>
       </div>
       {% empty %}
-      <div>아직 댓글이 없어요~ 첫 댓글 달던지 말던지~</div>
+      <div class="no-comment-wrapper">
+        <div class="no-comment-text">아직 댓글이 없습니다.</div>
+      </div>
       {% endfor %}
     </div>
 
@@ -86,41 +96,44 @@
         placeholder="댓글을 입력하세요"
         name="content"
       />
-      <button class="comment-submit-button" id='comment-submit-button' type="submit"></button>
+      <button
+        class="comment-submit-button"
+        id="comment-submit-button"
+        type="submit"
+      ></button>
     </form>
     <script>
       //댓글 쓰기
-    const commentInput = document.getElementById('comment-input');
-    const commentSubmitBtn = document.getElementById('comment-submit-button');
+      const commentInput = document.getElementById('comment-input');
+      const commentSubmitBtn = document.getElementById('comment-submit-button');
 
-    function commentSubmit(event) {
-      // console.log(commentInput.value);
-      let content=commentInput.value;
-      event.preventDefault();
-      let param={
-        'pk_id': '{{post.pk}}',
-        'content':content,
-      }    
-      console.log(currentCollege);
-      $.ajax({
-        url:`{{post.pk}}`,
-        type:'POST',
-        headers:{
-          'X-CSRFTOKEN':'{{csrf_token}}',
-        },
-        data:JSON.stringify(param),
-        success:function(data){
-          console.log("SUCCESS");
-          console.log(data);
-        },
-        error:function(e){
-          console.log(e);
-        }  
-      })
-      content = '';
-    }
-    commentSubmitBtn.onclick = commentSubmit;
-
+      function commentSubmit(event) {
+        // console.log(commentInput.value);
+        let content = commentInput.value;
+        event.preventDefault();
+        let param = {
+          pk_id: '{{post.pk}}',
+          content: content,
+        };
+        console.log(currentCollege);
+        $.ajax({
+          url: `{{post.pk}}`,
+          type: 'POST',
+          headers: {
+            'X-CSRFTOKEN': '{{csrf_token}}',
+          },
+          data: JSON.stringify(param),
+          success: function (data) {
+            console.log('SUCCESS');
+            console.log(data);
+          },
+          error: function (e) {
+            console.log(e);
+          },
+        });
+        content = '';
+      }
+      commentSubmitBtn.onclick = commentSubmit;
     </script>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/details/detail.js"></script>
