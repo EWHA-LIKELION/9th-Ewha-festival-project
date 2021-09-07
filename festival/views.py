@@ -86,7 +86,7 @@ def searchPost(request):  # 검색
 
 #-------------- 간호대
 def nursing(request): #글리스트
-    post = nursingPost.objects.all()
+    post = nursingPost.objects.all().order_by('-pub_time')
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailnursing(request, pk_id): #글 상세보기
@@ -131,7 +131,7 @@ def nursingSearch(request):  # 검색
 
 #-------------- 신융대
 def convergence(request): #글리스트
-    post = convergencePost.objects.all()
+    post = convergencePost.objects.all().order_by('-pub_time')
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailconvergence(request, pk_id): #글 상세보기
@@ -161,7 +161,7 @@ def commentconvergence(request, pk_id):
 
 #-------------------------경영대
 def business(request): #글리스트
-    post = businessPost.objects.all()
+    post = businessPost.objects.all().order_by('-pub_time')
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailbusiness(request, pk_id): #글 상세보기
@@ -192,7 +192,7 @@ def commentbusiness(request, pk_id):
 
 #-------------------------약대
 def pharmacy(request): #글리스트
-    post = pharmacyPost.objects.all()
+    post = pharmacyPost.objects.all().order_by('-pub_time')
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailpharmacy(request, pk_id): #글 상세보기
@@ -224,7 +224,7 @@ def commentpharmacy(request, pk_id):
 
 #--------------------------공대
 def engineering(request): #글리스트
-    post = engineeringPost.objects.all()
+    post = engineeringPost.objects.all().order_by('-pub_time')
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailengineering(request, pk_id): #글 상세보기
@@ -257,7 +257,7 @@ def commentengineering(request, pk_id):
 
 #--------------------------음대
 def music(request): #글리스트
-    post = musicPost.objects.all()
+    post = musicPost.objects.all().order_by('-pub_time')
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailmusic(request, pk_id): #글 상세보기
@@ -290,7 +290,7 @@ def commentmusic(request, pk_id):
 
 #----------------------------사범대
 def edu(request): #글리스트
-    post = eduPost.objects.all()
+    post = eduPost.objects.all().order_by('-pub_time') 
     hashtag = eduTags.objects.all()
     return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
@@ -322,7 +322,7 @@ def commentedu(request, pk_id):
 
 #---------------------------인문대
 def humanities(request): #글리스트
-    post = humanitiesPost.objects.all()
+    post = humanitiesPost.objects.all().order_by('-pub_time')
     hashtag = humanitiesTags.objects.all()
 
     return render(request, 'boards/collegeBoards.html', {'post':post,'hashtag':hashtag})
@@ -354,7 +354,7 @@ def commenthumanities(request, pk_id):
 
 #--------------------------사회대
 def social(request): #글리스트
-    post = socialPost.objects.all()
+    post = socialPost.objects.all().order_by('-pub_time')
     hashtag = socialTags.objects.all()
     return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
@@ -386,7 +386,7 @@ def commentsocial(request, pk_id):
 
 #--------------------------자연대
 def natural(request): #글리스트
-    post = naturalPost.objects.all()
+    post = naturalPost.objects.all().order_by('-pub_time')
     hashtag = naturalTags.objects.all()
     return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
@@ -419,7 +419,7 @@ def commentnatural(request, pk_id):
 
 #--------------------------스크랜튼
 def scraton(request): #글리스트
-    post = scratonPost.objects.all()
+    post = scratonPost.objects.all().order_by('-pub_time')
     hashtag = scratonTags.objects.all()
     return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
@@ -453,7 +453,7 @@ def commentscraton(request, pk_id):
 
 #--------------------------조예대
 def art(request): #글리스트
-    post = artPost.objects.all()
+    post = artPost.objects.all().order_by('-pub_time')
     hashtag = artTags.objects.all()
     return render(request, 'boards/collegeBoards.html', {'post':post, 'hashtag':hashtag})
 
@@ -485,7 +485,7 @@ def commentart(request, pk_id):
 
 #--------------------------호크마
 def hokma(request): #글리스트
-    post = hokmaPost.objects.all()
+    post = hokmaPost.objects.all().order_by('-pub_time')
     return render(request, 'boards/collegeBoards.html', {'post':post})
 
 def detailhokma(request, pk_id): #글 상세보기

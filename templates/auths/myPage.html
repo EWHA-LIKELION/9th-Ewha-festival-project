@@ -28,7 +28,7 @@
       <div class="user-email">{{user.user_email}}</div>
       <div class="user-list-wrapper">
         <a
-          href="{% url 'account:mypostComment' user.id %}"
+          href="{% url 'account:mypostComment' %}"
           style="text-decoration: none"
         >
           <div class="user-list-item" id="commented-post-list">
@@ -38,7 +38,7 @@
           </div>
         </a>
         <a
-          href="{% url 'account:myboothComment' user.id %}"
+          href="{% url 'account:myboothComment' %}"
           style="text-decoration: none"
         >
           <div class="user-list-item" id="commented-booth-list">

@@ -12,7 +12,7 @@ def main(request):
     return render(request, 'frontScreens/main.html')
 
 def committeeList(request):
-    committee = committeePost.objects.all()
+    committee = committeePost.objects.all().order_by('-pub_time')
     return render(request, 'boards/centralCommitteeBoards.html', {'post' : committee})
 
 def detailcommitteePost(request, pk_id):

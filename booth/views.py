@@ -11,7 +11,7 @@ import json
 # Create your views here.
 
 def boardboothPost(request):
-    booth = boothPost.objects.all()
+    booth = boothPost.objects.all().order_by('-pub_time')
     boothtags = boothTags.objects.all()
     user_id = request.session.get('user')
     if user_id :
