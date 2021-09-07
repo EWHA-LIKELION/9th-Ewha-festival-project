@@ -10,6 +10,8 @@ from booth.models import boothComment, boothPost
 from committee.models import committeeComment
 from festival.models import *
 from django.views.generic.base import View
+from django.views.decorators.csrf import csrf_exempt
+from urllib.parse import urlparse
 
 # Create your views here.
 def main(request):
@@ -43,8 +45,7 @@ def signup(request):
         return render(request, 'auths/signup.html', context)
        
 
-
-
+@csrf_exempt
 def login(request):
     loginform = LoginForm()
     context ={'forms': loginform}
@@ -54,26 +55,24 @@ def login(request):
     
     elif request.method =='POST':
         loginform = LoginForm(request.POST)
-
-        if loginform.is_valid():
+        loginform.user_id = request.POST.get('user_id')
+        
+        if loginform.user_id :
             loginform.user_id = request.POST.get('user_id')
             loginform.user_pw = request.POST.get('user_pw')
 
             request.session['user'] = loginform.user_id
             request.session.set_expiry(0) #브라우저 닫을 시 세션 쿠키 삭제
             return redirect('main') #유효성검사 통과시 홈으로 
-
         else:
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
-                    context['error'] = value                   
-    return render(request, 'auths/login.html', context)
+                    context['error'] = value          
 
 def logout(request):
     request.session.flush()
     return redirect('main')
-
 
 def mypage(request):
     user_id = request.session.get('user')
@@ -84,70 +83,79 @@ def mypage(request):
         return redirect('account:login')
 
 
-@login_required(login_url='account:login')
 def myboothComment(request, pk_id):
-    commentbooth = boothComment.objects.all()
-    user = get_object_or_404(Profile, pk = pk_id )
-    commentboothList = commentbooth.filter(comment_writer = user)
-    return render(request, 'auths/commentedBoothBoards.html', {'commentboothList':commentboothList})
+    user_id = request.session.get('user')
+    if not user_id:
+        return redirect('account:login')
+
+    else :
+        user = Profile.objects.get(user_id = user_id)
+        commentbooth = boothComment.objects.all()
+        user = get_object_or_404(Profile, pk = pk_id )
+        commentboothList = commentbooth.filter(comment_writer = user).distinct()
+        return render(request, 'auths/commentedBoothBoards.html', {'commentboothList':commentboothList})
 
 
-@login_required(login_url='account:login')
 def mypostComment(request, pk_id):
-    user = get_object_or_404(Profile, pk=pk_id)
-    
-    #committee에서 댓글
-    committee = committeeComment.objects.all()
-    committeeList = committee.filter(comment_writer = user)
+    user_id = request.session.get('user')
+    if not user_id:
+        return redirect('account:login')
 
-    #festival에서 댓글
-    nursing = nursingComment.objects.all()
-    convergence = convergenceComment.objects.all()
-    business = businessComment.objects.all()
-    pharmacy = pharmacyComment.objects.all()
-    engineering = engineeringComment.objects.all()
-    music = musicComment.objects.all()
-    edu = eduComment.objects.all()
-    humanities = humanitiesComment.objects.all()
-    social = socialComment.objects.all()
-    natural = naturalComment.objects.all()
-    scraton = scratonComment.objects.all()
-    art = artComment.objects.all()
-    hokma = hokmaComment.objects.all()
-    
-    nursingList = nursing.filter(comment_writer = user)
-    convergenceList = convergence.filter(comment_writer = user)
-    businessList = business.filter(comment_writer = user)
-    pharmacyList = pharmacy.filter(comment_writer = user)
-    engineeringList = engineering.filter(comment_writer = user)
-    musicList = music.filter(comment_writer = user)
-    eduList = edu.filter(comment_writer = user)
-    humanitiesList = humanities.filter(comment_writer = user)
-    socialList = social.filter(comment_writer = user)
-    naturalList = natural.filter(comment_writer = user)
-    scratonList = scraton.filter(comment_writer = user)
-    artList = art.filter(comment_writer = user)
-    hokmaList = hokma.filter(comment_writer = user)
+    else :
+        user = Profile.objects.get(user_id = user_id)
+
+        #committee에서 댓글
+        committee = committeeComment.objects.all()
+        committeeList = committee.filter(comment_writer = user)
+
+        #festival에서 댓글
+        nursing = nursingComment.objects.all()
+        convergence = convergenceComment.objects.all()
+        business = businessComment.objects.all()
+        pharmacy = pharmacyComment.objects.all()
+        engineering = engineeringComment.objects.all()
+        music = musicComment.objects.all()
+        edu = eduComment.objects.all()
+        humanities = humanitiesComment.objects.all()
+        social = socialComment.objects.all()
+        natural = naturalComment.objects.all()
+        scraton = scratonComment.objects.all()
+        art = artComment.objects.all()
+        hokma = hokmaComment.objects.all()
+        
+        nursingList = nursing.filter(comment_writer = user).distinct()
+        convergenceList = convergence.filter(comment_writer = user).distinct()
+        businessList = business.filter(comment_writer = user).distinct()
+        pharmacyList = pharmacy.filter(comment_writer = user).distinct()
+        engineeringList = engineering.filter(comment_writer = user).distinct()
+        musicList = music.filter(comment_writer = user).distinct()
+        eduList = edu.filter(comment_writer = user).distinct()
+        humanitiesList = humanities.filter(comment_writer = user).distinct()
+        socialList = social.filter(comment_writer = user).distinct()
+        naturalList = natural.filter(comment_writer = user).distinct()
+        scratonList = scraton.filter(comment_writer = user).distinct()
+        artList = art.filter(comment_writer = user).distinct()
+        hokmaList = hokma.filter(comment_writer = user).distinct()
 
 
-    context = {
-        'committeeList' : committeeList,
-        'nursingList' : nursingList,
-        'convergenceList' : convergenceList,
-        'businessList' : businessList,
-        'pharmacyList' : pharmacyList,
-        'engineeringList' : engineeringList,
-        'musicList' : musicList,
-        'eduList' : eduList,
-        'humanitiesList' : humanitiesList,
-        'socialList' : socialList,
-        'naturalList' : naturalList,
-        'scratonList' : scratonList,
-        'artList' : artList,
-        'hokmaList' : hokmaList,
-    }
+        context = {
+            'committeeList' : committeeList,
+            'nursingList' : nursingList,
+            'convergenceList' : convergenceList,
+            'businessList' : businessList,
+            'pharmacyList' : pharmacyList,
+            'engineeringList' : engineeringList,
+            'musicList' : musicList,
+            'eduList' : eduList,
+            'humanitiesList' : humanitiesList,
+            'socialList' : socialList,
+            'naturalList' : naturalList,
+            'scratonList' : scratonList,
+            'artList' : artList,
+            'hokmaList' : hokmaList,
+        }
 
-    return render(request, 'auths/commentedPostBoards.html', context)
+        return render(request, 'auths/commentedPostBoards.html', context)
 
 def myLike(request):
     user_id = request.session.get('user')

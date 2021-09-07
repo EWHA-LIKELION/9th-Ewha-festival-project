@@ -63,6 +63,7 @@ def commentbooth(request, pk_id):
         booth.save()
         context = {
             'content':booth.comment_contents,
+            'user': booth.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :

@@ -8,12 +8,14 @@ app_name='festival'
 urlpatterns = [
     path('', views.collegeList, name='collegeList'),
     path('search/', views.search, name='search'),
+    path('searchPost/', views.searchPost, name='searchPost'),
+    path('boothsearch/', views.boothsearch, name='boothsearch'),
+    path('searchBooth/', views.searchBooth, name='searchBooth'),
     
     path('nursing/', views.nursing, name='nursing'),
     path('nursing/<int:pk_id>', views.detailnursing, name='detailnursing'),
     path('nursing/nursing/<int:pk_id>/comment', views.commentnursing, name='nursingComment'),
-    path('nursing/search', views.nursingSearch, name='nursingSearch'),
-    
+
     path('convergence/', views.convergence, name='convergence'),
     path('convergence/<int:pk_id>', views.detailconvergence, name='detailconvergence'),
     path('convergence/convergence/<int:pk_id>/comment', views.commentconvergence, name='convergenceComment'),

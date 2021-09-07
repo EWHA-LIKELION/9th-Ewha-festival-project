@@ -21,7 +21,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
-@media screen and (min-width: 425px) {
+@media screen and (min-width: 375px) {
   .background-image {
     background-size: contain;
   }
@@ -113,61 +113,79 @@ body {
   display: none;
 }
 .major-hashtag-label {
-  line-height: 35px;
+  line-height: 13px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   text-align: center;
-  color: rgb(0 0 0/0.6);
   width: 100%;
   white-space: nowrap;
 }
 .major-hashtag-item {
-  border-radius: 12px;
+  border-radius: 20px;
   border: 1px solid;
-  border-color: #80e0ff;
+  background: rgba(255, 255, 255, 0.7);
   margin-right: 8px;
   height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px 12px;
+  padding: 11px 12px;
 }
 .humanities-hashtag-outline {
-  border-color: #cbcbcb;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(177, 177, 177, 0.5);
 }
 .humanities-hashtag-filled {
-  background-color: #cbcbcb;
+  background-color: #b1b1b1;
+  border-color: #b1b1b1;
+  color: #ffffff;
 }
 .social-hashtag-outline {
-  border-color: #80e0ff;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(11, 165, 232, 0.5);
 }
 .social-hashtag-filled {
-  background-color: #80e0ff;
+  background-color: #0ba5e8;
+  border-color: #0ba5e8;
+  color: #ffffff;
 }
 .edu-hashtag-outline {
-  border-color: #52d1ea;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(30, 210, 235, 0.5);
 }
 .edu-hashtag-filled {
-  background-color: #52d1ea;
+  background-color: #1ed2eb;
+  border-color: #1ed2eb;
+  color: #ffffff;
 }
 .natural-hashtag-outline {
-  border-color: #ffe05b;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(243, 202, 27, 0.5);
 }
 .natural-hashtag-filled {
-  background-color: #ffe05b;
+  background-color: #f3ca1b;
+  border-color: #f3ca1b;
+  color: #ffffff;
 }
 
 .scraton-hashtag-outline {
-  border-color: #91ebda;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(67, 226, 206, 0.5);
 }
 .scraton-hashtag-filled {
-  background-color: #91ebda;
+  background-color: #43e2ce;
+  border-color: #43e2ce;
+  color: #ffffff;
 }
 .booth-hashtag-outline {
-  border-color: #91ebda;
+  color: rgba(0, 0, 0, 0.5);
+  border-color: rgba(45, 222, 88, 0.5);
+  background: #ffffff;
 }
 .booth-hashtag-filled {
-  background-color: #91ebda;
+  background-color: #2dde58;
+  border-color: #2dde58;
+  color: #ffffff;
 }
 
 /* text */
@@ -243,6 +261,7 @@ body {
   font-size: 16px;
   line-height: 23px;
   color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 13px;
 }
 /* mainheader */
 .header-wrapper {
@@ -343,8 +362,7 @@ img.arrow-image {
   color: rgba(0, 0, 0, 0.9);
 }
 .post-picture {
-  
-  width:100%;
+  width: 100%;
   border-radius: 9px;
   background: #c4c4c4;
   object-fit: cover;
@@ -394,6 +412,11 @@ img.arrow-image {
 }
 
 /* 부스 글 리스트 요소 */
+@media (max-width: 340px){
+  .booth-list-wrapper{
+    margin-bottom:20px;
+  }
+}
 .booth-list-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -528,4 +551,15 @@ img .summary-icon {
   font-size: 1.2rem;
   border-style: none;
   background: transparent;
+}
+.no-comment-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+.no-comment-text {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  color: rgba(0, 0, 0, 0.3);
 }

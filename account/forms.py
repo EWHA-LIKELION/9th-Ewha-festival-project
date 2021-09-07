@@ -148,7 +148,7 @@ class RegisterForm(forms.ModelForm):
             self.user_image = user_image
             self.user_phone = user_phone
             self.user_id = user_id
-            self.user_pw = PasswordHasher().hash(user_pw)
+            self.user_pw = user_pw
             self.user_pw_confirm = user_pw_confirm
             self.user_name = user_name
             self.user_nickname = user_nickname

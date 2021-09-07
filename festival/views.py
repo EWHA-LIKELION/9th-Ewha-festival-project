@@ -21,7 +21,13 @@ def main(request):
 def collegeList(request):
     return render(request, 'frontScreens/collegeList.html')
 
-def search(request):  # 검색
+def search(request):
+    return render(request, 'searches/search.html')
+
+def searchBooth(request):  # 검색
+    return render(request, 'searches/searchBooth.html')
+
+def searchPost(request):  # 검색
     query = request.GET['search']
 
     nursing = nursingPost.objects.all()
@@ -75,11 +81,25 @@ def search(request):  # 검색
             'booth' : booth,
             'query' : query,
         }        
-
         return render(request, 'searches/search.html', context)
         
     else :
-        return redirect('main')
+        return redirect('festival:search')
+
+def boothsearch(request):  # 검색
+    query = request.GET['search']
+    print(query)
+    booth = boothPost.objects.all()
+
+    if query:
+        booth = booth.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        context = {
+            'booth' : booth,
+            'query' : query,
+        }        
+        return render(request, 'searches/searchBooth.html', context)      
+    else :
+        return redirect('festival:search')
 
 
 #-------------- 간호대
@@ -107,6 +127,7 @@ def commentnursing(request, pk_id):
 
         context = {
             'content':nursing.comment_contents,
+            'user': nursing.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -150,6 +171,7 @@ def commentconvergence(request, pk_id):
         convergence.save()
         context = {
             'content':convergence.comment_contents,
+            'user': convergence.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -179,6 +201,7 @@ def commentbusiness(request, pk_id):
         business.save()
         context = {
             'content':business.comment_contents,
+            'user': business.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -209,6 +232,7 @@ def commentpharmacy(request, pk_id):
         pharmacy.save()
         context = {
             'content':pharmacy.comment_contents,
+            'user': pharmacy.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -240,6 +264,7 @@ def commentengineering(request, pk_id):
         engineering.save()
         context = {
             'content':engineering.comment_contents,
+            'user': engineering.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -272,6 +297,7 @@ def commentmusic(request, pk_id):
         music.save()
         context = {
             'content':music.comment_contents,
+            'user': music.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -305,6 +331,7 @@ def commentedu(request, pk_id):
         edu.save()
         context = {
             'content':edu.comment_contents,
+            'user': edu.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -337,6 +364,7 @@ def commenthumanities(request, pk_id):
         humanities.save()
         context = {
             'content':humanities.comment_contents,
+            'user': humanities.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -367,6 +395,7 @@ def commentsocial(request, pk_id):
         social.save()
         context = {
             'content':social.comment_contents,
+            'user': social.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -398,6 +427,7 @@ def commentnatural(request, pk_id):
         natural.save()
         context = {
             'content':natural.comment_contents,
+            'user': natural.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -430,6 +460,7 @@ def commentscraton(request, pk_id):
         scraton.save()
         context = {
             'content':scraton.comment_contents,
+            'user': scraton.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -463,6 +494,7 @@ def commentart(request, pk_id):
         art.save()
         context = {
             'content':art.comment_contents,
+            'user': art.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
@@ -493,6 +525,7 @@ def commenthokma(request, pk_id):
         hokma.save()
         context = {
             'content':hokma.comment_contents,
+            'user': hokma.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :

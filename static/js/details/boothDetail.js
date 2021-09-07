@@ -1,5 +1,5 @@
-const likeBoothButton = document.getElementById('like-button');
-function handleLikeButtonFilled(event) {
+const likeBoothButton = document.getElementById('like-button-icon');
+function handleLikeButtonClicked(event) {
   if (event.target.src) {
     if (event.target.src.indexOf('empty') !== -1) {
       event.target.src = event.target.src.replace('empty', 'filled');
@@ -27,3 +27,5 @@ goBackButton.addEventListener('click', handleGoBackButtonClicked);
 function handleGoBackButtonClicked() {
   window.history.back();
 }
+const collegeTag = document.getElementById('college-tag');
+collegeTag.classList.add('booth-hashtag-filled');
