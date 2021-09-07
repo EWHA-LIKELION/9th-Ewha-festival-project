@@ -1,9 +1,48 @@
-const majorHashTag = document.querySelectorAll('.major-hashtag-white');
+const currentLocation = document.location.pathname.split('/');
+const currentCollege = currentLocation[currentLocation.length - 2];
+
+let tagList = [];
+const TAG_LS = `${currentCollege}`;
+
+const collegeName = document.getElementById('college-name');
+collegeName.textContent = college[currentCollege];
+
+function saveToLS() {
+  localStorage.setItem(TAG_LS, JSON.stringify(tagList));
+}
+
+function loadSelectedTags() {
+  const selectedTag = localStorage.getItem(TAG_LS);
+  if (selectedTag !== null) {
+    const parseTags = JSON.parse(selectedTag);
+    parseTags.forEach((tag) => {
+      tagList.push(tag);
+      const collegeTag = document.getElementById(tag);
+      collegeTag.classList.add(`${currentCollege}-hashtag-filled`);
+    });
+  }
+  filterPosts();
+}
+
+const majorHashTag = document.querySelectorAll('.major-hashtag-item');
 function handleHashtagClicked(event) {
-  console.log(event.target.id);
+  if (
+    event.currentTarget.classList.value.indexOf(
+      `${currentCollege}-hashtag-filled`
+    ) === -1
+  ) {
+    event.currentTarget.classList.add(`${currentCollege}-hashtag-filled`);
+    tagList.push(event.currentTarget.id);
+  } else {
+    event.currentTarget.classList.remove(`${currentCollege}-hashtag-filled`);
+    tagList = tagList.filter((tag) => tag !== event.currentTarget.id);
+  }
+  saveToLS();
+  filterPosts();
 }
 majorHashTag.forEach((hashtag) => {
   hashtag.addEventListener('click', handleHashtagClicked);
+  hashtag.classList.add(`${currentCollege}-hashtag-outline`);
 });
 
 const collegePost = document.querySelectorAll('.board-wrapper');
@@ -17,8 +56,22 @@ function handlePostClicked(event) {
   console.log(event.currentTarget);
   document.location.href = `${event.currentTarget.id.toString()}`;
 }
-const currentCollege = document.location.pathname.split('/');
-console.log(currentCollege[currentCollege.length - 2]);
+loadSelectedTags();
 
-const collegeName = document.getElementById('college-name');
-collegeName.textContent = college[currentCollege[currentCollege.length - 2]];
+function filterPosts() {
+  const filteredElement = document.querySelectorAll('.board-wrapper');
+  const filterList = JSON.parse(localStorage.getItem(TAG_LS));
+  if (filterList.length) {
+    filteredElement.forEach((element) => {
+      if (filterList.includes(element.className.split(' ')[1])) {
+        element.style.visibility = 'visible';
+      } else {
+        element.style.visibility = 'hidden';
+      }
+    });
+  } else {
+    filteredElement.forEach((element) => {
+      element.style.visibility = 'visible';
+    });
+  }
+}

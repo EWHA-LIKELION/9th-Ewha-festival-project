@@ -29,9 +29,9 @@
 
     <div class="booth-sort-wrapper">
       <div class="booth-number-backtext">
-        총 <span class="booth-number">3</span>개의 부스
+        총 <span class="booth-number">{{mylike.all|length}}</span>개의 부스
       </div>
-      <div class="booth-sort-dropdown-wrapper">
+      <!-- <div class="booth-sort-dropdown-wrapper">
         <img
           class="booth-sort-icon"
           src="/static/icons/common/sort_icon.svg"
@@ -42,10 +42,10 @@
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-      </div>
+      </div> -->
     </div>
-
     <div class="booth-list-container">
+      {% for booth in mylike%}
       <div class="booth-list-wrapper">
         <div class="booth-list-heart-background" id="like-button">
           <img
@@ -53,44 +53,17 @@
             src="/static/icons/common/filled_heart_icon.svg"
           />
         </div>
-        <img class="booth-list-image" src="#" />
+        {% with booth.images.all|first as image%}
+        <img class="booth-list-image" src="{{image.image.url}}" />
+        {% endwith %}
         <div class="booth-list-label-wrapper" id="booth-label">
-          <div class="booth-list-label-header">부스 이름</div>
+          <div class="booth-list-label-header">{{booth.title}}</div>
           <div class="booth-list-label-content">
-            부스에 대한 간략한 소개를 하는 텍스트
+            {{booth.intro}}
           </div>
         </div>
       </div>
-      <div class="booth-list-wrapper">
-        <div class="booth-list-heart-background" id="like-button">
-          <img
-            class="heart-icon"
-            src="/static/icons/common/filled_heart_icon.svg"
-          />
-        </div>
-        <img class="booth-list-image" src="#" />
-        <div class="booth-list-label-wrapper" id="booth-label">
-          <div class="booth-list-label-header">부스 이름</div>
-          <div class="booth-list-label-content">
-            부스에 대한 간략한 소개를 하는 텍스트
-          </div>
-        </div>
-      </div>
-      <div class="booth-list-wrapper">
-        <div class="booth-list-heart-background" id="like-button">
-          <img
-            class="heart-icon"
-            src="/static/icons/common/filled_heart_icon.svg"
-          />
-        </div>
-        <img class="booth-list-image" src="#" />
-        <div class="booth-list-label-wrapper" id="booth-label">
-          <div class="booth-list-label-header">부스 이름</div>
-          <div class="booth-list-label-content">
-            부스에 대한 간략한 소개를 하는 텍스트
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </body>
   <script src="/static/js/auths/likedBoothBoards.js"></script>

@@ -1,6 +1,7 @@
 from django import forms
 from django.forms.widgets import ClearableFileInput
-from .models import User #pip install argon2-cffi
+from .models import Profile #pip install argon2-cffi
+
 
 class RegisterForm(forms.ModelForm):
     user_image = forms.ImageField(
@@ -14,6 +15,7 @@ class RegisterForm(forms.ModelForm):
         error_messages={'required':'학생증 사진을 첨부해주세요.'}
     )
     user_id = forms.CharField(
+
         label='아이디',
         required=True,
         widget=forms.TextInput(
@@ -99,6 +101,7 @@ class RegisterForm(forms.ModelForm):
         error_messages={'required':'전화번호를 입력해주세요.',
                         'unique': '중복된 전화번호입니다.'}
     )
+    
     field_order =[
         'user_image',
         'user_name',
@@ -111,13 +114,14 @@ class RegisterForm(forms.ModelForm):
     ]
 
     class Meta:
-        model = User
+        model = Profile
         fields = [
             'user_image',
-            'user_id',
-            'user_pw',
             'user_name',
             'user_nickname',
+            'user_id',
+            'user_pw',
+            'user_pw_confirm',
             'user_email',
             'user_phone',
         ]
@@ -125,6 +129,8 @@ class RegisterForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean() # super().clean() 메서드를 호출하게 되면 부모 클래스의 모든 유효성 검사 논리가 유지됩니다.
 
+        user_image=cleaned_data.get('user_image','')
+        user_phone=cleaned_data.get('user_phone', '')
         user_name = cleaned_data.get('user_name','')
         user_nickname = cleaned_data.get('user_nickname','')
         user_id = cleaned_data.get('user_id','')
@@ -139,12 +145,15 @@ class RegisterForm(forms.ModelForm):
         elif 8 >len(user_pw):
             return self.add_error('user_pw', '비밀번호는 8자 이상 입력해 주세요.')
         else:
+            self.user_image = user_image
+            self.user_phone = user_phone
             self.user_id = user_id
             self.user_pw = user_pw
             self.user_pw_confirm = user_pw_confirm
             self.user_name = user_name
             self.user_nickname = user_nickname
             self.user_email = user_email
+
 
 class LoginForm(forms.Form):
     user_id = forms.CharField(
@@ -189,13 +198,13 @@ class LoginForm(forms.Form):
             return self.add_error('user_pw','비밀번호를 다시 입력해 주세요.')
         else:
             try:
-                user = User.objects.get(user_id=user_id)
-            except User.DoesNotExist :
+                user = Profile.objects.get(user_id=user_id)
+            except Profile.DoesNotExist :
                 return self.add_error('user_id','아이디가 존재하지 않습니다.')
             
             try:
-                user = User.objects.get(user_pw=user_pw)
-            except User.DoesNotExist :
+                user = Profile.objects.get(user_pw=user_pw)
+            except Profile.DoesNotExist :
                 return self.add_error('user_pw','비밀번호가 존재하지 않습니다.')
             
             self.login_session = user.user_id
@@ -203,3 +212,5 @@ class LoginForm(forms.Form):
                 #PasswordHasher().verify(user.user_pw, user_pw)
             #except exceptions.VerifyMismatchError:
                 #return self.add_error('user_pw','비밀번호가 다릅니다.')
+
+

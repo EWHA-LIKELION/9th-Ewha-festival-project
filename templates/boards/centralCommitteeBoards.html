@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="/static/css/component.css"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="/static/css/component.css" type="text/css" />
     <link
       rel="stylesheet"
       href="/static/css/boards/collegeBoards.css"
@@ -16,7 +12,7 @@
     />
     <title>Document</title>
   </head>
-  <body>
+  <body class="background-color-white">
     <div class="collegeBoards-wrapper">
       <div class="header-wrapper">
         <a href="#"
@@ -34,31 +30,35 @@
         /></a>
       </div>
       <div class="subheader-container">
-        <div class="subheader-text">중앙운영위원회</div>
-        <div class="subheader-icon" id='search-button'></div>
+        <div class="subheader-text" id="college-name">중앙운영위원회</div>
+        <div class="subheader-icon" id="search-button"></div>
       </div>
-      <div class="board-wrapper" id="articleBox" >
-        <div class="wrap-title-arrow" >
-          <div class="post-title">글의 제목입니다.</div>
-          <img
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          <div class="post-picture"></div>
-          <div class="post-article">
-            커다란 고래부터 작은 플랑크톤까지 먹이가 다양한데, 포식성 상어들의
-            경우 빠져도 얼마든지 다시
+      <div class="college-posts-container">
+        {% for articlepost in post.all %}
+        <div class="board-wrapper" id="{{articlepost.id}}">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{articlepost.title}}</div>
+            <img
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
           </div>
-          <div class="post-date">9/1</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
+          <div class="contents-wrapper">
+            {% with articlepost.images.all|first as image%}
+            <img class="post-picture" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{articlepost.body}}</div>
+            <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{ articlepost.comments.all|length }}
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
     <script src="/static/js/common.js"></script>
+    <script src="/static/js/boards/collegeBoards.js"></script>
   </body>
-  <script src="/static/js/boards/collegeBoards.js"></script>
 </html>
