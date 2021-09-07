@@ -107,6 +107,7 @@ def commentnursing(request, pk_id):
 
         context = {
             'content':nursing.comment_contents,
+            'user': nursing.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :
