@@ -21,7 +21,10 @@ def main(request):
 def collegeList(request):
     return render(request, 'frontScreens/collegeList.html')
 
-def search(request):  # 검색
+def search(request):
+    return render(request, 'searches/search.html')
+
+def searchPost(request):  # 검색
     query = request.GET['search']
 
     nursing = nursingPost.objects.all()
@@ -75,7 +78,6 @@ def search(request):  # 검색
             'booth' : booth,
             'query' : query,
         }        
-
         return render(request, 'searches/search.html', context)
         
     else :
