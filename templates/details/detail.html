@@ -104,8 +104,36 @@
     </form>
     <script>
       //댓글 쓰기
-      const commentInput = document.getElementById('comment-input');
-      const commentSubmitBtn = document.getElementById('comment-submit-button');
+const commentInput = document.getElementById('comment-input');
+const commentSubmitBtn = document.getElementById('comment-submit-button');
+
+function commentSubmit(event) {
+  // console.log(commentInput.value);
+  let content=commentInput.value;
+  event.preventDefault();
+  let param={
+    'pk_id': '{{post.pk}}',
+    'content':content,
+  }    
+  console.log(currentCollege);
+  $.ajax({
+    url:`${currentCollege}/{{post.pk}}/comment`,
+    type:'POST',
+    headers:{
+      'X-CSRFTOKEN':'{{csrf_token}}',
+    },
+    data:JSON.stringify(param),
+    success:function(data){
+      console.log("SUCCESS");
+      console.log(data);
+    },
+    error:function(e){
+      console.log(e);
+    }  
+  })
+  content = '';
+}
+commentSubmitBtn.onclick = commentSubmit;
 
       function commentSubmit(event) {
         // console.log(commentInput.value);

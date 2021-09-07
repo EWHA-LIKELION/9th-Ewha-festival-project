@@ -1,10 +1,11 @@
 from django.http.response import HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import committeePost, committeeComment
 from account.models import Profile
 from django.contrib.auth.decorators import login_required
 from urllib.parse import urlparse
+import json
 
 
 def main(request):
@@ -20,28 +21,22 @@ def detailcommitteePost(request, pk_id):
 
 
 #committe 댓글
-@login_required(login_url='account:login')
-def commentCommittee(request, pk_id):
-    if request.method == 'POST':
-        committeepost = get_object_or_404(committeePost, pk_id=pk_id)
-        context = {'committepost': committeepost, }
-        content = request.POST.get('content')
+def commentcommittee(request, pk_id):
+    user_id = request.session.get('user')
+    if user_id :
+        user = Profile.objects.get(user_id = user_id)
+        jsonObject = json.loads(request.body)
+        post = get_object_or_404(committeePost, pk=pk_id)
 
-        conn_user = request.user
-        conn_profile = Profile.objects.get(user=conn_user)
-
-        if not content:
-            messages.info(request, '내용이 없습니다')
-            return render(request, 'details/detail.html', context=content)
-
-        committeeComment.objects.create(
-            post=committeepost, comment_writer=conn_profile, comment_contents=content)
-        return render(request, 'details/detail.html', context=content)
-
-
-
-@login_required(login_url='account:login')
-def mycommitteeComment(request):
-    comment = committeeComment.objects.all()
-    commentList = comment.filter(comment_writer=request.user.user_nickname)
-    return render(request, 'auths/commentedPostBoards.html', {'commentList':commentList})
+        committee = committeeComment.objects.create(
+            post = post,
+            comment_writer = user,
+            comment_contents = jsonObject.get('content')
+        )
+        committee.save()
+        context = {
+            'content':committee.comment_contents,
+        }
+        return JsonResponse(context)
+    else :
+        return redirect('account:login')
