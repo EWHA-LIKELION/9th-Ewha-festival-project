@@ -46,7 +46,7 @@
       </div> -->
     </div>
     <div class="booth-list-container">
-    {% for booth in commentboothList %}
+    {% for booth in commentboothList.all %}
       <div class="booth-list-wrapper">
         <div class="booth-list-heart-background" id="like-button">
           <img
@@ -54,13 +54,13 @@
             src="/static/icons/common/empty_heart_icon.svg"
           />
         </div>
-        {% with booth.images.all|first as image%}
+        {% with booth.post.images.all|first as image%}
         <img class="booth-list-image" src="{{image.image.url}}" />
         {% endwith %}
         <div class="booth-list-label-wrapper" id="booth-label">
-          <div class="booth-list-label-header">{{booth.title}}</div>
+          <div class="booth-list-label-header">{{booth.post.title}}</div>
           <div class="booth-list-label-content">
-            {{booth.intro}}
+            {{booth.post.intro}}
           </div>
         </div>
       </div>
