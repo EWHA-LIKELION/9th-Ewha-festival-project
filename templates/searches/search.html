@@ -25,10 +25,22 @@
           <img id="back-button" src="/static/icons/common/go_back_no_background.svg">
           <div class="search-box">
             <img src="/static/icons/common/search_icon.svg" />
-            <input type="text" value="{{ search|default_if_none:''}}" name="search" placeholder="검색어를 입력해주세요." />
+            <input type="text" placeholder="검색어를 입력해주세요." />
             <img src="/static/icons/common/delete_btn.svg" />
           </div>
-        </form>
+        </div>
+        <ul class="menu">
+          <li class="nav-header active" id="post-header">게시판</li>
+          <li class="nav-header" id="booth-header">부스</li>
+        </ul>
+      </div>
+      <div>
+        <div class="search-board-container content" id="post-container">
+          <div>hihi</div>
+        </div>
+        <div class="booth-list-container content" id="booth-container">
+          <div>booth</div>
+        </div>
       </div>
       <ul class="menu">
         <li class="nav-header active" id="post-header">게시판</li>
