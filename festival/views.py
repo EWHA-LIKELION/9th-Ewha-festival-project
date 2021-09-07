@@ -23,7 +23,7 @@ def collegeList(request):
 
 def search(request):
     return render(request, 'searches/search.html')
-    
+
 def searchPost(request):  # 검색
     query = request.GET['search']
 
@@ -78,7 +78,6 @@ def searchPost(request):  # 검색
             'booth' : booth,
             'query' : query,
         }        
-
         return render(request, 'searches/search.html', context)
         
     else :
