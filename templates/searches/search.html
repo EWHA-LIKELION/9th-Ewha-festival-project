@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/static/css/searches/search.css"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="search-page-container">
-      <div class="search-header">
-        <div class="search-box-wrapper">
-          <img
-            id="back-button"
-            src="/static/icons/common/go_back_no_background.svg"
-          />
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="/static/css/component.css"
+  />
+  <link
+  rel="stylesheet"
+  type="text/css"
+  href="/static/css/searches/search.css"
+  />
+  <title>Document</title>
+</head>
+<body>
+  <div class="search-page-container">
+    <div class="search-header">
+      <div class="search-box-wrapper">
+        <form action = "{% url 'festival:searchPost' %}" method='GET' id='search-input'>
+          {% csrf_token %}
+          <img id="back-button" src="/static/icons/common/go_back_no_background.svg">
           <div class="search-box">
             <img src="/static/icons/common/search_icon.svg" />
             <input type="text" placeholder="검색어를 입력해주세요." />
@@ -39,9 +42,362 @@
           <div>booth</div>
         </div>
       </div>
+      <ul class="menu">
+        <li class="nav-header active" id="post-header">게시판</li>
+        <li class="nav-header" id="booth-header">부스</li>
+      </ul> 
     </div>
+    <!-- 부스 검색 내용 -->
 
-    <script src="/static/js/common.js"></script>
-    <script src="/static/js/searches/search.js"></script>
-  </body>
+    <div class="booth-list-container" id="booth-container">
+      {% for object in booth.all%}
+      <div class="booth-list-wrapper">
+        <div class="booth-list-heart-background">
+          <img
+            class="heart-icon"
+            src="/static/icons/common/empty_heart_icon.svg"
+          />
+        </div>
+        {% with object.images.all|first as image%}
+        <img class="booth-list-image" src="{{image.image.url}}" />
+        {% endwith %}
+          <div class="booth-list-label-wrapper">
+            <div class="booth-list-label-header">{{object.title}}</div>
+            <div class="booth-list-label-content">
+              {{object.intro}}
+            </div>
+          </div>
+      </div>
+      {% endfor %}  
+    </div>
+ 
+    <div class="search-board-container" id="post-container">
+      {% for object in nursing.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in humanities.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in art.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in business.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in convergence.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in edu.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in engineering.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in hokma.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in music.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in natural.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in pharmacy.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in scraton.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in social.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% for object in committee.all %}
+      <div class="board-wrapper">
+        <div class="wrap-title-arrow">
+          <div class="post-title">{{object.title}}</div>
+          <img
+            src="/static/icons/common/right_arrow_icon.svg"
+            class="arrow-image"
+          />
+        </div>
+          <div class="contents-wrapper">
+            {% with object.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+          <div class="post-article">
+            {{object.body}}
+          </div>
+          <div class="post-date">{{object.pub_time|date:"m/d"}}</div>
+          <div class="post-comment-number">
+            <img src="/static/icons/common/comment_icon.svg" />{{ object.comments.all|length }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/searches/search.js"></script>
+</body>
 </html>

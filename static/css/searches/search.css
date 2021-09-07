@@ -71,3 +71,6 @@ li{
 .heart-icon {
     margin: 11px 9px;
 }
+#search-input{
+    display:flex;
+}
