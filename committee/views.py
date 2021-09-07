@@ -36,6 +36,7 @@ def commentcommittee(request, pk_id):
         committee.save()
         context = {
             'content':committee.comment_contents,
+            'user': committee.comment_writer.user_nickname,
         }
         return JsonResponse(context)
     else :

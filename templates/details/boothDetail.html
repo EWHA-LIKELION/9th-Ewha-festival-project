@@ -118,24 +118,25 @@
               {% endfor %}
             </div>
           </div>
-
-          <!-- 댓글달기 -->
-          <form class="comment-box-wrapper">
-            <input
-              id="comment-input"
-              class="comment-inputbox"
-              placeholder="댓글을 입력하세요"
-            />
-
-            <img
-              id="comment-submit-button"
-              src="/static/icons/common/comment_submit.svg"
-              class="comment-submit-button"
-            />
-          </form>
         </div>
       </div>
-    </div>
+    </div>          
+    <!-- 댓글달기 -->
+          <form class="comment-box-wrapper">
+            {% csrf_token %}
+            <input
+              id="comment-input"
+              type="text"
+              class="comment-inputbox"
+              placeholder="댓글을 입력하세요"
+              name="content"
+            />
+            <button
+              class="comment-submit-button"
+              id="comment-submit-button"
+              type="submit"
+            ></button>
+          </form>
     <!-- 좋아요 기능 -->
     <script>
       function handleLikeButtonClicked(event) {
@@ -171,7 +172,7 @@
       }    
 
       $.ajax({  
-        url:`booth/{{post.pk}}/comment`,
+        url:'{% url "booth:boothComment" post.pk %}',
         type:'POST',
         headers:{
           'X-CSRFTOKEN':'{{csrf_token}}',
@@ -180,8 +181,9 @@
         success:function(data){
           console.log("SUCCESS");
           console.log(data);
-          let commentContainer=document.querySelector('.comment-container');
+          let commentContainer=document.querySelector('.booth-comment-container');
           let newDiv=document.createElement('div');
+          let noComment=document.querySelector('.no-comment-wrapper');
           newDiv.classList.add('written-comment-box');
           let str=`<div class="wrap-user-and-icon">
                   <div class="written-comment-user">${data.user}</div>
@@ -190,6 +192,7 @@
                   <div class="written-comment-text">${data.content}</div>`
           newDiv.innerHTML=str;
           commentContainer.append(newDiv);
+          noComment.remove();
           commentInput.value='';
         },
         error:function(e){

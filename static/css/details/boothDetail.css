@@ -37,7 +37,8 @@ body {
 .booth-content-container {
   background: #ffffff;
   width: 100%;
-  max-height: calc(100vh - 57px);
+  /* max-height: calc(100vh - 57px); */
+  height:auto;
   overflow: scroll;
   border-radius: 35px 35px 0px 0px;
 }
