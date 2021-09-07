@@ -58,9 +58,7 @@
       <div class="booth-list-wrapper {{boothpost.hashtag_set.all.0.booth_tag}}" id="{{boothpost.id}}">
         {% else %}
       <div class="booth-list-wrapper" id="{{boothpost.id}}">
-
         {% endif %}
-        <a href='{% url "booth:boothLike" boothpost.id %}'>
           <div class="booth-list-heart-background" id="like-button">
             {% if user in boothpost.booth_like.all %}
             <img
@@ -77,7 +75,6 @@
             {% endif %}
           </div>
         </a>
-        
         {% with boothpost.images.all|first as image%}
         <img class="booth-list-image" src="{{image.image.url}}" />
         {% endwith %}
@@ -88,6 +85,7 @@
       </div>
       {% endfor %}
     </div>
+    
   </body>
   <script src="/static/js/boards/boothBoards.js"></script>
   <script src="/static/js/common.js"></script>
