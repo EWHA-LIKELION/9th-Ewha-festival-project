@@ -7,7 +7,7 @@ from django.views import generic
 from account.models import Profile
 from .forms import RegisterForm, LoginForm
 from booth.models import boothComment, boothPost
-from committee.models import committeeComment
+from committee.models import committeeComment,committeePost
 from festival.models import *
 from django.views.generic.base import View
 from django.views.decorators.csrf import csrf_exempt
@@ -83,20 +83,29 @@ def mypage(request):
         return redirect('account:login')
 
 
-def myboothComment(request, pk_id):
+
+def filterPost(college,collegeAll,user):
+    commentPostList = collegeAll.filter(comment_writer = user).order_by('post_id')
+    print(commentPostList.values())
+    filtered = commentPostList.values_list('post_id',flat=True).distinct()
+    filteredPost = college.filter(id__in=filtered)
+    return filteredPost
+
+def myboothComment(request):
     user_id = request.session.get('user')
     if not user_id:
         return redirect('account:login')
 
     else :
         user = Profile.objects.get(user_id = user_id)
+        boothAll = boothPost.objects.all()
         commentbooth = boothComment.objects.all()
-        user = get_object_or_404(Profile, pk = pk_id )
-        commentboothList = commentbooth.filter(comment_writer = user).distinct()
-        return render(request, 'auths/commentedBoothBoards.html', {'commentboothList':commentboothList})
+
+        filteredBooth =filterPost(boothAll,commentbooth,user)
+        return render(request, 'auths/commentedBoothBoards.html', {'commentboothList':filteredBooth})
 
 
-def mypostComment(request, pk_id):
+def mypostComment(request):
     user_id = request.session.get('user')
     if not user_id:
         return redirect('account:login')
@@ -105,55 +114,42 @@ def mypostComment(request, pk_id):
         user = Profile.objects.get(user_id = user_id)
 
         #committee에서 댓글
+
+        committeeAll =committeePost.objects.all()
         committee = committeeComment.objects.all()
-        committeeList = committee.filter(comment_writer = user)
+        committeeList = filterPost(committeeAll,committee,user)
 
-        #festival에서 댓글
-        nursing = nursingComment.objects.all()
-        convergence = convergenceComment.objects.all()
-        business = businessComment.objects.all()
-        pharmacy = pharmacyComment.objects.all()
-        engineering = engineeringComment.objects.all()
-        music = musicComment.objects.all()
-        edu = eduComment.objects.all()
-        humanities = humanitiesComment.objects.all()
-        social = socialComment.objects.all()
-        natural = naturalComment.objects.all()
-        scraton = scratonComment.objects.all()
-        art = artComment.objects.all()
-        hokma = hokmaComment.objects.all()
-        
-        nursingList = nursing.filter(comment_writer = user).distinct()
-        convergenceList = convergence.filter(comment_writer = user).distinct()
-        businessList = business.filter(comment_writer = user).distinct()
-        pharmacyList = pharmacy.filter(comment_writer = user).distinct()
-        engineeringList = engineering.filter(comment_writer = user).distinct()
-        musicList = music.filter(comment_writer = user).distinct()
-        eduList = edu.filter(comment_writer = user).distinct()
-        humanitiesList = humanities.filter(comment_writer = user).distinct()
-        socialList = social.filter(comment_writer = user).distinct()
-        naturalList = natural.filter(comment_writer = user).distinct()
-        scratonList = scraton.filter(comment_writer = user).distinct()
-        artList = art.filter(comment_writer = user).distinct()
-        hokmaList = hokma.filter(comment_writer = user).distinct()
-
+        #festival에서 글
+        nursingAll = nursingPost.objects.all()
+        convergenceAll = convergencePost.objects.all()
+        businessAll = businessPost.objects.all()
+        pharmacyAll = pharmacyPost.objects.all()
+        engineeringAll = engineeringPost.objects.all()
+        musicAll = musicPost.objects.all()
+        humanitiesAll = humanitiesPost.objects.all()
+        eduAll = eduPost.objects.all()
+        socialAll = socialPost.objects.all()
+        naturalAll = naturalPost.objects.all()
+        scratonAll = scratonPost.objects.all()
+        artAll = artPost.objects.all()
+        hokmaAll = hokmaPost.objects.all()
 
         context = {
             'committeeList' : committeeList,
-            'nursingList' : nursingList,
-            'convergenceList' : convergenceList,
-            'businessList' : businessList,
-            'pharmacyList' : pharmacyList,
-            'engineeringList' : engineeringList,
-            'musicList' : musicList,
-            'eduList' : eduList,
-            'humanitiesList' : humanitiesList,
-            'socialList' : socialList,
-            'naturalList' : naturalList,
-            'scratonList' : scratonList,
-            'artList' : artList,
-            'hokmaList' : hokmaList,
-        }
+            'nursingList' : filterPost(nursingAll,nursing,user),
+            'convergenceList' :  filterPost(convergenceAll,convergence,user),
+            'businessList' :  filterPost(businessAll,business,user),
+            'pharmacyList' :  filterPost(pharmacyAll,pharmacy,user),
+            'engineeringList' :  filterPost(engineeringAll,engineering,user),
+            'musicList' :  filterPost(musicAll,music,user),
+            'eduList' :  filterPost(eduAll,edu,user),
+            'humanitiesList' :  filterPost(humanitiesAll,humanities,user),
+            'socialList' :  filterPost(socialAll,social,user),
+            'naturalList' :  filterPost(naturalAll,natural,user),
+            'scratonList' :  filterPost(scratonAll,scraton,user),
+            'artList' :  filterPost(artAll,art,user),
+            'hokmaList' :  filterPost(hokmaAll,hokma,user),
+
 
         return render(request, 'auths/commentedPostBoards.html', context)
 
@@ -165,5 +161,4 @@ def myLike(request):
         return render(request, 'auths/likedBoothBoards.html', {'mylike':mylike})
     else :
         return redirect('account:login')
-
 

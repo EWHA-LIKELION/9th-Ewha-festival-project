@@ -40,7 +40,7 @@ a {
   margin-bottom: 20px;
   margin-top: 20px;
   width: 90%;
-  margin-left: auto;
+  margin-left: 20px;
 }
 .booth-sort-dropdown-wrapper {
   display: flex;

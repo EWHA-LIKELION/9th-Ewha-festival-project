@@ -37,9 +37,10 @@
         <li>부스</li>
       </ul> 
     </div>
-
+    <div class="search-result-text">총 3개의 부스</div> 
+    {% for object in booth.all%}
     <div class="booth-list-container">
-      {% for object in booth.all%}
+
       <div class="booth-list-wrapper">
         <div class="booth-list-heart-background">
           <img
@@ -58,7 +59,6 @@
       {% endfor %} 
     </div>
      
-
 </div>
 </body>
 </html>
