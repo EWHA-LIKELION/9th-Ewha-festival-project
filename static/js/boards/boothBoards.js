@@ -46,6 +46,7 @@ themeHashtagButton.forEach((tag) => {
 });
 
 function handleBoothTagClicked(event) {
+  console.log('hi');
   if (
     event.currentTarget.classList.value.indexOf(
       `${currentUrl}-hashtag-filled`
@@ -61,7 +62,7 @@ function handleBoothTagClicked(event) {
   filterPosts();
 }
 
-const likeBoothButton = document.querySelectorAll('#like-button');
+const likeBoothButton = document.querySelectorAll('#like-button-icon');
 for (let i = 0; i < likeBoothButton.length; i++) {
   likeBoothButton[i].addEventListener('click', handleLikeButtonClicked);
 }

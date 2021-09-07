@@ -103,48 +103,48 @@
       ></button>
     </form>
     <script>
-    //댓글 작성
-    const commentInput = document.getElementById('comment-input');
-    const commentSubmitBtn = document.getElementById('comment-submit-button');
+      //댓글 작성
+      const commentInput = document.getElementById('comment-input');
+      const commentSubmitBtn = document.getElementById('comment-submit-button');
 
-    function commentSubmit(event) {
-      event.preventDefault(); //새로고침 방지
-      let content=commentInput.value;
-      let param={
-        'pk_id': '{{post.pk}}',
-        'content':content,
-      }    
+      function commentSubmit(event) {
+        event.preventDefault(); //새로고침 방지
+        let content = commentInput.value;
+        let param = {
+          pk_id: '{{post.pk}}',
+          content: content,
+        };
 
-      $.ajax({  
-        url:`${currentCollege}/{{post.pk}}/comment`,
-        type:'POST',
-        headers:{
-          'X-CSRFTOKEN':'{{csrf_token}}',
-        },
-        data:JSON.stringify(param),
-        success:function(data){
-          console.log("SUCCESS");
-          console.log(data);
-          let commentContainer=document.querySelector('.comment-container');
-          let newDiv=document.createElement('div');
-          let noComment=document.querySelector('.no-comment-wrapper');
-          newDiv.classList.add('written-comment-box');
-          let str=`<div class="wrap-user-and-icon">
+        $.ajax({
+          url: `${currentCollege}/{{post.pk}}/comment`,
+          type: 'POST',
+          headers: {
+            'X-CSRFTOKEN': '{{csrf_token}}',
+          },
+          data: JSON.stringify(param),
+          success: function (data) {
+            console.log('SUCCESS');
+            console.log(data);
+            let commentContainer = document.querySelector('.comment-container');
+            let newDiv = document.createElement('div');
+            let noComment = document.querySelector('.no-comment-wrapper');
+            newDiv.classList.add('written-comment-box');
+            let str = `<div class="wrap-user-and-icon">
                   <div class="written-comment-user">${data.user}</div>
                   <img id="summary-icon" src="/static/icons/common/comment_more_icon.svg" class="summary-icon"/>
                   </div>
-                  <div class="written-comment-text">${data.content}</div>`
-          newDiv.innerHTML=str;
-          commentContainer.append(newDiv);
-          noComment.remove();
-          commentInput.value='';
-        },
-        error:function(e){
-          console.log(e);
-        }  
-      })
-    }
-    commentSubmitBtn.onclick = commentSubmit;
+                  <div class="written-comment-text">${data.content}</div>`;
+            newDiv.innerHTML = str;
+            commentContainer.append(newDiv);
+            noComment.remove();
+            commentInput.value = '';
+          },
+          error: function (e) {
+            console.log(e);
+          },
+        });
+      }
+      commentSubmitBtn.onclick = commentSubmit;
     </script>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/details/detail.js"></script>
