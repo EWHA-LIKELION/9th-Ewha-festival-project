@@ -46,7 +46,6 @@ themeHashtagButton.forEach((tag) => {
 });
 
 function handleBoothTagClicked(event) {
-  console.log('hi');
   if (
     event.currentTarget.classList.value.indexOf(
       `${currentUrl}-hashtag-filled`
