@@ -329,7 +329,7 @@ body {
   max-height: 100%;
   max-width: 100%;
   background: #ffffff;
-  margin-bottom: 8px;
+  margin-top: 8px;
 }
 .contents-wrapper {
   display: grid;
