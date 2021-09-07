@@ -45,7 +45,7 @@
           </div>
           <div class="contents-wrapper">
             {% with articlepost.images.all|first as image%}
-            <img class="post-picture" src="{{image.image.url}}" />
+            <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
             <div class="post-article">{{articlepost.body}}</div>
             <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>

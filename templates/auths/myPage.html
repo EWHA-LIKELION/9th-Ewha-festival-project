@@ -27,28 +27,33 @@
       <div class="user-nickname">{{user.user_nickname}}</div>
       <div class="user-email">{{user.user_email}}</div>
       <div class="user-list-wrapper">
-        <a href ="{% url 'account:mypostComment' user.id %}">
+        <a
+          href="{% url 'account:mypostComment' %}"
+          style="text-decoration: none"
+        >
           <div class="user-list-item" id="commented-post-list">
             <img src="/static/icons/common/commented_post_icon.svg" />
             <div class="user-list-label">댓글 단 글</div>
             <img src="/static/icons/common/right_arrow_icon.svg" />
           </div>
         </a>
-        <a href ="{% url 'account:myboothComment' user.id %}">
-        <div class="user-list-item" id="commented-booth-list">
-          <img src="/static/icons/common/commented_booth_icon.svg" />
-          <div class="user-list-label">댓글 단 부스</div>
-          <img src="/static/icons/common/right_arrow_icon.svg" />
-        </div>
-      </a>
-        <a href = "{% url 'account:myLike' %}">
+        <a
+          href="{% url 'account:myboothComment' %}"
+          style="text-decoration: none"
+        >
+          <div class="user-list-item" id="commented-booth-list">
+            <img src="/static/icons/common/commented_booth_icon.svg" />
+            <div class="user-list-label">댓글 단 부스</div>
+            <img src="/static/icons/common/right_arrow_icon.svg" />
+          </div>
+        </a>
+        <a href="{% url 'account:myLike' %}" style="text-decoration: none">
           <div class="user-list-item" id="liked-booth-list">
             <img src="/static/icons/common/liked_booth_icon.svg" />
             <div class="user-list-label">좋아요 한 부스</div>
             <img src="/static/icons/common/right_arrow_icon.svg" />
           </div>
         </a>
-        
       </div>
     </div>
   </body>

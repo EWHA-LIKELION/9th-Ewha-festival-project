@@ -26,6 +26,7 @@ function loadSelectedTags() {
 
 const majorHashTag = document.querySelectorAll('.major-hashtag-item');
 function handleHashtagClicked(event) {
+  location.reload();
   if (
     event.currentTarget.classList.value.indexOf(
       `${currentCollege}-hashtag-filled`
@@ -66,7 +67,7 @@ function filterPosts() {
       if (filterList.includes(element.className.split(' ')[1])) {
         element.style.visibility = 'visible';
       } else {
-        element.style.visibility = 'hidden';
+        element.remove();
       }
     });
   } else {
