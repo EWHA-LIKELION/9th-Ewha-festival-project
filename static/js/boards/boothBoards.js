@@ -29,7 +29,7 @@ function filterPosts() {
       if (filterList.includes(element.className.split(' ')[1])) {
         element.style.visibility = 'visible';
       } else {
-        element.style.visibility = 'hidden';
+        element.remove();
       }
     });
   } else {
@@ -46,6 +46,7 @@ themeHashtagButton.forEach((tag) => {
 });
 
 function handleBoothTagClicked(event) {
+  location.reload();
   if (
     event.currentTarget.classList.value.indexOf(
       `${currentUrl}-hashtag-filled`
