@@ -20,8 +20,8 @@
   <div class="search-page-container">
     <div class="search-header">
       <div class="search-box-wrapper">
-        <form action = "{% url 'festival:searchPost' %}" method='GET'>
-          {% csrf_token %}
+        <form action = "{% url 'festival:boothsearch' %}" method='GET'>
+          {% csrf_token %} 
           <img id="back-button" src="/static/icons/common/go_back_no_background.svg">
           <div class="search-box">
             <img src="/static/icons/common/search_icon.svg" />
@@ -31,14 +31,16 @@
         </form>
       </div>
     </div>
+    <div>
       <ul class="menu">
-        <li class="active">게시판</li>
+        <li><a href="{% url 'festival:search' %}">게시판</a></li>
         <li>부스</li>
       </ul> 
     </div>
     <div class="search-result-text">총 3개의 부스</div> 
     {% for object in booth.all%}
     <div class="booth-list-container">
+
       <div class="booth-list-wrapper">
         <div class="booth-list-heart-background">
           <img
@@ -52,10 +54,11 @@
             <div class="booth-list-label-content">
               {{object.intro}}
             </div>
-          </div>
+          </div>   
       </div>
+      {% endfor %} 
     </div>
-    {% endfor %}   
+     
 </div>
 </body>
 </html>

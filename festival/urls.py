@@ -9,6 +9,8 @@ urlpatterns = [
     path('', views.collegeList, name='collegeList'),
     path('search/', views.search, name='search'),
     path('searchPost/', views.searchPost, name='searchPost'),
+    path('boothsearch/', views.boothsearch, name='boothsearch'),
+    path('searchBooth/', views.searchBooth, name='searchBooth'),
     
     path('nursing/', views.nursing, name='nursing'),
     path('nursing/<int:pk_id>', views.detailnursing, name='detailnursing'),

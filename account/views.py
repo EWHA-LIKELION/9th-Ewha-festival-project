@@ -11,6 +11,7 @@ from committee.models import committeeComment,committeePost
 from festival.models import *
 from django.views.generic.base import View
 from django.views.decorators.csrf import csrf_exempt
+from urllib.parse import urlparse
 
 # Create your views here.
 def main(request):
@@ -63,13 +64,11 @@ def login(request):
             request.session['user'] = loginform.user_id
             request.session.set_expiry(0) #브라우저 닫을 시 세션 쿠키 삭제
             return redirect('main') #유효성검사 통과시 홈으로 
-
         else:
             context['forms'] = loginform
             if loginform.errors:
                 for value in loginform.errors.values():
-                    context['error'] = value                   
-    return render(request, 'auths/login.html', context)
+                    context['error'] = value          
 
 def logout(request):
     request.session.flush()
@@ -82,6 +81,7 @@ def mypage(request):
         return render(request, 'auths/myPage.html', {'user':user})
     else :
         return redirect('account:login')
+
 
 
 def filterPost(college,collegeAll,user):
@@ -114,6 +114,7 @@ def mypostComment(request):
         user = Profile.objects.get(user_id = user_id)
 
         #committee에서 댓글
+
         committeeAll =committeePost.objects.all()
         committee = committeeComment.objects.all()
         committeeList = filterPost(committeeAll,committee,user)
@@ -133,22 +134,6 @@ def mypostComment(request):
         artAll = artPost.objects.all()
         hokmaAll = hokmaPost.objects.all()
 
-        #festival에서 댓글
-        nursing = nursingComment.objects.all()
-        convergence = convergenceComment.objects.all()
-        business = businessComment.objects.all()
-        pharmacy = pharmacyComment.objects.all()
-        engineering = engineeringComment.objects.all()
-        music = musicComment.objects.all()
-        edu = eduComment.objects.all()
-        humanities = humanitiesComment.objects.all()
-        social = socialComment.objects.all()
-        natural = naturalComment.objects.all()
-        scraton = scratonComment.objects.all()
-        art = artComment.objects.all()
-        hokma = hokmaComment.objects.all()
-        
-
         context = {
             'committeeList' : committeeList,
             'nursingList' : filterPost(nursingAll,nursing,user),
@@ -164,7 +149,7 @@ def mypostComment(request):
             'scratonList' :  filterPost(scratonAll,scraton,user),
             'artList' :  filterPost(artAll,art,user),
             'hokmaList' :  filterPost(hokmaAll,hokma,user),
-        }
+
 
         return render(request, 'auths/commentedPostBoards.html', context)
 

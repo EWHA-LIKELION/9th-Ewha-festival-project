@@ -24,6 +24,9 @@ def collegeList(request):
 def search(request):
     return render(request, 'searches/search.html')
 
+def searchBooth(request):  # 검색
+    return render(request, 'searches/searchBooth.html')
+
 def searchPost(request):  # 검색
     query = request.GET['search']
 
@@ -81,7 +84,22 @@ def searchPost(request):  # 검색
         return render(request, 'searches/search.html', context)
         
     else :
-        return redirect('main')
+        return redirect('festival:search')
+
+def boothsearch(request):  # 검색
+    query = request.GET['search']
+    print(query)
+    booth = boothPost.objects.all()
+
+    if query:
+        booth = booth.filter(Q(title__icontains=query) | Q(body__icontains=query))
+        context = {
+            'booth' : booth,
+            'query' : query,
+        }        
+        return render(request, 'searches/searchBooth.html', context)      
+    else :
+        return redirect('festival:search')
 
 
 #-------------- 간호대
