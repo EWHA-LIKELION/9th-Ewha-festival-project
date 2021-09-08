@@ -149,7 +149,7 @@ def mypostComment(request):
             'scratonList' :  filterPost(scratonAll,scraton,user),
             'artList' :  filterPost(artAll,art,user),
             'hokmaList' :  filterPost(hokmaAll,hokma,user),
-
+        }
 
         return render(request, 'auths/commentedPostBoards.html', context)
 
