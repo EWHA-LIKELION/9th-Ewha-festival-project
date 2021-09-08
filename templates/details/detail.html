@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/details/detail.css"
+    />
+    <title>detail</title>
+  </head>
+  <body>
+    <div class="header-wrapper">
+      <img
+        id="back-button"
+        class="header-button"
+        src="/static/icons/common/go_back_icon.svg"
+      />
+      <span class="header-label" id="header-name">중앙운영위원회</span>
+      <div class="header-button"></div>
+    </div>
+
+    <div class="detail-container">
+      {% if post.hashtag_set %}
+      <div class="major-hashtag-item major-hashtag-colored" id="college-tag">
+        <div class="major-hashtag-label">
+          {{ post.hashtag_set.all.0.college_tag }}
+        </div>
+      </div>
+      {% endif %}
+      <div class="major-board-title">{{ post.title }}</div>
+
+      <div class="article-info">
+        <div class="article-date">{{ post.pub_time|date:"Y/m/d H:i" }}</div>
+        <div class="icon-number-box">
+          <img
+            class="comment-icon"
+            src="/static/icons/common/comment_icon.svg"
+          />
+          <div class="comment-number">{{post.comments.all|length}}</div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="article-text">{{ post.body }}</div>
+      <div class="booth-introduction">사진</div>
+      <div class="gallery" id="gallery">
+        {% for image in post.images.all %}
+        <img class="post-picture" id="post-picture" src="{{image.image.url}}" />
+        <br />
+        {% endfor %}
+      </div>
+    </div>
+
+    <!--중간에 껴있는 회색 박스-->
+    <div class="gray-dividing-box"></div>
+
+    <!--댓글-->
+    <div class="comment-container">
+      <div class="comment-info">
+        <div class="booth-introduction">댓글</div>
+        <div class="under-comment-number">{{post.comments.all|length}}</div>
+      </div>
+      <!--댓글 세부-->
+      {% for comment in post.comments.all %}
+      <div class="written-comment-box">
+        <div class="wrap-user-and-icon">
+          <div class="written-comment-user">{{comment.comment_writer}}</div>
+          <img
+            id="summary-icon"
+            src="/static/icons/common/comment_more_icon.svg"
+            class="summary-icon"
+          />
+        </div>
+        <div class="written-comment-text">{{comment.comment_contents}}</div>
+      </div>
+      {% empty %}
+      <div class="no-comment-wrapper">
+        <div class="no-comment-text">아직 댓글이 없습니다.</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- 댓글달기 -->
+    <form class="comment-box-wrapper">
+      {% csrf_token %}
+      <input
+        id="comment-input"
+        type="text"
+        class="comment-inputbox"
+        placeholder="댓글을 입력하세요"
+        name="content"
+      />
+      <button
+        class="comment-submit-button"
+        id="comment-submit-button"
+        type="submit"
+      ></button>
+    </form>
+    <script>
+      //댓글 작성
+      const commentInput = document.getElementById('comment-input');
+      const commentSubmitBtn = document.getElementById('comment-submit-button');
+
+      function commentSubmit(event) {
+        event.preventDefault(); //새로고침 방지
+        let content = commentInput.value;
+        let param = {
+          pk_id: '{{post.pk}}',
+          content: content,
+        };
+
+      $.ajax({  
+        url:`${currentCollege}/{{post.pk}}/comment`,
+        type:'POST',
+        headers:{
+          'X-CSRFTOKEN':'{{csrf_token}}',
+        },
+        data:JSON.stringify(param),
+        success:function(data){
+          console.log("SUCCESS");
+          console.log(data);
+          if (data.user!=undefined){
+            let commentContainer=document.querySelector('.comment-container');
+            let newDiv=document.createElement('div');
+            let noComment=document.querySelector('.no-comment-wrapper');
+            newDiv.classList.add('written-comment-box');
+            let str=`<div class="wrap-user-and-icon">
+                    <div class="written-comment-user">${data.user}</div>
+                    <img id="summary-icon" src="/static/icons/common/comment_more_icon.svg" class="summary-icon"/>
+                    </div>
+                    <div class="written-comment-text">${data.content}</div>`
+            newDiv.innerHTML=str;
+            commentContainer.append(newDiv);
+            noComment.remove();
+            commentInput.value='';
+          } 
+          else{
+            document.location.href='/account/login';
+          }
+        },
+        error:function(e){
+          console.log(e);
+        }  
+      })
+    }
+    commentSubmitBtn.onclick = commentSubmit;
+    </script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/details/detail.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  </body>
+</html>

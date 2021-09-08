@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/component.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/auths/haveToLogin.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="background-color-white">
+    <div class="header-wrapper">
+      <a 
+      href="#">
+      <img      
+          id="back-button"
+          class="header-button"
+          src="/static/icons/common/go_back_icon.svg"
+      /></a>
+      <!--뒤로가기-->
+      <span class="header-label">Login / Join</span>
+      <span class="header-button"></span>
+      <!--아무 element도 아닌데 정렬 맞추려고 넣어둠-->
+    </div>
+    <div class="htl-label">로그인 후 이용해주세요.</div>
+    <div class="htl-btn-wrapper">
+      <input class="button-filled-gray-htlogin" id="login-button" type="button" value="로그인"></input> <!--로그인 창으로 이동-->
+      <input class="button-filled-green-htlogin" id="signup-button" type="button" value="회원가입"></input> <!--회원가입 창으로 이동-->
+      <div class="htl-to-sign-up">
+        처음 오셨나요? 회원가입 후 축제를 즐기세요.
+      </div>
+      <!--회원가입 창으로 이동-->
+    </div>
+    <script src="/static/js/auths/haveToLogin.js"></script>
+    <script src="/static/js/common.js"></script>
+  </body>
+</html>
+

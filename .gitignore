@@ -151,3 +151,4 @@ dmypy.json
 cython_debug/
 .prettierrc
 # End of https://www.toptal.com/developers/gitignore/api/django
+.DS_Store

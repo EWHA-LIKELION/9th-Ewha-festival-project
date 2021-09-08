@@ -1,12 +1,86 @@
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/boards/boothBoards.css"
+    />
     <title>Document</title>
   </head>
-  <body>
+
+  <body class="background-image">
+    <div class="header-wrapper">
+      <img
+        class="header-button"
+        id="back-button"
+        src="/static/icons/common/go_back_icon.svg"
+      />
+      <span class="header-label">Ewha Festival 2021</span>
+      <div class="header-button"></div>
+    </div>
+
+    <div class="subheader-container">
+      <div class="subheader-text">부스게시판</div>
+      <div class="subheader-icon" id="search-button"></div>
+    </div>
+
+    {% if hashtag %}
+    <div class="major-hashtag-container">
+      {% for tag in hashtag.all %}
+      <div class="major-hashtag-item" id="{{tag.booth_tag}}">
+        <div class="major-hashtag-label">{{tag.booth_tag}}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="booth-sort-wrapper">
+      <div class="booth-number-backtext">
+        총 <span class="booth-number">{{post.all|length}}</span>개의 부스
+      </div>
+    </div>
+    <div class="booth-list-container">
+      {% for boothpost in post.all %} {% if boothpost.hashtag_set.all %}
+      <div class="booth-list-wrapper {{boothpost.hashtag_set.all.0.booth_tag}}" id="{{boothpost.id}}">
+        {% else %}
+      <div class="booth-list-wrapper" id="{{boothpost.id}}">
+        {% endif %}
+          <div class="booth-list-heart-background" id="like-button ">
+            <a href='{% url "booth:boothLike" boothpost.id %}'>
+            {% if user in boothpost.booth_like.all %}
+            <img
+              class="heart-icon"
+              src="/static/icons/common/filled_heart_icon.svg"
+              id="like-button-icon"
+            />
+            {% else %}
+            <img
+              class="heart-icon"
+              src="/static/icons/common/empty_heart_icon.svg"
+              id="like-button-icon"
+            />
+            {% endif %}
+            </a>
+          </div>
+        
+        {% with boothpost.images.all|first as image%}
+        <img class="booth-list-image" src="{{image.image.url}}" />
+        {% endwith %}
+        <div class="booth-list-label-wrapper">
+          <div class="booth-list-label-header">{{boothpost.title}}</div>
+          <div class="booth-list-label-content">{{boothpost.intro}}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
     
   </body>
-  </html>
+  <script src="/static/js/boards/boothBoards.js"></script>
+  <script src="/static/js/common.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</html>

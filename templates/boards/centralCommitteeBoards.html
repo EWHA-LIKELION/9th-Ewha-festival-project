@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/component.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/static/css/boards/collegeBoards.css"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="background-color-white">
+    <div class="collegeBoards-wrapper">
+      <div class="header-wrapper">
+        <a href="#"
+          ><img
+            class="header-button"
+            id="back-button"
+            src="/static/icons/common/go_back_icon.svg"
+        /></a>
+        <span class="header-label">Ewha Festival 2021</span>
+        <a href="#"
+          ><img
+            id="home-button"
+            class="header-button"
+            src="/static/icons/common/home_icon.svg"
+        /></a>
+      </div>
+      <div class="subheader-container">
+        <div class="subheader-text" id="college-name">중앙운영위원회</div>
+        <div class="subheader-icon" id="search-button"></div>
+      </div>
+      <div class="college-posts-container">
+        {% for articlepost in post.all %}
+        <div class="board-wrapper" id="{{articlepost.id}}">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{articlepost.title}}</div>
+            <img
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with articlepost.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{articlepost.body}}</div>
+            <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{ articlepost.comments.all|length }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/boards/collegeBoards.js"></script>
+  </body>
+</html>

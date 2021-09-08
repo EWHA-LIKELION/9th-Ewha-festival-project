@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/component.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/css/auths/signup.css"
+    />
+    <title>Document</title>
+  </head>
+  <body class="background-color-white">
+    <div class="header-wrapper">
+      <a href="#" id="back-button"
+        ><img
+          class="header-button"
+          src="/static/icons/common/go_back_icon.svg"
+      /></a>
+      <!--뒤로가기-->
+      <span class="header-label">Create Account</span>
+      <a href="#" id="home-button"
+        ><img
+          class="header-button"
+          src="/static/icons/common/home_icon.svg"
+      /></a>
+      <!--홈으로 돌아가기-->
+    </div>    
+    <form id="signup-form" action="{% url 'account:signup' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+      <div class="user-input-all-wrapper">   
+      {% for field in forms %}
+        {% if field.name == "user_image" %}
+        <div class="ID-img-wrapper">
+          <label for="{{ field.id_for_label }}"><img src="/static/icons/common/student_card_image.svg"></label>
+          <input type="{{ field.field.widget.input_type }}" 
+                class="student-card" 
+                id="{{ field.id_for_label }}" 
+                accept="image/*"
+                name="{{ field.name }}">
+          <div class="preview">현재 선택된 파일이 없습니다.</div>
+        </div>
+        {% else %}
+        <div class="user-input-wrapper">
+          <span class="user-input-label">{{field.label}}</span>
+          <input type="{{ field.field.widget.input_type }}"
+                  class="{{ field.field.widget.attrs.class }}"
+                  id="{{ field.id_for_label }}"
+                  placeholder="{{ field.label }}"
+                  name="{{ field.name }}">
+        </div>
+      {% if field.errors %}
+          <span style="color: red">{{ field.errors }}</span>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      <div class="signup-btn-wrapper">
+        <div class="signup-btn-label">
+          악성 댓글 작성 시에는 작성한 댓글이 삭제될 수 있습니다.
+        </div>
+        <button class="button-filled-green-signup" type="submit">
+          회원가입
+        </button>
+      </div>
+    </form>
+    <script src="/static/js/auths/signup.js"></script>
+    <script src="/static/js/common.js"></script>
+  </body>
+</html>
