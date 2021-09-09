@@ -34,7 +34,7 @@ function filterPosts() {
     });
   } else {
     filteredElement.forEach((element) => {
-      element.style.display = 'none';
+      element.style.display = 'flex';
     });
   }
 }

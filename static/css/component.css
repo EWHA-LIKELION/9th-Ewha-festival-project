@@ -10,6 +10,9 @@
 input:focus {
   outline: none;
 }
+a {
+  text-decoration: none;
+}
 body {
   max-width: 425px;
   width: 100%;
@@ -337,6 +340,8 @@ body {
   max-width: 100%;
   background: #ffffff;
   margin-top: 8px;
+  display: flex;
+  flex-direction: column;
 }
 .contents-wrapper {
   display: grid;
