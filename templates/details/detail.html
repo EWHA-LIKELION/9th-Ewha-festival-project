@@ -4,7 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
     <link
       rel="stylesheet"
@@ -25,7 +28,7 @@
     </div>
 
     <div class="detail-container">
-      {% if post.hashtag_set %}
+      {% if post.hashtag_set.all|length != 0 %}
       <div class="major-hashtag-item major-hashtag-colored" id="college-tag">
         <div class="major-hashtag-label">
           {{ post.hashtag_set.all.0.college_tag }}
@@ -115,41 +118,41 @@
           content: content,
         };
 
-      $.ajax({  
-        url:`${currentCollege}/{{post.pk}}/comment`,
-        type:'POST',
-        headers:{
-          'X-CSRFTOKEN':'{{csrf_token}}',
-        },
-        data:JSON.stringify(param),
-        success:function(data){
-          console.log("SUCCESS");
-          console.log(data);
-          if (data.user!=undefined){
-            let commentContainer=document.querySelector('.comment-container');
-            let newDiv=document.createElement('div');
-            let noComment=document.querySelector('.no-comment-wrapper');
-            newDiv.classList.add('written-comment-box');
-            let str=`<div class="wrap-user-and-icon">
+        $.ajax({
+          url: `${currentCollege}/{{post.pk}}/comment`,
+          type: 'POST',
+          headers: {
+            'X-CSRFTOKEN': '{{csrf_token}}',
+          },
+          data: JSON.stringify(param),
+          success: function (data) {
+            console.log('SUCCESS');
+            console.log(data);
+            if (data.user != undefined) {
+              let commentContainer =
+                document.querySelector('.comment-container');
+              let newDiv = document.createElement('div');
+              let noComment = document.querySelector('.no-comment-wrapper');
+              newDiv.classList.add('written-comment-box');
+              let str = `<div class="wrap-user-and-icon">
                     <div class="written-comment-user">${data.user}</div>
                     <img id="summary-icon" src="/static/icons/common/comment_more_icon.svg" class="summary-icon"/>
                     </div>
-                    <div class="written-comment-text">${data.content}</div>`
-            newDiv.innerHTML=str;
-            commentContainer.append(newDiv);
-            noComment.remove();
-            commentInput.value='';
-          } 
-          else{
-            document.location.href='/account/login';
-          }
-        },
-        error:function(e){
-          console.log(e);
-        }  
-      })
-    }
-    commentSubmitBtn.onclick = commentSubmit;
+                    <div class="written-comment-text">${data.content}</div>`;
+              newDiv.innerHTML = str;
+              commentContainer.append(newDiv);
+              noComment.remove();
+              commentInput.value = '';
+            } else {
+              document.location.href = '/account/login';
+            }
+          },
+          error: function (e) {
+            console.log(e);
+          },
+        });
+      }
+      commentSubmitBtn.onclick = commentSubmit;
     </script>
     <script src="/static/js/common.js"></script>
     <script src="/static/js/details/detail.js"></script>

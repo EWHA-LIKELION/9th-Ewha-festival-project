@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
     <link
       rel="stylesheet"
@@ -44,9 +47,7 @@
         {% endwith %}
         <div class="booth-list-label-wrapper" id="booth-label">
           <div class="booth-list-label-header">{{booth.post.title}}</div>
-          <div class="booth-list-label-content">
-            {{booth.post.intro}}
-          </div>
+          <div class="booth-list-label-content">{{booth.post.intro}}</div>
         </div>
       </div>
       {% endfor %}

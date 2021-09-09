@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link
       rel="stylesheet"
       type="text/css"
@@ -18,18 +18,19 @@
   </head>
   <body class="background-color-white">
     <div class="header-wrapper">
-      <a href="#" id="back-button"
-        ><img
+        <img
           class="header-button"
+          id="back-button"
           src="/static/icons/common/go_back_icon.svg"
-      /></a>
+      />
       <!--뒤로가기-->
       <span class="header-label">Create Account</span>
-      <a href="#" id="home-button"
-        ><img
+      
+        <img
           class="header-button"
+          id="home-button"
           src="/static/icons/common/home_icon.svg"
-      /></a>
+      />
       <!--홈으로 돌아가기-->
     </div>    
     <form id="signup-form" action="{% url 'account:signup' %}" method="POST" enctype="multipart/form-data">

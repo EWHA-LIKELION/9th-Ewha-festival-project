@@ -27,14 +27,14 @@ function filterPosts() {
   if (filterList && filterList.length) {
     filteredElement.forEach((element) => {
       if (filterList.includes(element.className.split(' ')[1])) {
-        element.style.visibility = 'visible';
+        element.style.display = 'flex';
       } else {
-        element.remove();
+        element.style.display = 'none';
       }
     });
   } else {
     filteredElement.forEach((element) => {
-      element.style.visibility = 'visible';
+      element.style.display = 'none';
     });
   }
 }
@@ -46,7 +46,6 @@ themeHashtagButton.forEach((tag) => {
 });
 
 function handleBoothTagClicked(event) {
-  location.reload();
   if (
     event.currentTarget.classList.value.indexOf(
       `${currentUrl}-hashtag-filled`
