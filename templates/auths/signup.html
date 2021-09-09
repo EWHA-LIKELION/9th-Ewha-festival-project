@@ -47,8 +47,15 @@
           <div class="preview">현재 선택된 파일이 없습니다.</div>
         </div>
         {% else %}
+          
         <div class="user-input-wrapper">
-          <span class="user-input-label">{{field.label}}</span>
+          <div class="user-input-label">
+            {{field.label}}
+            {% if field.name == "user_email" %}
+              <div class="user-email-label">ewhain.net 권장 (다른 도메인 사용도 가능)</div>
+            {% endif %}
+          </div>
+
           <input type="{{ field.field.widget.input_type }}"
                   class="{{ field.field.widget.attrs.class }}"
                   id="{{ field.id_for_label }}"
