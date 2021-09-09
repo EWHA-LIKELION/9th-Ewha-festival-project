@@ -77,10 +77,12 @@ hr {
   color: #e8ece9; /* IE */
   border-color: #e8ece9; /* 사파리 */
   background-color: #e8ece9; /* 크롬, 모질라 등, 기타 브라우저 */
+  margin-top: 19px;
+  margin-bottom: 19px;
 }
 
 .article-text {
-  margin-bottom: 12px;
+  margin-bottom: 25px;
 }
 
 .gallery {

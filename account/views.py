@@ -134,6 +134,21 @@ def mypostComment(request):
         artAll = artPost.objects.all()
         hokmaAll = hokmaPost.objects.all()
 
+        #festival에서 댓글
+        nursing = nursingComment.objects.all()
+        convergence = convergenceComment.objects.all()
+        business = businessComment.objects.all()
+        pharmacy = pharmacyComment.objects.all()
+        engineering = engineeringComment.objects.all()
+        music = musicComment.objects.all()
+        edu = eduComment.objects.all()
+        humanities = humanitiesComment.objects.all()
+        social = socialComment.objects.all()
+        natural = naturalComment.objects.all()
+        scraton = scratonComment.objects.all()
+        art = artComment.objects.all()
+        hokma = hokmaComment.objects.all()
+        
         context = {
             'committeeList' : committeeList,
             'nursingList' : filterPost(nursingAll,nursing,user),
@@ -149,7 +164,7 @@ def mypostComment(request):
             'scratonList' :  filterPost(scratonAll,scraton,user),
             'artList' :  filterPost(artAll,art,user),
             'hokmaList' :  filterPost(hokmaAll,hokma,user),
-
+        }
 
         return render(request, 'auths/commentedPostBoards.html', context)
 
