@@ -20,7 +20,7 @@ body {
   margin: 0 auto;
 }
 .background-image {
-  background-image: url(../icons/common/background.svg);
+  background-image: url(/static/images/background.png);
   background-position: center;
   background-size: cover;
   display: flex;
