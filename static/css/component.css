@@ -21,17 +21,13 @@ body {
 }
 .background-image {
   background-image: url(/static/images/background.png);
-  background-position: center;
+  background-position: bottom;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-@media screen and (min-width: 375px) {
-  .background-image {
-    background-size: contain;
-  }
-}
+
 .background-color-white {
   background: #f6f6f6;
 }
