@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
     <link
       rel="stylesheet"
@@ -24,313 +27,341 @@
     </div>
     <div class="main-container">
       {% for p in committeeList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/committee/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in nursingList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/nursing/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in convergenceList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/convergence/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in businessList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/business/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in pharmacyList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/pharmacy/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in engineeringList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/engineering/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in musicList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/music/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in eduList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/edu/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in humanitiesList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/humanities/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in socialList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/social/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in naturalList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/natural/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in scratonList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/scraton/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in artList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/art/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %} {% for p in hokmaList.all %}
-      <div class="board-wrapper" id="commented-posts">
-        <div class="wrap-title-arrow">
-          <div class="post-title">{{p.title}}</div>
-          <img
-            id="read-more-button"
-            src="/static/icons/common/right_arrow_icon.svg"
-            class="arrow-image"
-          />
-        </div>
-        <div class="contents-wrapper">
-          {% with p.images.all|first as image%}
-          <img class="post-picture-outside" src="{{image.image.url}}" />
-          {% endwith %}
-          <div class="post-article">{{p.body}}</div>
-          <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
-          <div class="post-comment-number">
-            <img src="/static/icons/common/comment_icon.svg" />
-            {{p.comments.all|length}}
+      <a href="/festival/hokma/{{p.id}}">
+        <div class="board-wrapper" id="commented-posts">
+          <div class="wrap-title-arrow">
+            <div class="post-title">{{p.title}}</div>
+            <img
+              id="read-more-button"
+              src="/static/icons/common/right_arrow_icon.svg"
+              class="arrow-image"
+            />
+          </div>
+          <div class="contents-wrapper">
+            {% with p.images.all|first as image%}
+            <img class="post-picture-outside" src="{{image.image.url}}" />
+            {% endwith %}
+            <div class="post-article">{{p.body}}</div>
+            <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
+            <div class="post-comment-number">
+              <img src="/static/icons/common/comment_icon.svg" />
+              {{p.comments.all|length}}
+            </div>
           </div>
         </div>
-      </div>
+      </a>
       {% endfor %}
     </div>
     <script src="/static/js/auths/commentedPostBoards.js"></script>

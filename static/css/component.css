@@ -7,6 +7,12 @@
     'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
     'Malgun Gothic', sans-serif !important;
 }
+input:focus {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
 body {
   max-width: 425px;
   width: 100%;
@@ -14,7 +20,7 @@ body {
   margin: 0 auto;
 }
 .background-image {
-  background-image: url(../icons/common/background.svg);
+  background-image: url(/static/images/background.png);
   background-position: center;
   background-size: cover;
   display: flex;
@@ -81,13 +87,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 77px;
 }
 .user-input-label {
   font-size: 15px;
   font-weight: bold;
-  opacity: 60%;
-  color: #000000;
+  color: rgba(0, 0, 0, 0.6);
 }
 .user-input {
   width: 100%;
@@ -95,6 +99,7 @@ body {
   border-radius: 10px;
   background-color: #e7e7e7;
   margin-top: 8px;
+  margin-bottom: 10px;
   border: none;
 }
 /* hashtag */
@@ -286,6 +291,11 @@ body {
   font-weight: 700;
   color: #1a4426;
 }
+.college-header-label {
+  font-weight: 500;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.6);
+}
 /* subheader */
 .subheader-container {
   display: flex;
@@ -313,7 +323,7 @@ body {
 
 .subheader-icon {
   margin-left: auto;
-  margin-right: 10%;
+  margin-right: 5%;
   width: 21px;
   height: 21px;
   background-image: url('../../static/icons/common/search_icon.svg');
@@ -330,6 +340,8 @@ body {
   max-width: 100%;
   background: #ffffff;
   margin-top: 8px;
+  display: flex;
+  flex-direction: column;
 }
 .contents-wrapper {
   display: grid;
@@ -412,9 +424,9 @@ img.arrow-image {
 }
 
 /* 부스 글 리스트 요소 */
-@media (max-width: 340px){
-  .booth-list-wrapper{
-    margin-bottom:20px;
+@media (max-width: 340px) {
+  .booth-list-wrapper {
+    margin-bottom: 20px;
   }
 }
 .booth-list-wrapper {
@@ -521,7 +533,6 @@ img .summary-icon {
   background-color: white;
   width: 100%;
   height: 70px;
-  box-shadow: 0px -6px 19px rgb(0 0 0/0.1);
   display: flex;
   align-items: center;
 }

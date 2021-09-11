@@ -9,7 +9,7 @@
     />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
     <link
       rel="stylesheet"
@@ -22,22 +22,21 @@
     <div class="container">
       <!-- headline -->
       <div class="festival-headline">Ewha Festival 2021</div>
-      <a href="{% url 'account:mypage' %}"
-        ><img
-          src="/static/icons/common/mypage_icon.svg"
-          class="mypage-icon"
-          id="mypage-button"
-      /></a>
-      <div class="welcome-text">이화의 축제를 즐기세요.</div>
-      <div class="search-box" id="search-button">
-        <img src="/static/icons/common/search_icon.svg" />
-        <input
-          id="search-word"
-          type="text"
-          placeholder="검색어를 입력해주세요."
-        />
-      </div>
-
+        <a href="{% url 'account:mypage' %}"
+          ><img
+            src="/static/icons/common/mypage_icon.svg"
+            class="mypage-icon"
+            id="mypage-button"
+        /></a>
+        <div class="welcome-text">이화의 축제를 즐기세요.</div>
+        <div class="search-box" id="search-button">
+          <img src="/static/icons/common/search_icon.svg" />
+          <input
+            id="search-word"
+            type="text"
+            placeholder="검색어를 입력해주세요."
+          />      
+          </div>
       <!-- 이벤트 안내 케라셀 -->
       <div
         id="carouselExampleIndicators"
@@ -65,25 +64,50 @@
             data-bs-slide-to="2"
             aria-label="Slide 3"
           ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="3"
+            aria-label="Slide 4"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="4"
+            aria-label="Slide 5"
+          ></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              src="/static/icons/college/education.svg"
+              src="/static/images/1.jpeg"
               class="d-block w-100"
               alt="..."
             />
           </div>
           <div class="carousel-item">
             <img
-              src="/static/icons/college/music.svg"
+              src="/static/images/2.jpeg"
               class="d-block w-100"
               alt="..."
             />
           </div>
           <div class="carousel-item">
             <img
-              src="/static/icons/college/plasticArts.svg"
+              src="/static/images/3.jpeg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/static/images/4.jpeg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>          <div class="carousel-item">
+            <img
+              src="/static/images/lion.png"
               class="d-block w-100"
               alt="..."
             />
@@ -139,6 +163,7 @@
           />
           <div class="board-detail-explanation">상세설명 텍스트</div>
         </div>
+      </div>
       </div>
     </div>
     <script

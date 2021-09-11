@@ -6,7 +6,6 @@ from .models import Profile
 class ProflieAdmin(admin.ModelAdmin):
     list_display =(
         'user_id',
-        'user_pw',
         'user_name',
         'user_image',
         'user_phone',

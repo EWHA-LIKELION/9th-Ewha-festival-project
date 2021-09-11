@@ -22,10 +22,17 @@ function handleLikeButtonClicked(event) {
 }
 likeBoothButton.addEventListener('click', handleLikeButtonClicked);
 
-const goBackButton = document.getElementById('go-back');
-goBackButton.addEventListener('click', handleGoBackButtonClicked);
-function handleGoBackButtonClicked() {
-  window.history.back();
-}
 const collegeTag = document.getElementById('college-tag');
 collegeTag.classList.add('booth-hashtag-filled');
+// 댓글의 신고 아이콘
+const summaryIcons = document.querySelectorAll('#summary-icon');
+
+function clickSummaryIcon() {
+  console.log('1');
+  window.location.href =
+    'https://docs.google.com/forms/d/1XfP9Mgii0t1BJ-ZwvIz8zDFbN4jJ2YFIQIYPYkqdaLs/';
+}
+
+summaryIcons.forEach((report) =>
+  report.addEventListener('click', clickSummaryIcon)
+);

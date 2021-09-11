@@ -9,16 +9,18 @@ for (const picture of pictures) {
   picture.onclick = handlePictureClicked;
 }
 
-// 댓글의 서머리 아이콘
+// 댓글의 신고 아이콘
 const summaryIcons = document.querySelectorAll('#summary-icon');
 
 function clickSummaryIcon() {
-  console.log('댓글 sumarry 아이콘');
+  console.log('1');
+  window.location.href =
+    'https://docs.google.com/forms/d/1XfP9Mgii0t1BJ-ZwvIz8zDFbN4jJ2YFIQIYPYkqdaLs';
 }
 
-for (const summaryIcon of summaryIcons) {
-  summaryIcon.onclick = clickSummaryIcon;
-}
+summaryIcons.forEach((report) =>
+  report.addEventListener('click', clickSummaryIcon)
+);
 
 // //댓글 쓰기
 // const commentInput = document.getElementById('comment-input');

@@ -9,6 +9,10 @@ html {
 }
 .container {
   padding: 20px;
+  background: linear-gradient(180deg, #62D0A1 37.5%, #4FE2D9 100%);
+  border-radius: 0px 0px 40px 40px;
+  width:100%;
+  height: 234px;
 }
 .festival-headline {
   font-size: 2.5rem;
@@ -36,6 +40,7 @@ html {
   width: 334px;
   height: 47px;
   margin-left: 8px;
+  font-size:16px;
 }
 .w-100 {
   height: 205px;
@@ -61,8 +66,20 @@ html {
   box-shadow: 0px 3px 5px rgba(79, 155, 124, 0.1);
   border-radius: 17px;
   padding-left: 17px;
-  padding-right: 17px;
   padding-top: 13px;
+  background-repeat: no-repeat;
+}
+#department-board{
+  background-position:right top;
+  background-image:url("/static/icons/common/ferriswheel.svg");
+}
+#central-committee-board{
+  background-position:right bottom;
+  background-image:url("/static/icons/common/circus.svg");
+}
+#booth-board{
+  background-position:right bottom;
+  background-image:url("/static/icons/common/booth.svg");
 }
 .board-btn-name {
   display: inline;
@@ -73,6 +90,7 @@ html {
   padding-right: 10px;
 }
 .board-detail-explanation {
+  margin-top:8px;
   height: 22px;
   font-family: Roboto;
   font-style: normal;

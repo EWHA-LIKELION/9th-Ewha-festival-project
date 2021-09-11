@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="/static/css/component.css" />
     <link
@@ -23,7 +23,7 @@
       <img
         src="/static/icons/common/black_go_back.svg"
         class="black-go-back"
-        id="go-back"
+        id="back-button"
       />
       <a href='{% url "booth:boothLike" post.id %}'>
       <div class="booth-list-heart-background" id="like-button">
@@ -103,7 +103,7 @@
                   </div>
                   <img
                     id="summary-icon"
-                    src="/static/icons/common/comment_more_icon.svg"
+                    src="/static/icons/common/comment_report_icon.svg"
                     class="summary-icon"
                   />
                 </div>
@@ -188,7 +188,7 @@
             newDiv.classList.add('written-comment-box');
             let str=`<div class="wrap-user-and-icon">
                     <div class="written-comment-user">${data.user}</div>
-                    <img id="summary-icon" src="/static/icons/common/comment_more_icon.svg" class="summary-icon"/>
+                    <img id="summary-icon" src="/static/icons/common/comment_report_icon.svg" class="summary-icon"/>
                     </div>
                     <div class="written-comment-text">${data.content}</div>`
             newDiv.innerHTML=str;
@@ -209,6 +209,7 @@
     </script>
   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="/static/js/common.js"></script>
     <script src="/static/js/details/boothDetail.js"></script>
   </body>
 </html>
