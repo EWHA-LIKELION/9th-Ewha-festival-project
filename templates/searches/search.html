@@ -40,6 +40,7 @@
 
     <div class="booth-list-container" id="booth-container">
       {% for object in booth.all%}
+      <a href="/booth/{{object.id}}">
       <div class="booth-list-wrapper">
         <div class="booth-list-heart-background">
           <img
@@ -57,11 +58,13 @@
             </div>
           </div>
       </div>
+      </a>
       {% endfor %}  
     </div>
  
     <div class="search-board-container" id="post-container">
       {% for object in nursing.all %}
+      <a href="/festival/nursing/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -83,8 +86,10 @@
           </div>
         </div>
       </div>
+    </a>
       {% endfor %}
       {% for object in humanities.all %}
+      <a href="/festival/humanities/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -106,8 +111,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in art.all %}
+      <a href="/festival/art/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -129,8 +136,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in business.all %}
+      <a href="/festival/business/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -152,8 +161,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in convergence.all %}
+      <a href="/festival/convergence/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -175,8 +186,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in edu.all %}
+      <a href="/festival/edu/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -198,8 +211,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in engineering.all %}
+      <a href="/festival/engineering/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -221,8 +236,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in hokma.all %}
+      <a href="/festival/hokma/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -244,8 +261,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in music.all %}
+      <a href="/festival/music/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -267,8 +286,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in natural.all %}
+      <a href="/festival/natural/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -290,8 +311,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in pharmacy.all %}
+      <a href="/festival/pharmacy/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -313,8 +336,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in scraton.all %}
+      <a href="/festival/scranton/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -336,8 +361,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in social.all %}
+      <a href="/festival/social/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -359,8 +386,10 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
       {% for object in committee.all %}
+      <a href="/committee/{{object.id}}">
       <div class="board-wrapper">
         <div class="wrap-title-arrow">
           <div class="post-title">{{object.title}}</div>
@@ -382,6 +411,7 @@
           </div>
         </div>
       </div>
+      </a>
       {% endfor %}
     </div>
   </div>
