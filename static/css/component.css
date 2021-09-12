@@ -239,7 +239,7 @@ body {
   color: rgba(0, 0, 0, 0.5);
 }
 .article-text {
-  text-align: justify;
+  text-align: left;
   margin-top: 3%;
   font-size: 15px;
   line-height: 23px;
@@ -391,12 +391,6 @@ img.arrow-image {
   letter-spacing: -0.03em;
   color: rgba(0, 0, 0, 0.9);
   margin-right: 2%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* 라인수 */
-  -webkit-box-orient: vertical;
-  word-wrap: break-word;
 }
 .post-date {
   font-family: Manrope;
