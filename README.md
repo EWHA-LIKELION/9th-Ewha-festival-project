@@ -35,7 +35,7 @@
 
 
 #### 🔨 백엔드
-|<img src="https://user-images.githubusercontent.com/55427367/132993895-944ebc5d-e859-4712-a380-73ea71ba9406.png" width=150px>|
+|<img src="https://user-images.githubusercontent.com/61587396/132995012-093d17c5-e25a-4d20-9fc9-cbe7213b4340.jpg" width=150px>|
 |:---:|
 |<b>지현숙</b>|
 |백엔드장|
