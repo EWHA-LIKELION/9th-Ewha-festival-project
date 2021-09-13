@@ -41,7 +41,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -65,7 +65,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -89,7 +89,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -113,7 +113,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -137,7 +137,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -161,7 +161,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -185,7 +185,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -209,7 +209,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -233,7 +233,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -257,7 +257,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -281,7 +281,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -305,7 +305,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -329,7 +329,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />
@@ -353,7 +353,7 @@
             {% with p.images.all|first as image%}
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
-            <div class="post-article">{{p.body}}</div>
+            <div class="post-article">{{p.body|linebreaks|truncatechars:52}}</div>
             <div class="post-date">{{p.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
               <img src="/static/icons/common/comment_icon.svg" />

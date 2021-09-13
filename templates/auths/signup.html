@@ -55,6 +55,9 @@
             {% if field.name == "user_email" %}
               <div class="user-email-label">ewhain.net 권장 (다른 도메인 사용도 가능)</div>
             {% endif %}
+            {% if field.name == "user_pw" %}
+              <div class="user-email-label">8자 이상으로 작성해주세요.</div>
+            {% endif %}
           </div>
 
           <input type="{{ field.field.widget.input_type }}"
