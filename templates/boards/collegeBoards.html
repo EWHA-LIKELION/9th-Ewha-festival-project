@@ -44,9 +44,10 @@
       </div>
       {% endif %}
       <div class="college-posts-container">
-        {% for articlepost in post.all%} {% if articlepost.hashtag_set.all%}
+        {% for articlepost in post.all%} {% if
+        articlepost.hashtag_set.all|length!=0 %}
         <div
-          class="board-wrapper {{articlepost.hashtag_set.all.0.college_tag}}"
+          class="board-wrapper {{articlepost.hashtag_set.all.0.college_tag }}"
           id="{{articlepost.id}}"
         >
           <div class="wrap-title-arrow">
