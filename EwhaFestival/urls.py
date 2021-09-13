@@ -23,7 +23,7 @@ import booth.views
 import committee.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('F2ACB3A84DD5F6578311EE348DE737C0895CF4156D12A0E49F89F284AA53F9AF/', admin.site.urls),
     path('', festival.views.main, name='main'),
     path('account/', include('account.urls')),
     path('festival/', include('festival.urls')),

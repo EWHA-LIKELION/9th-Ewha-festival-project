@@ -44,57 +44,37 @@
       </div>
       {% endif %}
       <div class="college-posts-container">
-        {% for articlepost in post.all%} {% if
-        articlepost.hashtag_set.all.0.college_tag %}
+        {% for articlepost in post.all%} {% if articlepost.hashtag_set.all%}
         <div
-          class="board-wrapper {{articlepost.hashtag_set.all.0.college_tag }}"
+          class="board-wrapper {{articlepost.hashtag_set.all.0.college_tag}}"
           id="{{articlepost.id}}"
         >
-          <div class="wrap-title-arrow">
-            <div class="post-title">{{articlepost.title}}</div>
-            <img
-              src="/static/icons/common/right_arrow_icon.svg"
-              class="arrow-image"
-            />
-          </div>
-          <div class="contents-wrapper">
-            {% with articlepost.images.all|first as image%}
-            <img class="post-picture-outside" src="{{image.image.url}}" />
-            {% endwith %}
-            <div class="post-article">
-              {{articlepost.body|linebreaks|truncatechars:52}}
+          {% else %}
+          <div class="board-wrapper" id="{{articlepost.id}}">
+            {% endif %}
+            <div class="wrap-title-arrow">
+              <div class="post-title">{{articlepost.title}}</div>
+              <img
+                src="/static/icons/common/right_arrow_icon.svg"
+                class="arrow-image"
+              />
             </div>
-            <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
-            <div class="post-comment-number">
-              <img src="/static/icons/common/comment_icon.svg" />
-              {{ articlepost.comments.all|length }}
+            <div class="contents-wrapper">
+              {% with articlepost.images.all|first as image%}
+              <img class="post-picture-outside" src="{{image.image.url}}" />
+              {% endwith %}
+              <div class="post-article">
+                {{articlepost.body|truncatechars:52}}
+              </div>
+              <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
+              <div class="post-comment-number">
+                <img src="/static/icons/common/comment_icon.svg" />
+                {{ articlepost.comments.all|length }}
+              </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-        {% else %}
-        <div class="board-wrapper" id="{{articlepost.id}}">
-          <div class="wrap-title-arrow">
-            <div class="post-title">{{articlepost.title}}</div>
-            <img
-              src="/static/icons/common/right_arrow_icon.svg"
-              class="arrow-image"
-            />
-          </div>
-          <div class="contents-wrapper">
-            {% with articlepost.images.all|first as image%}
-            <img class="post-picture-outside" src="{{image.image.url}}" />
-            {% endwith %}
-            <div class="post-article">
-              {{articlepost.body|linebreaks|truncatechars:52}}
-            </div>
-            <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
-            <div class="post-comment-number">
-              <img src="/static/icons/common/comment_icon.svg" />
-              {{ articlepost.comments.all|length }}
-            </div>
-          </div>
-        </div>
-        {% endif %} {% endfor %}
       </div>
     </div>
     <script src="/static/js/common.js"></script>
