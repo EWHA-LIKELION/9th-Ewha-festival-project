@@ -2,6 +2,8 @@
 ### 2021 이화여자대학교 대동제 웹사이트에 멋쟁이 사자처럼이 함께했습니다! <br>
 대동제에서 열리는 행사, 다양한 부스 구경하러 오세요~!
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FEWHA-LIKELION%2F9th-Ewha-festival-project%2Fhit-counter&count_bg=%23FFC011&title_bg=%23827D7D&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
 🔗 [대동제 사이트 바로가기](http://www.2021ewha-festival.com:8000/)
 
 ## 기능
