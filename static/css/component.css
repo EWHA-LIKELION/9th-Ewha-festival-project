@@ -418,7 +418,6 @@ img.arrow-image {
   display: flex;
   flex-wrap: wrap;
   width: 160px;
-  height: 204px;
   border-radius: 17px;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
   background-color: white;
@@ -437,19 +436,18 @@ img.arrow-image {
   font-weight: 700;
   color: #000000;
   opacity: 90%;
-  margin-top: 7px;
-  margin-bottom: 5px;
-  margin-left: 14px;
+  margin: 7px 7px 5px 7px;
+  line-height: 20px;
 }
 
 .booth-list-label-content {
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   line-height: 15px;
-  font-weight: 500px;
+  font-weight: 500;
   color: #000000;
   opacity: 50%;
-  margin: 3px 13px 16px 14px;
+  margin: 3px 7px 16px 7px;
 }
 /* 단대 아이콘 */
 .college-button-wrapper {
