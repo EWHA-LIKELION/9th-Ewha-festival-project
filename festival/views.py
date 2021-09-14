@@ -531,11 +531,9 @@ def commenthokma(request, pk_id):
     else :
         return redirect('account:login')
 
-
-
-
-   
 def page_not_found_view(request, exception):
     return render(request, '404.html', status=404)
-        
 
+def sever_error(request):
+    return render(request, '404.html', status=500)
+        
