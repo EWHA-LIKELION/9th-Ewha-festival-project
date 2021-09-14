@@ -15,7 +15,7 @@ import json
 
 # main
 def main(request):
-    return render(request, 'frontScreens/main.html')
+    return render(request, 'frontScreens/temporaryMain.html')
 
 # 부스보드 인포화면
 def collegeList(request):
@@ -531,9 +531,9 @@ def commenthokma(request, pk_id):
     else :
         return redirect('account:login')
 
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
 
-
-
-    
+def sever_error(request):
+    return render(request, '404.html', status=500)
         
-
