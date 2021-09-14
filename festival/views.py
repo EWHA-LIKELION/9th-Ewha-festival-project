@@ -534,6 +534,8 @@ def commenthokma(request, pk_id):
 
 
 
-    
+   
+def page_not_found_view(request, exception):
+    return render(request, '404.html', status=404)
         
 

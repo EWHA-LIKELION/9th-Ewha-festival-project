@@ -30,3 +30,5 @@ urlpatterns = [
     path('booth/', include('booth.urls')),
     path('committee/', include('committee.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = "festival.views.page_not_found_view"
