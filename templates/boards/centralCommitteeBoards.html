@@ -50,7 +50,7 @@
             <img class="post-picture-outside" src="{{image.image.url}}" />
             {% endwith %}
             <div class="post-article">
-              {{articlepost.body|linebreaks|truncatechars:52}}
+              {{articlepost.body|truncatechars:52}}
             </div>
             <div class="post-date">{{articlepost.pub_time|date:"m/d"}}</div>
             <div class="post-comment-number">
