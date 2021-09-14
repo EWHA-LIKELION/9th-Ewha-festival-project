@@ -15,7 +15,7 @@ import json
 
 # main
 def main(request):
-    return render(request, 'frontScreens/main.html')
+    return render(request, 'frontScreens/temporaryMain.html')
 
 # 부스보드 인포화면
 def collegeList(request):

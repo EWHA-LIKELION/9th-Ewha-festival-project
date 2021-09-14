@@ -100,7 +100,7 @@ body {
 }
 /* hashtag */
 .major-hashtag-container {
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: row;
   height: 35px;
